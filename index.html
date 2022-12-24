@@ -16,7 +16,7 @@
 		
 				// Lists pointing to changes & random number generator
 				var cssList = ["css/home/green-theme/home-stylesheet.css", "css/home/red-theme/home-stylesheet.css", "css/home/yellow-theme/home-stylesheet.css", "css/home/pink-theme/home-stylesheet.css"];
-				var videoList = ["videos/hero-hello-green.mp4", "videos/hero-hello-red.mp4", "videos/hero-hello-yellow.mp4", "videos/hero-hello-pink.mp4"];
+				//var videoList = ["videos/hero-hello-green.mp4", "videos/hero-hello-red.mp4", "videos/hero-hello-yellow.mp4", "videos/hero-hello-pink.mp4"];
 				var heroPosterList = ["", "", "", ""];
 				var projectsVideoList = ["videos/home-projects-red.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4"];
 				var aboutVideoList = ["videos/home-about-pink.mp4", "videos/home-about-pink.mp4", "videos/home-about-red.mp4", "videos/home-about-red.mp4"];
@@ -32,7 +32,7 @@
 				$("#video-poster").attr("poster", heroPosterList[rand]);
 				document.getElementById("projects-video-source").setAttribute("src", projectsVideoList[rand]);
 				document.getElementById("projects-video").load();
-				document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand]);
+				//document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand]);
 				document.getElementById("about-video").load();
 				//Change img src
 				document.getElementById("projects-arrow").setAttribute("src", projectsArrow[rand]);
@@ -119,10 +119,7 @@ $				("#about-video").each(function(){
 			<!-- Hero -->
 			<div id="hero">
 				<div id="hero-img-container">
-					<video id="video-poster" autoplay loop playsinline muted poster="">
-						<source id="video-source" src="videos/hero-hello-red.mp4">
-						There's supposed to be a video here, but your browser doesn't support it.
-					</video>
+					<img id="video-poster" src="images/hello_index/hello.gif">
 					<!-- <img src="../images/hello-solid.png" alt="Hello" id="hero-img"> -->
 				</div>
 				<div id="hero-text-container">

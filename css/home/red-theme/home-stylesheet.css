@@ -29,7 +29,6 @@ a {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	positin: fixed;
 	overflow: visible;
 	margin: auto;
 }
@@ -101,15 +100,14 @@ a {
 
 /* Image */
 #hero-img-container video {
-	widith: 100%;
 	margin: 3vw auto;
 	pointer-events: none;
 }
 
-#hero-img-container video[poster] {
+#hero-img-container img {
 	width: 80%;
 	height: auto;
-	margin:  5vw auto;
+	margin:  0 auto;
 	max-width: 100%;
 	display: block;
 }
@@ -120,7 +118,7 @@ a {
 	height: auto;
 	max-width: 100%;
 	display: block;
-	margin: 2vw auto 0 auto;
+	margin: 0 auto 0 auto;
 }
 
 /* Projects Section */
