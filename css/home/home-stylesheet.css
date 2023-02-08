@@ -38,7 +38,7 @@ a {
 }
 
 #header-container h1 {
-	font-family: object_sans_heavy;
+	font-family: object_sans_heavy !important;
 	color: #FCF7F8;
 	background-color: #FF001F;
 	padding: 1vw;
@@ -56,7 +56,7 @@ a {
 }
 
 #header-container p {
-	font-family: object_sans_bold;
+	font-family: object_sans_bold !important;
 	color: #FF2E32;
 	background-color: #FCF7F8;
 	padding: 1vw 1vw;
@@ -99,9 +99,9 @@ a {
 }
 
 #hero-animation {
-	width: 85%;
-	height: auto;
-	margin:  0 auto;
+	width: 70% !important;
+	height: auto !important;
+	margin:  7.5vw auto;
 	max-width: 100%;
 	display: block;
 }
@@ -351,35 +351,35 @@ a {
 /* Fonts */
 @font-face {
 	font-family: monument_extended-regular;
-	src: url("fonts/monumentextended-regular-webfont.woff");
+	src: url("../../fonts/monumentextended-regular-webfont.woff");
 }
 
 @font-face {
 	font-family: monument_extended_bold;
-	src: url("fonts/monumentextended-bold-webfont.woff");
+	src: url("../../fonts/monumentextended-bold-webfont.woff");
 }
 
 @font-face {
 	font-family: object_sans_thin;
-	src: url("fonts/ObjectSans-Thin.woff");
+	src: url("../../fonts/ObjectSans-Thin.woff");
 }
 
 @font-face {
 	font-family: object_sans_regular;
-	src: url("fonts/objectsans-regular-webfont.woff");
+	src: url("../../fonts/objectsans-regular-webfont.woff");
 }
 
 @font-face {
 	font-family: object_sans_bold;
-	src: url("fonts/objectsans-bold-webfont.woff");
+	src: url("../../fonts/objectsans-bold-webfont.woff");
 }
 
 @font-face {
 	font-family: object_sans_heavy;
-	src: url("fonts/objectsans-heavy-webfont.woff");
+	src: url("../../fonts/objectsans-heavy-webfont.woff");
 }
 
 @font-face {
 	font-family: wunderpunkt-bold;
-	src: url("fonts/Wunderpunkt-Bold.woff");
+	src: url("../../fonts/Wunderpunkt-Bold.woff");
 }

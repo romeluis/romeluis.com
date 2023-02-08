@@ -7,8 +7,6 @@ $(document).ready(function(){
 
     // Lists pointing to changes & random number generator
     var cssList = ["css/home/home-stylesheet.css", "css/home/home-stylesheet.css", "css/home/home-stylesheet.css", "css/home/home-stylesheet.css"];
-    //var videoList = ["videos/hero-hello-green.mp4", "videos/hero-hello-red.mp4", "videos/hero-hello-yellow.mp4", "videos/hero-hello-pink.mp4"];
-    var heroPosterList = ["", "", "", ""];
     var projectsVideoList = ["videos/home-projects-red.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4"];
     var aboutVideoList = ["videos/home-about-pink.mp4", "videos/home-about-pink.mp4", "videos/home-about-red.mp4", "videos/home-about-red.mp4"];
     var projectsArrow = ["images/red-arrow-right.svg", "images/green-arrow-right.svg", "images/green-arrow-right.svg", "images/green-arrow-right.svg"];
@@ -18,9 +16,6 @@ $(document).ready(function(){
 
     // Change Video src
     $("#css-selector").attr("href", cssList[rand]);
-    document.getElementById("video-source").setAttribute("src", videoList[rand]);
-    document.getElementById("video-poster").load();
-    $("#video-poster").attr("poster", heroPosterList[rand]);
     document.getElementById("projects-video-source").setAttribute("src", projectsVideoList[rand]);
     document.getElementById("projects-video").load();
     document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand]);
