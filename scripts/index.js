@@ -7,6 +7,7 @@ $(document).ready(function(){
 
     // Lists pointing to changes & random number generator
     var cssList = ["css/home/home-stylesheet-green.css", "css/home/home-stylesheet-red.css", "css/home/home-stylesheet-yellow.css", "css/home/home-stylesheet-pink.css"];
+    var faviconList = ["images/favicons/logo_green.ico", "images/favicons/logo_red.ico", "images/favicons/logo_yellow.ico", "images/favicons/logo_pink.ico"];
     var projectsVideoList = ["videos/home-projects-red.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4", "videos/home-projects-green.mp4"];
     var aboutVideoList = ["videos/home-about-pink.mp4", "videos/home-about-pink.mp4", "videos/home-about-red.mp4", "videos/home-about-red.mp4"];
     var projectsArrow = ["filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);"];
@@ -16,6 +17,7 @@ $(document).ready(function(){
 
     // Change Video src
     $("#css-selector").attr("href", cssList[rand]);
+    document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
     document.getElementById("projects-video-source").setAttribute("src", projectsVideoList[rand]);
     document.getElementById("projects-video").load();
     document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand]);
