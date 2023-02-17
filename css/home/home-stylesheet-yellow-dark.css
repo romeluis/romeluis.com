@@ -8,7 +8,7 @@
 
 body {
 	/* Background */
-	background: #FCF7F8;
+	background: #130f0e;
 	margin: 0;
 	background-repeat: no-repeat;
 }
@@ -39,37 +39,37 @@ a {
 
 #header-container h1 {
 	font-family: object_sans_heavy !important;
-	color: #FCF7F8;
-	background-color: #FF001F;
+	color: #302624;
+	background-color: #FFD05D;
 	padding: 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.5vw;
 	margin: 0 45vw 0 0;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
 	transition: 0.5s;
 }
 
 #header-container h1:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.8);
 }
 
 #header-container p {
 	font-family: object_sans_bold !important;
-	color: #FF001F;
-	background-color: #FCF7F8;
+	color: #FFD05D;
+	background-color: #302624;
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.5);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
 	transition: 0.5s;
 }
 
 #header-container p:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.8);
 }
 
 #home {
@@ -90,12 +90,12 @@ a {
 /* Hero */
 #hero {
 	border-radius: 2.75vw;
-	background-color: #FF001F;
+	background-color: #FFD05D;
 	width: 100%;
 	margin: 0vw 0 5.5vw;
 	display: block;
 	overflow: hidden;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.45);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
 }
 
 #hero-animation {
@@ -237,17 +237,17 @@ a {
 
 #about-info-header-containder {
 	padding: 2vw 3vw 1.75vw;
-	background-color: #FFC5D1;
+	background-color: #FF001F;
 	border-radius: 2.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,197,209,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.6);
 	margin: 0 0 2vw;
 }
 
 #about-info-copy-containder {
 	padding: 3vw 3.5vw;
-	background-color: #FFC5D1;
+	background-color: #FF001F;
 	border-radius: 2.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,197,209,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.6);
 }
 
 #about-info-copy-containder p {
@@ -270,7 +270,7 @@ a {
 
 #about-info-copy-button-containder p {
 	padding: 1.25vw 0vw 1.25vw 1.25vw;
-	color: #FFC5D1;
+	color: #FF001F;
 	font-family: object_sans_bold;
 	font-size: 2.5vw;
 	margin: 0;
@@ -299,9 +299,8 @@ a {
 	color: #FCF7F8;
 	margin: 0;
 }
-
 #about-span {
-	color: #302624;
+	color: #FCF7F8;
 }
 
 /* Footer */
@@ -311,8 +310,8 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #FFD05D;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.7);
+	background-color: #FFC5D1;
+	box-shadow: 0px 0px 20px 0px rgba(255,197,209,0.6);
 	border-radius: 2.75vw;
 	margin: 0 0 2vw;
 }

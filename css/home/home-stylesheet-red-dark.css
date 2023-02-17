@@ -8,7 +8,7 @@
 
 body {
 	/* Background */
-	background: #FCF7F8;
+	background: #130f0e;
 	margin: 0;
 	background-repeat: no-repeat;
 }
@@ -39,37 +39,37 @@ a {
 
 #header-container h1 {
 	font-family: object_sans_heavy !important;
-	color: #FCF7F8;
+	color: #302624;
 	background-color: #FF001F;
 	padding: 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.5vw;
 	margin: 0 45vw 0 0;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.25);
 	transition: 0.5s;
 }
 
 #header-container h1:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.35);
 }
 
 #header-container p {
 	font-family: object_sans_bold !important;
 	color: #FF001F;
-	background-color: #FCF7F8;
+	background-color: #302624;
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.5);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.25);
 	transition: 0.5s;
 }
 
 #header-container p:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(255,46,50,0.35);
 }
 
 #home {
@@ -200,7 +200,7 @@ a {
 	font-family: wunderpunkt-bold;
 	font-size: 4.7vw;
 	text-align: right;
-	color: #FCF7F8;
+	color: #302624;
 	margin: 0;
 }
 
@@ -296,12 +296,12 @@ a {
 	font-family: wunderpunkt-bold;
 	font-size: 6vw;
 	text-align: center;
-	color: #FCF7F8;
+	color: #302624;
 	margin: 0;
 }
 
 #about-span {
-	color: #302624;
+	color: #FCF7F8;
 }
 
 /* Footer */

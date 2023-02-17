@@ -204,6 +204,10 @@ a {
 	margin: 0;
 }
 
+#projects-span {
+	color: #FCF7F8;
+}
+
 /* About Section */
 #about-master-container {
 	width: 80vw;
@@ -294,6 +298,10 @@ a {
 	text-align: center;
 	color: #FCF7F8;
 	margin: 0;
+}
+
+#about-span {
+	color: #302624;
 }
 
 /* Footer */
