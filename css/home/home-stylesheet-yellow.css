@@ -31,6 +31,9 @@ a {
 	align-items: center;
 	overflow: visible;
 	margin: auto;
+	margin-top: -7.5vw !important;
+	position: fixed;
+	z-index: 1;
 }
 
 #header-container a {
@@ -45,14 +48,14 @@ a {
 	border-radius: 1.25vw;
 	font-size: 1.5vw;
 	margin: 0 45vw 0 0;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
 	transition: 0.5s;
 }
 
 #header-container h1:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 }
 
 #header-container p {
@@ -62,14 +65,14 @@ a {
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
 	transition: 0.5s;
 }
 
 #header-container p:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.8);
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 }
 
 #home {
@@ -92,7 +95,7 @@ a {
 	border-radius: 2.75vw;
 	background-color: #FFD05D;
 	width: 100%;
-	margin: 0vw 0 5.5vw;
+	margin: 7.5vw 0 5.5vw;
 	display: block;
 	overflow: hidden;
 	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.6);
