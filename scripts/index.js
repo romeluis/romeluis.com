@@ -35,7 +35,7 @@ $(document).ready(function(){
     } else {
         //Set light theme
         $("#css-selector").attr("href", cssList[rand]);
-        heroAnimation.load("https://lottie.host/13ca4d99-d8fc-48e8-ae57-deeea01bb7a0/chlRqhOqFk.json");
+        heroAnimation.load("https://lottie.host/4ae71f1e-f32e-4a1e-af33-34799cab7e3a/TkdN71r9RV.json");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
         document.getElementById("projects-video-source").setAttribute("src", projectsVideoList[rand]);
         document.getElementById("projects-video").load();
