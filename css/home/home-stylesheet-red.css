@@ -140,6 +140,7 @@ a {
 #projects-info-master-container {
 	float: right;
 	width: 40vw;
+	margin-top: 4.5vw;
 }
 
 #projects-info-header-containder {

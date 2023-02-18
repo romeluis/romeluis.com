@@ -8,6 +8,7 @@
 		<script src="plugins/isInViewport-master/lib/isInViewport.min.js"></script>
 		<!-- Import Lottie Player -->
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
 		<!-- Import index JS -->
 		<script src="scripts/index.js"></script>
 		<!-- HTML Site Stuff -->
@@ -46,7 +47,7 @@
 			
 			<!-- Hero -->
 			<div id="hero">
-				<lottie-player id="hero-animation" src="" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+				<lottie-player id="hero-animation" src="" background="transparent" speed="1" loop autoplay></lottie-player>
 				<div id="hero-text-container">
 					<img id="hero-arrow" src="images/arrow-down.svg" alt="Scroll down">
 				</div>
@@ -54,10 +55,7 @@
 			<!-- Projects section -->
 			<div id="projects-master-container">
 				<div id="projects-video-containder">
-					<video id="projects-video" playsinline muted poster="">
-						<source id="projects-video-source" src="">
-						There's supposed to be a video here, but your browser doesn't support it.
-					</video>
+					<lottie-player id="projects-animation" src="" background="transparent" speed="1"></lottie-player>
 				</div>
 				<div id="projects-info-master-container">
 					<div id="projects-info-header-containder">
