@@ -24,7 +24,7 @@ $(document).ready(function(){
         heroAnimation.load("https://lottie.host/13ca4d99-d8fc-48e8-ae57-deeea01bb7a0/chlRqhOqFk.json");
         document.getElementById("hero-arrow").setAttribute("src", "images/arrow-down-dark.svg");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand+4]);
-        projectsAnimation.load(projectsVideoList[rand])
+        projectsAnimation.load(projectsVideoList[rand]);
         document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand+4]);
         document.getElementById("about-video").load();
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand+4]);
@@ -35,8 +35,7 @@ $(document).ready(function(){
         $("#css-selector").attr("href", cssList[rand]);
         heroAnimation.load("https://lottie.host/4ae71f1e-f32e-4a1e-af33-34799cab7e3a/TkdN71r9RV.json");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
-        document.getElementById("projects-video-source").setAttribute("src", projectsVideoList[rand]);
-        document.getElementById("projects-video").load();
+        projectsAnimation.load(projectsVideoList[rand]);
         document.getElementById("about-video-source").setAttribute("src", aboutVideoList[rand]);
         document.getElementById("about-video").load();
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand]);
