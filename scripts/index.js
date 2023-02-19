@@ -24,8 +24,6 @@ $(document).ready(function(){
         heroAnimation.load("https://lottie.host/13ca4d99-d8fc-48e8-ae57-deeea01bb7a0/chlRqhOqFk.json");
         document.getElementById("hero-arrow").setAttribute("src", "images/arrow-down-dark.svg");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand+4]);
-        projectsAnimation.load(projectsVideoList[rand]);
-        aboutAnimation.load(aboutVideoList[rand]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand+4]);
         document.getElementById("about-arrow").setAttribute("style", aboutArrow[rand+4]);
         document.getElementById("footer-arrow").setAttribute("style", footerArrow[rand]);
@@ -34,28 +32,29 @@ $(document).ready(function(){
         $("#css-selector").attr("href", cssList[rand]);
         heroAnimation.load("https://lottie.host/4ae71f1e-f32e-4a1e-af33-34799cab7e3a/TkdN71r9RV.json");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
-        projectsAnimation.load(projectsVideoList[rand]);
-        aboutAnimation.load(aboutVideoList[rand]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand]);
         document.getElementById("about-arrow").setAttribute("style", aboutArrow[rand]);
         document.getElementById("footer-arrow").setAttribute("style", footerArrow[rand]);
     }
+
+    projectsAnimation.load(projectsVideoList[rand]);
+    aboutAnimation.load(aboutVideoList[rand]);
     
     //About Video
     $("#about-animation").each(function(){
-            if (aboutPlayed == 0) {
-                if ($("#about-animation").is(":in-viewport")) {
-                $("#about-video")[0].play();
+        if (aboutPlayed == 0) {
+            if ($("#about-animation").is(":in-viewport")) {
+                aboutAnimation.play();
                 aboutPlayed = 1;
-                }
             }
-        });
+        }
+    });
 
     //Projects animation
     $("#projects-animation").each(function(){
         if (projectPlayed == 0) {
             if ($("#projects-animation").is(":in-viewport")) {
-                aboutAnimation.play();
+                projectsAnimation.play();
                 projectPlayed = 1;
             }
         }
