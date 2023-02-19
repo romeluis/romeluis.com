@@ -1,0 +1,227 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*Global*/
+* {
+	box-sizing: border-box;
+}
+
+body {
+	/* Background */
+	background: #130f0e;
+	margin: 0;
+	background-repeat: no-repeat;
+}
+
+a {
+	text-decoration: none;
+}
+
+#masterContainer {
+	width: 80vw;
+	margin: auto;
+}
+
+/* Navigation */
+#header-container {
+	width: 80vw;
+	height: 7vw;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	overflow: visible;
+	margin: auto;
+}
+
+#header-container a {
+	text-decoration: none;
+}
+
+#header-container h1 {
+	font-family: object_sans_heavy !important;
+	color: #302624;
+	background-color: #FFD05D;
+	padding: 1vw;
+	border-radius: 1.25vw;
+	font-size: 1.5vw;
+	margin: 0 45vw 0 0;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
+	transition: 0.5s;
+}
+
+#header-container h1:hover {
+	padding: 1.25vw;
+	font-size: 1.75vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+}
+
+#header-container p {
+	font-family: object_sans_bold !important;
+	color: #FFD05D;
+	background-color: #302624;
+	padding: 1vw 1vw;
+	border-radius: 1.25vw;
+	font-size: 1.25vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
+	transition: 0.5s;
+}
+
+#header-container p:hover {
+	padding: 1.25vw;
+	font-size: 1.75vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+}
+
+#home {
+	justify-content: center;
+	align-items: center;
+}
+
+#nav-projects {
+	justify-content: center;
+	align-items: center;
+}
+
+#about {
+	justify-content: center;
+	align-items: center;
+}
+
+/* BODY */
+#name-container {
+	width: 45%;
+	float: left;
+}
+
+#name-container p {
+	font-family: wunderpunkt-bold;
+	font-size: 6.5vw;
+	color: #FFD05D;
+	margin: 0;
+}
+
+#about-me-container {
+	width: 55%;
+	float: right;
+}
+
+#about-me-container p {
+	font-family: object_sans_regular;
+	font-size: 1.5vw;
+	padding: 2vw;
+	border-radius: 2.75vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+	background-color: #302624;
+	color: #FCF7F8;
+}
+
+/* Footer */
+#footer-master-container {
+	width: 80vw;
+	padding: 3vw 3vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #FFD05D;
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.25);
+	border-radius: 2.75vw;
+	margin: 0 0 2vw;
+}
+
+#footer-left-container a {
+	font-family: object_sans_regular;
+	color: #302624;
+	text-decoration: underline;
+	font-size: 1.5vw;
+}
+
+#footer-left-container p {
+	margin: 0 0 1vw;
+}
+
+#footer-about-container {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+}
+
+#footer-about-container p {
+	margin: 0;
+}
+
+#footer-left-container img {
+	height: 1vw;
+	margin: 0 0.5vw;
+}
+
+#contact-text {
+	font-family: object_sans_thin;
+	vertical-align: center;
+}
+
+#footer-right-container h1 {
+	text-align: right;
+	font-family: object_sans_regular;
+	color: #302624;
+	margin: 0 0 1vw;
+	font-size: 1.5vw;
+}
+
+#footer-mobile-text {
+	text-align: right;
+	font-family: object_sans_regular;
+	color: #302624;
+	margin: 0 0 1vw;
+	font-size: 1.25vw;
+}
+
+#footer-font-credit-text {
+	text-align: right;
+	font-family: object_sans_regular;
+	color: #302624;
+	margin: 0;
+	font-size: 1.25vw;
+}
+
+/* Classes */
+.bolded-object {
+	font-family: object_sans_bold;
+}
+
+/* Fonts */
+@font-face {
+	font-family: monument_extended-regular;
+	src: url("../../fonts/monumentextended-regular-webfont.woff");
+}
+
+@font-face {
+	font-family: monument_extended_bold;
+	src: url("../../fonts/monumentextended-bold-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_thin;
+	src: url("../../fonts/ObjectSans-Thin.woff");
+}
+
+@font-face {
+	font-family: object_sans_regular;
+	src: url("../../fonts/objectsans-regular-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_bold;
+	src: url("../../fonts/objectsans-bold-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_heavy;
+	src: url("../../fonts/objectsans-heavy-webfont.woff");
+}
+
+@font-face {
+	font-family: wunderpunkt-bold;
+	src: url("../../fonts/Wunderpunkt-Bold.woff");
+}
+
+
