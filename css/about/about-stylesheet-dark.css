@@ -88,6 +88,17 @@ a {
 }
 
 /* BODY */
+#main-page-container {
+	margin-bottom: 2vw;
+	display: inline-block;
+}
+
+#name-about-container {
+	margin-bottom: 1vw;
+	display: inline-block;
+}
+
+/* Name */
 #name-container {
 	width: 45%;
 	float: left;
@@ -100,6 +111,7 @@ a {
 	margin: 0;
 }
 
+/* About */
 #about-me-container {
 	width: 55%;
 	float: right;
@@ -114,6 +126,52 @@ a {
 	border-radius: 2.75vw;
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 	background-color: #302624;
+	color: #FCF7F8;
+}
+
+/* Sidebar */
+#sidebar-container {
+	float: right;
+	width: 37%;
+	display: inline-block;
+}
+
+/* Skills */
+#skills-container {
+	padding: 2vw 2.3vw;
+	border-radius: 2.75vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+	background-color: #302624;
+	display: inline-block;
+	margin-bottom: 2vw;
+}
+
+#skills-container p {
+	font-family: object_sans_thin;
+	font-size: 1.55vw;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0.7vw;
+	color: #FCF7F8;
+}
+
+/* Awards */
+#awards-container {
+	padding: 2vw 2.3vw;
+	border-radius: 2.75vw;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+	background-color: #302624;
+	display: inline-block;
+}
+
+#awards-container p {
+	font-family: object_sans_thin;
+	font-size: 1.55vw;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0.7vw;
 	color: #FCF7F8;
 }
 
@@ -187,7 +245,22 @@ a {
 
 /* Classes */
 .bolded-object {
-	font-family: object_sans_bold;
+	font-family: object_sans_bold !important;
+}
+
+.regular-object {
+	font-family: object_sans_regular !important;
+	margin-top: 0 !important;
+}
+
+.section-title {
+	font-family: wunderpunkt-bold;
+	color: #FFD05D;
+	font-size: 3vw;
+}
+
+.paragraph-indent1 {
+	margin-left: 1.5vw !important;
 }
 
 /* Fonts */
