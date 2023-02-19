@@ -60,6 +60,7 @@ a {
 #header-container p {
 	font-family: object_sans_bold !important;
 	color: #FFD05D;
+	text-align: center;
 	background-color: #302624;
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
@@ -149,16 +150,6 @@ a {
 	margin-bottom: 2vw;
 }
 
-#skills-container p {
-	font-family: object_sans_thin;
-	font-size: 1.55vw;
-	margin-bottom: 0;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 0.7vw;
-	color: #FCF7F8;
-}
-
 /* Awards */
 #awards-container {
 	padding: 2vw 2.3vw;
@@ -168,14 +159,14 @@ a {
 	display: inline-block;
 }
 
-#awards-container p {
-	font-family: object_sans_thin;
-	font-size: 1.55vw;
-	margin-bottom: 0;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 0.7vw;
-	color: #FCF7F8;
+/* Education */
+#education-container {
+	width: 58%;
+}
+
+/* Education */
+#experience-container {
+	width: 58%;
 }
 
 /* Footer */
@@ -192,14 +183,16 @@ a {
 }
 
 #footer-left-container a {
-	font-family: object_sans_regular;
-	color: #302624;
+	font-family: object_sans_regular !important;
+	color: #302624 !important;
 	text-decoration: underline;
 	font-size: 1.5vw;
 }
 
 #footer-left-container p {
+	font-family: object_sans_regular;
 	margin: 0 0 1vw;
+	color: #302624 !important;
 }
 
 #footer-about-container {
@@ -209,6 +202,7 @@ a {
 }
 
 #footer-about-container p {
+	font-family: object_sans_regular;
 	margin: 0;
 }
 
@@ -262,8 +256,46 @@ a {
 	font-size: 3vw;
 }
 
+.section-title2 {
+	font-family: wunderpunkt-bold;
+	color: #FFD05D;
+	font-size: 3vw;
+	margin-top: 1.7vw;
+	display: inline-block;
+}
+
 .paragraph-indent1 {
 	margin-left: 1.5vw !important;
+}
+
+p {
+	font-family: object_sans_thin;
+	font-size: 1.2vw;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0.7vw;
+	color: #FCF7F8;
+}
+
+li {
+	font-family: object_sans_thin;
+	font-size: 1.2vw;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0.7vw;
+	color: #FCF7F8;
+	padding: 0, 0, 1.5vw, 1.5vw !important;
+}
+
+ul {
+	list-style-type: none;
+	background: url(../../images/arrow-right-white.svg) no-repeat left center;
+	background-size: 1.2vw;
+	background-position: 0.5vw 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /* Fonts */
