@@ -39,7 +39,7 @@ a {
 
 #header-container h1 {
 	font-family: object_sans_heavy !important;
-	color: #302624;
+	color: #FCF7F8;
 	background-color: #FFD05D;
 	padding: 1vw;
 	border-radius: 1.25vw;
@@ -58,18 +58,18 @@ a {
 #header-container p {
 	font-family: object_sans_bold !important;
 	color: #FFD05D;
-	background-color: #302624;
+	background-color: #FCF7F8;
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(48, 38, 36, 0.6);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93, 0.6);
 	transition: 0.5s;
 }
 
 #header-container p:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(48, 38, 36, 0.8);
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93, 0.8);
 }
 
 #home {
