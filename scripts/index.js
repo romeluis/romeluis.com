@@ -45,6 +45,7 @@ $(document).ready(function(){
         if (aboutPlayed == 0) {
             if ($("#about-animation").is(":in-viewport")) {
                 aboutAnimation.play();
+                console.log("played abou");
                 aboutPlayed = 1;
             }
         }
@@ -55,6 +56,7 @@ $(document).ready(function(){
         if (projectPlayed == 0) {
             if ($("#projects-animation").is(":in-viewport")) {
                 projectsAnimation.play();
+                console.log("played proj");
                 projectPlayed = 1;
             }
         }
@@ -68,6 +70,7 @@ $(window).scroll(function() {
         if (aboutPlayed == 0) {
             if ($("#about-animation").is(":in-viewport")) {
                 aboutAnimation.play();
+                console.log("played abou");
                 aboutPlayed = 1;
             }
         }
@@ -81,6 +84,7 @@ $(window).scroll(function() {
         if (projectPlayed == 0) {
             if ($("#projects-animation").is(":in-viewport")) {
                 projectsAnimation.play();
+                console.log("played proj");
                 projectPlayed = 1;
             }
         }
