@@ -15,11 +15,9 @@ $(document).ready(function(){
     var footerArrow = ["invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);", "invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);", "images/white-arrow-right.sinvert(90%) sepia(20%) saturate(27%) hue-rotate(296deg) brightness(104%) contrast(99%);vg", "invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);"];
     var rand = Math.floor(Math.random()*4);
 
-    //Dark theme and lottie objects
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
     const heroAnimation = document.getElementById("hero-animation");
     const projectsAnimation = document.getElementById("projects-animation");
-    
     
     if (prefersDarkScheme.matches) {
         $("#css-selector").attr("href", cssList[rand+4]);
@@ -46,23 +44,22 @@ $(document).ready(function(){
         document.getElementById("footer-arrow").setAttribute("style", footerArrow[rand]);
     }
     
-    //Set interactivity for projects
-    LottieInteractivity.create({
-        player: "#projects-animation",
-        mode: "scroll",
-        actions: [{
-            visibility: [0.25, 1.0],
-            type: "play"
-        }],
-
-    });
-    
-//About Video
+    //About Video
     $("#about-video").each(function(){
-        if (aboutPlayed == 0) {
-            if ($("#about-video").is(":in-viewport")) {
-            $("#about-video")[0].play();
-            aboutPlayed = 1;
+            if (aboutPlayed == 0) {
+                if ($("#about-video").is(":in-viewport")) {
+                $("#about-video")[0].play();
+                aboutPlayed = 1;
+                }
+            }
+        });
+
+    //Projects animation
+    $("#projects-animation").each(function(){
+        if (projectPlayed == 0) {
+            if ($("#projects-animation").is(":in-viewport")) {
+                projectsAnimation.play();
+                projectPlayed = 1;
             }
         }
     });
@@ -70,12 +67,27 @@ $(document).ready(function(){
 
 //About Video
 $(window).scroll(function() {
-$				("#about-video").each(function(){
+    $("#about-video").each(function(){
         if (aboutPlayed == 0) {
             if ($("#about-video").is(":in-viewport")) {
-            $("#about-video")[0].play();
-            aboutPlayed = 1;
+                $("#about-video")[0].play();
+                aboutPlayed = 1;
             }
         }
     });
 });
+
+//Project animation
+$(window).scroll(function() {
+    $("#projects-animation").each(function(){
+        const projectsAnimation = document.getElementById("projects-animation");
+        if (projectPlayed == 0) {
+            if ($("#projects-animation").is(":in-viewport")) {
+                projectsAnimation.play();
+                projectPlayed = 1;
+            }
+        }
+    });
+});
+
+
