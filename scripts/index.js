@@ -11,7 +11,6 @@ $(document).ready(function(){
     var aboutVideoList = ["https://lottie.host/eafa7e3f-1eb9-4b7b-a119-468e72f750d5/2bMNOjkjGS.json", "https://lottie.host/eafa7e3f-1eb9-4b7b-a119-468e72f750d5/2bMNOjkjGS.json", "https://lottie.host/1ab8a714-5bde-4da7-9692-96fa6d824ab5/375e2L6GrC.json", "https://lottie.host/1ab8a714-5bde-4da7-9692-96fa6d824ab5/375e2L6GrC.json"];
     var projectsArrow = ["filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);"];
     var aboutArrow = ["filter: invert(80%) sepia(16%) saturate(763%) hue-rotate(302deg) brightness(101%) contrast(105%);", "filter: invert(80%) sepia(16%) saturate(763%) hue-rotate(302deg) brightness(101%) contrast(105%);", "filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);"];
-    var footerArrow = ["invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);", "invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);", "images/white-arrow-right.sinvert(90%) sepia(20%) saturate(27%) hue-rotate(296deg) brightness(104%) contrast(99%);vg", "invert(2%) sepia(15%) saturate(3681%) hue-rotate(347deg) brightness(94%) contrast(84%);"];
     var rand = Math.floor(Math.random()*4);
 
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -26,7 +25,6 @@ $(document).ready(function(){
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand+4]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand+4]);
         document.getElementById("about-arrow").setAttribute("style", aboutArrow[rand+4]);
-        document.getElementById("footer-arrow").setAttribute("style", footerArrow[rand]);
     } else {
         //Set light theme
         $("#css-selector").attr("href", cssList[rand]);
@@ -34,7 +32,6 @@ $(document).ready(function(){
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand]);
         document.getElementById("about-arrow").setAttribute("style", aboutArrow[rand]);
-        document.getElementById("footer-arrow").setAttribute("style", footerArrow[rand]);
     }
 
     projectsAnimation.load(projectsVideoList[rand]);
