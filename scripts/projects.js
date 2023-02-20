@@ -5,9 +5,9 @@ $(document).ready(function(){
     if (prefersDarkScheme.matches) {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet-dark.css");
         document.getElementById("about-favicon").setAttribute("href", "../images/favicons/logo_pink_dark.ico");
-        heroAnimation.load("https://lottie.host/1f0f860b-5369-4696-b5cb-29ea2c7fe0f6/abuM073MDi.json");
+        heroAnimation.load("https://lottie.host/4d760ae4-44f1-4e23-a8d9-d35785bb05fe/Ly0SZ7X7ch.json");
     } else {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet.css");
-        heroAnimation.load("https://lottie.host/a9a8ee1a-992d-46c1-b85c-6b5196e4de88/cdqtmLu0r5.json");
+        heroAnimation.load("https://lottie.host/9eb5c40c-68d8-4e54-8298-c7bdc7ab0298/1qPKeiJLm0.json");
     }
 });
