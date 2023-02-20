@@ -40,7 +40,7 @@ $(document).ready(function(){
     //About Video
     $("#about-animation").each(function(){
         if (aboutPlayed == 0) {
-            if ($("#about-animation").is(":in-viewport")) {
+            if ($("#about-animation").is(":in-viewport(600)")) {
                 aboutAnimation.play();
                 console.log("played abou");
                 aboutPlayed = 1;
@@ -51,7 +51,7 @@ $(document).ready(function(){
     //Projects animation
     $("#projects-animation").each(function(){
         if (projectPlayed == 0) {
-            if ($("#projects-animation").is(":in-viewport")) {
+            if ($("#projects-animation").is(":in-viewport(600)")) {
                 projectsAnimation.play();
                 console.log("played proj");
                 projectPlayed = 1;
@@ -65,7 +65,7 @@ $(window).scroll(function() {
     $("#about-animation").each(function(){
         const aboutAnimation = document.getElementById("about-animation");
         if (aboutPlayed == 0) {
-            if ($("#about-animation").is(":in-viewport")) {
+            if ($("#about-animation").is(":in-viewport(600)")) {
                 aboutAnimation.play();
                 console.log("played abou");
                 aboutPlayed = 1;
@@ -79,7 +79,7 @@ $(window).scroll(function() {
     $("#projects-animation").each(function(){
         const projectsAnimation = document.getElementById("projects-animation");
         if (projectPlayed == 0) {
-            if ($("#projects-animation").is(":in-viewport")) {
+            if ($("#projects-animation").is(":in-viewport(600)")) {
                 projectsAnimation.play();
                 console.log("played proj");
                 projectPlayed = 1;
