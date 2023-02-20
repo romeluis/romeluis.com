@@ -105,10 +105,11 @@ li a {
 	top: 0;
 	left: 0;
 	z-index: -2;
+	width: 100%;
 }
 
 #background-container lottie-player {
-	width: 100%;
+	width: 100% !important;
 }
 
 #foreground-container {
