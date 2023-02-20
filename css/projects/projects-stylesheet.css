@@ -47,37 +47,37 @@ li a {
 #header-container h1 {
 	font-family: object_sans_heavy !important;
 	color: #FCF7F8;
-	background-color: #FF001F;
+	background-color: #91BF4B;
 	padding: 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.5vw;
 	margin: 0 45vw 0 0;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.6);
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.6);
 	transition: 0.5s;
 }
 
 #header-container h1:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.8);
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.8);
 }
 
 #header-container p {
 	font-family: object_sans_bold !important;
-	color: #FF001F;
+	color: #91BF4B;
 	text-align: center;
 	background-color: #FCF7F8;
 	padding: 1vw 1vw;
 	border-radius: 1.25vw;
 	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.6);
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.6);
 	transition: 0.5s;
 }
 
 #header-container p:hover {
 	padding: 1.25vw;
 	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.8);
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.8);
 }
 
 #home {
@@ -96,6 +96,61 @@ li a {
 }
 
 /* BODY */
+#main-body-container {
+	position: relative;
+}
+
+#background-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -2;
+}
+
+#background-container lottie-player {
+	width: 100%;
+}
+
+#foreground-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-bottom: 2vw;
+	display: inline-block;
+	margin-top: 23vw;
+}
+
+/* Grid */
+#projects-grid {
+	display: inline-grid;
+	gap: 2vw;
+	grid-template-columns: auto auto auto auto;
+	width: 100%;
+	justify-content: center;
+	align-content: center;
+	margin-bottom: 2vw;
+}
+
+.project-item {
+	width: 18.47vw;
+	height: 26vw;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+}
+
+img {
+	width: 93%;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 2vw;
+	margin: 1vw;
+	transition: 0.5s;
+	margin: auto;
+}
+
+img:hover {
+	width: 100%;
+}
 
 /* Footer */
 #footer-master-container {
@@ -104,8 +159,8 @@ li a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #FF001F;
-	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.25);
+	background-color: #91BF4B;
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.6);
 	border-radius: 2.75vw;
 	margin: 0 0 2vw;
 	float: left;
@@ -177,7 +232,7 @@ li a {
 	padding-left: 2vw;
 	padding-right: 2vw;
 	border-radius: 2.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.4);
+	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.6);
 	background-color: #FCF7F8;
 	display: inline-block;
 	width: 27%;
@@ -195,13 +250,13 @@ li a {
 
 .section-title {
 	font-family: wunderpunkt-bold;
-	color: #FF001F;
+	color: #91BF4B;
 	font-size: 3vw;
 }
 
 .section-title2 {
 	font-family: wunderpunkt-bold;
-	color: #FF001F;
+	color: #91BF4B;
 	font-size: 3vw;
 	margin-top: 1.7vw;
 	display: inline-block;
