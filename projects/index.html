@@ -1,118 +1,102 @@
 <!doctype html>
 <html>
+	<!-- Meta -->
 	<head>
+		<!-- Import jQuery & isInViewport plugin by Mudit Ameta -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="../plugins/isInViewport-master/lib/isInViewport.min.js"></script>
+		<!-- Import Lottie Player -->
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<!-- Import index JS -->
+		<script src="../scripts/projects.js"></script>
+		<!-- HTML Site Stuff -->
 		<meta charset="UTF-8">
-		<title>Projects</title>
-		<link href="../css/projects-stylesheet.css" rel="stylesheet" type="text/css">
+		<title>projects - romeluis</title>
+		<link id="about-favicon" rel="icon" type="image/x-icon" href="../images/favicons/logo_red.ico">
+		<link id="css-selector" href="../css/projects/projects-stylesheet-dark.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
+		<div id="background-container">
+			<lottie-player src="https://lottie.host/1f0f860b-5369-4696-b5cb-29ea2c7fe0f6/abuM073MDi.json" background="transparent" speed="1" loop autoplay></lottie-player>
+		</div>
 		<div id="masterContainer">
 			<!-- Logo and navigation -->
 			<header>
-				<div id="header-container">
-					<!-- Logo -->
-					<a href="../index.html">
-						<div id="logo">
-							<h1>Romel Luis</h1>
+				<nav>
+					<div id="header-container">
+						<!-- Logo -->
+						<div id="home">
+						<a href="/">
+							<h1>romeluis</h1>
+						</a>
 						</div>
-					</a>
-					<!-- Navigation -->
-					<div id="navigation">
-						<nav>
-							<a href="about.html">
-								<div id="nav-about">
-									<p>About &amp; Resume</p>
-								</div>
-							</a>
-							<a href="projects.html">
-								<div id="nav-projects">
-									<p>Projects</p>
-								</div>
-							</a>
-							<a href="../index.html">
-								<div id="nav-home">
-									<p>Home</p>
-								</div>
-							</a>
-						</nav>
+						<!-- Navigation -->
+						<div id="nav-projects">
+						<a href="/projects/">
+							<p>Projects</p>
+						</a>
+						</div>
+						<div id="about">
+						<a href="/about/">
+							<p>About &amp; Resume</p>
+						</a>
+						</div>
 					</div>
-				</div>
+				</nav>
 			</header>
-			
-			<!-- Coding Projects -->
-			<div id="coding-main-container">
-				<div id="coding-header">
-					<div id="coding-header-text-container">
-						<h3>Coding</h3>
+			<div id="main-body-container">
+				<div id="foreground-container">
+					<div id="projects-grid">
+						<div class="project-item"><img src="../images/temp1.svg"></div>
+						<div class="project-item"><img src="../images/temp2.svg"></div>
+						<div class="project-item"><img src="../images/temp3.svg"></div>
+						<div class="project-item"><img src="../images/temp4.svg"></div>
+						<div class="project-item"><img src="../images/temp1.svg"></div>
+						<div class="project-item"><img src="../images/temp2.svg"></div>
+						<div class="project-item"><img src="../images/temp3.svg"></div>
+						<div class="project-item"><img src="../images/temp4.svg"></div>
+						<div class="project-item"><img src="../images/temp1.svg"></div>
+						<div class="project-item"><img src="../images/temp2.svg"></div>
+						<div class="project-item"><img src="../images/temp3.svg"></div>
+						<div class="project-item"><img src="../images/temp4.svg"></div>
 					</div>
-					<div id="coding-header-img-container">
-						<img src="../images/coding-files.png" alt="Various file extensions related with coding">
-					</div>
+					<!-- Footer -->
+					<footer>
+						<div id="footer-master-container">
+							<div id="footer-left-container">
+								<a href="/">
+									<p>Home</p>
+								</a>
+								<a href="/projects/">
+									<p>Projects</p>
+								</a>
+									<a href="/about/">
+										<p>About</p>
+									</a>
+							</div>
+							<div id="footer-right-container">
+								<h1>Made with love by Romel Luis Faife Cruz</h1>
+								<p id="footer-mobile-text">This site is not yet optimized for mobile screens.</p>
+								<p id="footer-font-credit-text">Fonts by Pangram Pangram Foundry &amp; Kontrapunkt.</p>
+							</div>
+						</div>
+						<!-- Contact -->
+						<div id="contact-container">
+							<span class="section-title">Contact</span>
+							<ul>
+								<li>+1 (289) 696 6227</li>
+							</ul>
+							<ul>
+								<li><a href="mailto: contact@romeluis.com">contact@romeluis.com</a></li>
+							</ul>
+							<ul>
+								<li><a href="https://linkedin.com/in/romeluis">Linkedin</a></li>
+							</ul>
+						</div>
+					</footer>
 				</div>
-				<!-- Main Content -->
-				<div id="coding-main-content-container">
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-				</div>
-			</div>
-			
-			<!-- Graphic Design Projects -->
-			<div id="graphic-design-main-container">
-				<div id="graphic-design-header">
-					<div id="graphic-design-header-text-container">
-						<h3>Graphic Design</h3>
-					</div>
-					<div id="graphic-design-header-img-container">
-						<img src="../images/graphic-design-files.png" alt="Various file extensions related with graphic design and motion graphics">
-					</div>
-				</div>
-				<!-- Main Content -->
-				<div id="graphic-design-main-content-container">
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-					<div>
-						<img src="../images/juicy-poster.jpg" alt=".">
-					</div>
-					<div>
-						<img src="../images/prom-2020-poster.png" alt=".">
-					</div>
-				</div>
-			</div>
-			
-			<!-- Footer -->
-			<footer>
-				<div id="footer">
-					<p id="design-credit">Website Deigned &amp; Coded by: Romel Luis Faife Cruz</p>
-					<a href="#"><p id="credits">Acknowledgements</p></a>
-				</div>
-			</footer>
+			</div>	
 		</div>
 	</body>
 </html>
