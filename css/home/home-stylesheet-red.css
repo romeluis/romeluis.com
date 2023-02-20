@@ -17,6 +17,32 @@ a {
 	text-decoration: none;
 }
 
+li a {
+	text-decoration: underline;
+	font-family: object_sans_thin;
+	color: #302624;
+}
+
+li {
+	font-family: object_sans_thin;
+	font-size: 1.2vw;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0.7vw;
+	color: #302624;
+	padding: 0, 0, 1.5vw, 1.5vw !important;
+}
+
+ul {
+	list-style-type: none;
+	background: url(../../images/arrow-right.svg) no-repeat left center;
+	background-size: 1.2vw;
+	background-position: 0.5vw 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 #masterContainer {
 	width: 80vw;
 	margin: auto;
@@ -310,7 +336,7 @@ a {
 
 /* Footer */
 #footer-master-container {
-	width: 80vw;
+	width: 70%;
 	padding: 3vw 3vw;
 	display: flex;
 	justify-content: space-between;
@@ -319,6 +345,27 @@ a {
 	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.7);
 	border-radius: 2.75vw;
 	margin: 0 0 2vw;
+	float:left;
+}
+
+/* Contact */
+#contact-container {
+	padding-top: 1.5vw;
+	float: right;
+	padding-bottom: 2.75vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	border-radius: 2.75vw;
+	background-color: #FFD05D;
+	box-shadow: 0px 0px 20px 0px rgba(255,208,93,0.7);
+	display: inline-block;
+	width: 27%;
+}
+
+.section-title {
+	font-family: wunderpunkt-bold;
+	color: #302624;
+	font-size: 3vw;
 }
 
 #footer-left-container a {
