@@ -5,7 +5,7 @@ $(document).ready(function(){
     if (prefersDarkScheme.matches) {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet-dark.css");
         document.getElementById("about-favicon").setAttribute("href", "../images/favicons/logo_pink_dark.ico");
-        heroAnimation.load("https://lottie.host/4d760ae4-44f1-4e23-a8d9-d35785bb05fe/Ly0SZ7X7ch.json");
+        heroAnimation.load("https://lottie.host/9460ca1a-f8d1-469c-815f-1d660074615a/kWR4jOQDrO.json");
     } else {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet.css");
         heroAnimation.load("https://lottie.host/9eb5c40c-68d8-4e54-8298-c7bdc7ab0298/1qPKeiJLm0.json");
