@@ -98,6 +98,7 @@ li a {
 /* BODY */
 #main-body-container {
 	position: relative;
+	width: 100%;
 }
 
 #background-container {
@@ -119,6 +120,7 @@ li a {
 	margin-bottom: 2vw;
 	display: inline-block;
 	margin-top: 23vw;
+	width: 100%;
 }
 
 /* Grid */
