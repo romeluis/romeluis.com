@@ -238,7 +238,7 @@ img:hover {
 	border-radius: 2.75vw;
 	box-shadow:0px 0px 20px 0px rgba(145, 191, 75, 0.6);
 	background-color: #FCF7F8;
-	display: inline-block;
+	display: block;
 	width: 27%;
 }
 
