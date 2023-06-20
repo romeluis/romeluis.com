@@ -5,9 +5,9 @@ $(document).ready(function(){
     if (prefersDarkScheme.matches) {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet-dark.css");
         document.getElementById("about-favicon").setAttribute("href", "../images/favicons/logo_pink_dark.ico");
-        heroAnimation.load("https://lottie.host/9460ca1a-f8d1-469c-815f-1d660074615a/kWR4jOQDrO.json");
+        heroAnimation.load("https://github.com/romeluis/romeluis.github.io/blob/49bbcacb7676cfac4b08c99d63b38db642928a34/animations/projects-hero-dark.json");
     } else {
         document.getElementById("css-selector").setAttribute("href", "../css/projects/projects-stylesheet.css");
-        heroAnimation.load("https://lottie.host/9eb5c40c-68d8-4e54-8298-c7bdc7ab0298/1qPKeiJLm0.json");
+        heroAnimation.load("https://github.com/romeluis/romeluis.github.io/blob/49bbcacb7676cfac4b08c99d63b38db642928a34/animations/projects-hero.json");
     }
 });
