@@ -7,8 +7,8 @@ $(document).ready(function(){
     // Lists pointing to changes & random number generator
     var cssList = ["css/home/home-stylesheet-green.css", "css/home/home-stylesheet-red.css", "css/home/home-stylesheet-yellow.css", "css/home/home-stylesheet-pink.css","css/home/home-stylesheet-green-dark.css", "css/home/home-stylesheet-red-dark.css", "css/home/home-stylesheet-yellow-dark.css", "css/home/home-stylesheet-pink-dark.css"];
     var faviconList = ["images/favicons/logo_green.ico", "images/favicons/logo_red.ico", "images/favicons/logo_yellow.ico", "images/favicons/logo_pink.ico", "images/favicons/logo_green_dark.ico", "images/favicons/logo_red_dark.ico", "images/favicons/logo_yellow_dark.ico", "images/favicons/logo_pink_dark.ico"];
-    var projectsVideoList = ["https://romeluis.com/projects_animation_red.json", "https://romeluis.com/projects_animation_green.json", "https://romeluis.com/projects_animation_green.json", "https://romeluis.com/projects_animation_green.json"];
-    var aboutVideoList = ["https://romeluis.com/about-animation-pink.json", "https://romeluis.com/about-animation-pink.json", "https://romeluis.com/about-animation-red.json", "https://romeluis.com/about-animation-pink.json"];
+    var projectsVideoList = ["https://www.romeluis.com/projects_animation_red.json", "https://www.romeluis.com/projects_animation_green.json", "https://www.romeluis.com/projects_animation_green.json", "https://www.romeluis.com/projects_animation_green.json"];
+    var aboutVideoList = ["https://www.romeluis.com/about-animation-pink.json", "https://www.romeluis.com/about-animation-pink.json", "https://www.romeluis.com/about-animation-red.json", "https://www.romeluis.com/about-animation-pink.json"];
     var projectsArrow = ["filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(70%) sepia(10%) saturate(2906%) hue-rotate(44deg) brightness(97%) contrast(83%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);"];
     var aboutArrow = ["filter: invert(80%) sepia(16%) saturate(763%) hue-rotate(302deg) brightness(101%) contrast(105%);", "filter: invert(80%) sepia(16%) saturate(763%) hue-rotate(302deg) brightness(101%) contrast(105%);", "filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(14%) sepia(75%) saturate(7467%) hue-rotate(346deg) brightness(94%) contrast(116%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);", "filter: invert(97%) sepia(30%) saturate(154%) hue-rotate(286deg) brightness(100%) contrast(98%);"];
     var rand = Math.floor(Math.random()*4);
@@ -20,7 +20,7 @@ $(document).ready(function(){
     
     if (prefersDarkScheme.matches) {
         $("#css-selector").attr("href", cssList[rand+4]);
-        heroAnimation.load("https://romeluis.com/hero_message_dark.json");
+        heroAnimation.load("https://www.romeluis.com/hero_message_dark.json");
         document.getElementById("hero-arrow").setAttribute("src", "images/arrow-down-dark.svg");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand+4]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand+4]);
@@ -28,7 +28,7 @@ $(document).ready(function(){
     } else {
         //Set light theme
         $("#css-selector").attr("href", cssList[rand]);
-        heroAnimation.load("https://romeluis.com/hero_message.json");
+        heroAnimation.load("https://www.romeluis.com/hero_message.json");
         document.getElementById("index-favicon").setAttribute("href", faviconList[rand]);
         document.getElementById("projects-arrow").setAttribute("style", projectsArrow[rand]);
         document.getElementById("about-arrow").setAttribute("style", aboutArrow[rand]);
