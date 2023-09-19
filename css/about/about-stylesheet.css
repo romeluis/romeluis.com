@@ -110,7 +110,7 @@ li a {
 
 /* Name */
 #name-container {
-	width: 45%;
+	width: 100%;
 	float: left;
 }
 
@@ -121,7 +121,7 @@ li a {
 	margin: 0;
 }
 
-/* About */
+/* About 
 #about-me-container {
 	width: 55%;
 	float: right;
@@ -138,12 +138,14 @@ li a {
 	background-color: #FCF7F8;
 	color: #302624;
 }
+*/
 
 /* Sidebar */
 #sidebar-container {
 	float: right;
 	width: 37%;
 	display: inline-block;
+	margin-left: 2vw;
 }
 
 /* Skills */
