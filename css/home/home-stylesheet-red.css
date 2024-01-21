@@ -211,22 +211,22 @@ ul {
 	margin: 0;
 	transition: 0.5s;
 }
-
+/*
 #projects-info-copy-button-containder:hover p {
 	padding: 1.5vw 0vw 1.5vw 1.5vw;
 	font-size: 2.75vw;
 }
-
+*/
 #projects-info-copy-button-containder img {
 	width: 3vw;
 	margin: 0 1.25vw 0 0;
 	transition: 0.5s;
 }
-
+/*
 #projects-info-copy-button-containder:hover img {
 	width: 3.25vw;
 }
-
+*/
 #projects-header-text-one {
 	font-family: wunderpunkt-bold;
 	font-size: 4.7vw;
@@ -307,22 +307,22 @@ ul {
 	margin: 0;
 	transition: 0.5s;
 }
-
+/*
 #about-info-copy-button-containder:hover p {
 	padding: 1.5vw 0vw 1.5vw 1.5vw;
 	font-size: 2.75vw;
 }
-
+*/
 #about-info-copy-button-containder img {
 	width: 3vw;
 	margin: 0 1.25vw 0 0;
 	transition: 0.5s;
 }
-
+/*
 #about-info-copy-button-containder:hover img {
 	width: 3.25vw;
 }
-
+*/
 #about-header-text {
 	font-family: wunderpunkt-bold;
 	font-size: 6vw;
