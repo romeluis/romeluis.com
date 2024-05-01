@@ -1,0 +1,75 @@
+* {
+    all: unset;
+
+    /*Colours*/
+    --white: #FBF7F8;
+    --black: #2E2624;
+    --accent-primary: #EA3330;
+    --accent-secondary: #9BBE5C;
+    --accent-secondary-compliment: #0C594B;
+    --accent-tertiary: #F6C7D1;
+    --accent-tertiary-compliment: #EC668B;
+    --accent-quaternary: #F8D270;
+    /*Text Colours*/
+    --text-light: #FBF7F8;
+    --text-dark: #2E2624;
+
+    /*Fonts*/
+    --body-font: object_sans_regular;
+    --header-font: object_sans_bold;
+    --super-header-font: object_sans_heavy;
+    --title-font: wunderpunkt-bold;
+
+    /*Font Sizing*/
+    --logo-size: 18pt;
+    --logo-size-hover: 20pt;
+    --nav-link-size: 16pt;
+    --nav-link-size-hover: 20pt;
+
+    /*Timings*/
+    --transition-fast: 0.25s;
+
+    /*UI Elements*/
+    --page-width: 80%;
+    --grid-spacing: 25px;
+    --border-radius: 17px;
+    --border-radius-hover: 17px;
+    --shadow-diffusion: 20px;
+    --shadow-diffusion-hover: 30px;
+}
+
+/* Fonts */
+@font-face {
+	font-family: monument_extended-regular;
+	src: url("fonts/monumentextended-regular-webfont.woff");
+}
+
+@font-face {
+	font-family: monument_extended_bold;
+	src: url("fonts/monumentextended-bold-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_thin;
+	src: url("fonts/ObjectSans-Thin.woff");
+}
+
+@font-face {
+	font-family: object_sans_regular;
+	src: url("fonts/objectsans-regular-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_bold;
+	src: url("fonts/objectsans-bold-webfont.woff");
+}
+
+@font-face {
+	font-family: object_sans_heavy;
+	src: url("fonts/objectsans-heavy-webfont.woff");
+}
+
+@font-face {
+	font-family: wunderpunkt-bold;
+	src: url("fonts/Wunderpunkt-Bold.woff");
+}

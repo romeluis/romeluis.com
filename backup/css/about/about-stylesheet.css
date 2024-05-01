@@ -29,71 +29,54 @@ li a {
 }
 
 /* Navigation */
-#header-container {
-	width: 80vw;
-	height: 7vw;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	overflow: visible;
-	margin: auto;
-	position: fixed;
-	z-index: 1;
+.navigation {
+    display: grid;
+    grid-template-columns: 15% auto 10% 20%;
+    gap: 5px;
+	align-content: center;
+    margin-top: 30px;
+    height: 50px;
+    z-index: 3;
 }
 
-#header-container a {
-	text-decoration: none;
+.navigation-spacer {
+    width: 70%
 }
 
-#header-container h1 {
-	font-family: object_sans_heavy !important;
-	color: #FCF7F8;
-	background-color: #FF001F;
-	padding: 1vw;
-	border-radius: 1.25vw;
-	font-size: 1.5vw;
-	margin: 0 45vw 0 0;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.6);
-	transition: 0.5s;
+.navigation-link, .navigation-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
 }
 
-#header-container h1:hover {
-	padding: 1.25vw;
-	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.8);
+.navigation-link a, .navigation-logo a {
+    display: block;
+    text-align: center;
+    height: 100%;
+    padding: 15px;
+    transition: 0.25s;
+    /*Text*/
+    font-family: var(--header-font);
+    font-size: 16pt;
+    /*Style*/
+    color: var(--accent-primary);
+    background-color: var(--white);
+    box-shadow: 0px 0px 20px 0px var(--accent-primary);
+    border-radius: 17px;
 }
 
-#header-container p {
-	font-family: object_sans_bold !important;
-	color: #FF001F;
-	text-align: center;
-	background-color: #FCF7F8;
-	padding: 1vw 1vw;
-	border-radius: 1.25vw;
-	font-size: 1.25vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.6);
-	transition: 0.5s;
+.navigation-logo a {
+    /*Text*/
+    font-size: 18pt;
+    font-family: var(--super-header-font) !important;
 }
 
-#header-container p:hover {
-	padding: 1.25vw;
-	font-size: 1.75vw;
-	box-shadow: 0px 0px 20px 0px rgba(255, 0, 31, 0.8);
-}
-
-#home {
-	justify-content: center;
-	align-items: center;
-}
-
-#nav-projects {
-	justify-content: center;
-	align-items: center;
-}
-
-#about {
-	justify-content: center;
-	align-items: center;
+.navigation-link a:hover, .navigation-logo a:hover {
+    font-size: 20pt;
+    padding: 16px;
+    border-radius: 17px;
+    box-shadow: 0px 0px 30px 0px var(--accent-primary);
 }
 
 /* BODY */

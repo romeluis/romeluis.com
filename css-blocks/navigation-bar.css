@@ -1,0 +1,112 @@
+/********* NAVIGATION *********/
+header {
+    width: var(--page-width);
+    display: block;
+    margin: auto;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 35px; /*This is 35 instead of --grid-spacing bc there is a right-margin of 10px applied for the animation to look better*/
+    height: 50px;
+    z-index: 3;
+}
+
+.navigation-link-container {
+    display: flex;
+    gap: var(--grid-spacing) var(--grid-spacing);
+}
+
+.navigation-logo {
+    margin-left: 10px;
+    transition: var(--transition-fast);
+}
+
+.navigation-link {
+    margin-right: 10px;
+    transition: var(--transition-fast);
+}
+
+.navigation-link, .navigation-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
+}
+
+.navigation-link a, .navigation-logo a {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+    padding: 15px;
+    transition: var(--transition-fast);
+    /*Text*/
+    font-family: var(--header-font);
+    font-size: var(--nav-link-size);
+    /*Style*/
+    color: var(--accent-primary);
+    background-color: var(--white);
+    box-shadow: 0px 0px var(--shadow-diffusion) 0px var(--accent-primary);
+    border-radius: var(--border-radius);
+}
+
+.navigation-logo a {
+    /*Text*/
+    font-size: var(--logo-size);
+    font-family: var(--super-header-font) !important;
+}
+
+.navigation-link a:hover, .navigation-logo a:hover {
+    font-size: var(--nav-link-size-hover);
+    padding: 16px;
+    border-radius: var(--border-radius-hover);
+    box-shadow: 0px 0px var(--shadow-diffusion-hover) 0px var(--accent-primary);
+}
+
+.navigation-logo:hover {
+    margin-left: 0px;
+}
+
+.navigation-link:hover {
+    margin-right: 0px;
+}
+
+/* Small Screen Sizing */
+@media all and (max-width: 700px) {
+    .navigation {
+        flex-direction: column;
+        height: auto;
+        gap: var(--grid-spacing);
+        align-items: center;
+    }
+
+    .navigation-link-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigation-logo {
+        margin-left: 0px;
+    }
+    
+    .navigation-link {
+        margin-right: 0px;
+    }
+
+    .navigation-link a:hover, .navigation-logo a:hover {
+        font-size: var(--nav-link-size);
+        padding: 15px;
+        border-radius: var(--border-radius-hover);
+        box-shadow: 0px 0px var(--shadow-diffusion-hover) 0px var(--accent-primary);
+    }
+
+    .navigation-logo a:hover {
+        font-size: var(--logo-size);
+    }
+}
