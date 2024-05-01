@@ -109,4 +109,9 @@ header {
     .navigation-logo a:hover {
         font-size: var(--logo-size);
     }
+    header {
+        width: var(--page-width);
+        display: block;
+        margin: auto;
+    }
 }
