@@ -1,0 +1,16 @@
+* {
+    /*Colours*/
+    --white: #FBF7F8;
+    --black: #2E2624;
+    --pitch-black: #000000;
+    --background-colour: #140F0E;
+    --accent-primary: #EA3330;
+    --accent-secondary: #9BBE5C;
+    --accent-secondary-compliment: #0C594B;
+    --accent-tertiary: #F6C7D1;
+    --accent-tertiary-compliment: #EC668B;
+    --accent-quaternary: #F8D270;
+    /*Text Colours*/
+    --text-light: #FBF7F8;
+    --text-dark: #2E2624;
+}

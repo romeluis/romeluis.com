@@ -1,5 +1,24 @@
+body {
+    background-color: var(--background-colour);
+}
+
 .main-page {
     width: var(--page-width);
     display: block;
     margin: auto;
+    margin-top: 125px;
+}
+
+.hero {
+    display: flex;
+    gap: 15px;
+    height: 500px;
+}
+
+.child {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--black);
+    border-radius: var(--border-radius);
 }

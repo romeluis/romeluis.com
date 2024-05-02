@@ -50,10 +50,21 @@ header {
     font-family: var(--header-font);
     font-size: var(--nav-link-size);
     /*Style*/
-    color: var(--accent-primary);
-    background-color: var(--white);
-    box-shadow: 0px 0px var(--shadow-diffusion) 0px var(--accent-primary);
     border-radius: var(--border-radius);
+    box-shadow: 0px 0px var(--shadow-diffusion) var(--shadow-blur) var(--pitch-black);
+}
+
+.navigation-link a {
+    /*Style*/
+    color: var(--accent-primary);
+    background-color: var(--black);
+}
+
+.navigation-logo a {
+    /*Style*/
+    color: var(--white);
+    background-color: var(--accent-primary);
+
 }
 
 .navigation-logo a {
@@ -66,7 +77,7 @@ header {
     font-size: var(--nav-link-size-hover);
     padding: 16px;
     border-radius: var(--border-radius-hover);
-    box-shadow: 0px 0px var(--shadow-diffusion-hover) 0px var(--accent-primary);
+    box-shadow: 0px 0px var(--shadow-diffusion-hover) var(--shadow-blur-hover) var(--accent-primary);
 }
 
 .navigation-logo:hover {
