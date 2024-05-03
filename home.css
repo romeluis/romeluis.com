@@ -6,7 +6,7 @@ body {
     width: var(--page-width);
     display: block;
     margin: auto;
-    margin-top: 125px;
+    margin-top: var(--page-navi-offset);
 }
 
 .hero {

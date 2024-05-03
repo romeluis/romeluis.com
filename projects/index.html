@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<!-- Meta -->
+	<head>
+        <meta charset="UTF-8">
+		<!--<title>romeluis</title>-->
+        <meta name="description" content="Romel Luis Faife Cruz's portfolio site.">
+        <!-- *** Scripts *** -->
+		<!-- Import jQuery & isInViewport plugin by Mudit Ameta -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="plugins/isInViewport-master/lib/isInViewport.min.js"></script>
+		<!-- Import Lottie Player -->
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<!-- Import page JavaScript -->
+		<script src="projects.js"></script>
+		<!-- HTML Favicon & CSS Stuff -->
+		<link id="index-favicon" rel="icon" type="image/x-icon" href="">
+        <link id="theme-selector" href="../css-blocks/themes/default-theme.css" rel="stylesheet">
+        <link id="defaults-selector" href="../css-blocks/defaults.css" rel="stylesheet">
+        <link id="nav-selector" href="../css-blocks/navigation-bar.css" rel="stylesheet">
+        <link id="layout-selector" href="projects.css" rel="stylesheet">
+
+		<meta name="viewport" content="width=device-width">
+	</head>
+
+	<body>
+			<!-- Logo and navigation -->
+            <header>
+                <nav>
+                    <div class="navigation">
+                        <!-- Logo -->
+                        <div class="navigation-logo">
+                            <a href="/">
+                                romeluis
+                            </a>
+                        </div>
+                        <!-- Links -->
+                        <div class="navigation-link-container">
+                            <div class="navigation-link">
+                                <a href="/projects/">
+                                    Projects
+                                </a>
+                            </div>
+                            <div class="navigation-link">
+                                <a href="/about/">
+                                    About
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div id="background-container">
+                <lottie-player id="hero-animation" src="https://raw.githubusercontent.com/romeluis/romeluis.github.io/website3.0/projects/projects-hero.json" background="transparent" speed="1" loop autoplay></lottie-player>
+            </div>
+
+			<div class="main-body-container">
+				<div id="foreground-container">
+					<div id="projects-grid">
+						<a href="EasyRoute/" class="project-item"><img src="EasyRoute/cover.png"></a>
+						<a href="RentSafeTO/" class="project-item"><img src="RentSafeTO/cover.svg"></a>
+						<a href="LESA/" class="project-item"><img src="LESA/cover.svg"></a>
+						<a href="website/" class="project-item"><img src="website/cover.svg"></a>
+					</div>
+				</div>
+			</div>	
+
+            <!-- Footer -->
+            <footer>
+                <!-- Contact -->
+                <div id="contact-container">
+                    <span class="section-title">Contact</span>
+                    <ul>
+                        <li>+1 (289) 696 6227</li>
+                    </ul>
+                    <ul>
+                        <li><a href="mailto: contact@romeluis.com">contact@romeluis.com</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="https://linkedin.com/in/romeluis">Linkedin</a></li>
+                    </ul>
+                </div>
+            </footer>
+	</body>
+</html>

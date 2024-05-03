@@ -21,10 +21,9 @@
     --grid-spacing: 25px;
     --border-radius: 17px;
     --border-radius-hover: 20px;
-    --shadow-diffusion: 20px;
-    --shadow-diffusion-hover: 0px;
-    --shadow-blur: 20x;
-    --shadow-blur-hover: 0px;
+    --shadow-blur: 30px;
+    --shadow-blur-hover: 30px;
+    --page-navi-offset: 125px;
 }
 
 /* Fonts */
