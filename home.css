@@ -7,6 +7,7 @@ body {
     display: block;
     margin: auto;
     margin-top: var(--page-navi-offset);
+    z-index: 1;
 }
 
 .hero {
@@ -21,6 +22,7 @@ body {
     "main sideone"
     "main sidetwo"
     "main sidethree";
+    margin-bottom: 100px;
 }
 
 .hero-child {
@@ -32,7 +34,7 @@ body {
     box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow);
     transition: var(--transition-fast);
 
-    font-family: object_sans_bold;
+    font-family: var(--header-font);
     font-size: 15pt;
     color: var(--text-light);
 }
@@ -43,7 +45,7 @@ body {
 
 #main-hero {
     grid-area: main;
-    font-family: wunderpunkt-bold;
+    font-family: var(--title-font);
     padding: calc(var(--container-padding) - 7px) calc(var(--container-padding) + 10px);
     font-size: 45pt;
 }
@@ -95,4 +97,70 @@ body {
 
     display: block;
     padding: 10px 0px 0px 0px;
+}
+
+/*PROJECTS*/
+.projects {
+    display: block;
+    width: 100%;
+}
+
+.projects h1 {
+    font-family: var(--title-font);
+    font-size: var(--header-size);
+    color: var(--accent-secondary);
+
+    margin-bottom: 30px;
+}
+
+.projects-grid {
+    height: 500px;
+    /*Grid Properties*/
+    display: grid;
+    column-gap: var(--grid-spacing);
+    row-gap: var(--grid-spacing);
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
+    grid-template-rows: 80% 20%;
+    grid-template-areas: 
+    "mainitem middleitem rightitem rightitem rightitem"
+    "mainitem bottomitem bottomitem bottomitem buttonitem";
+    margin-bottom: 100px;
+}
+
+.projects-item {
+    display: block;
+    padding: var(--container-padding);
+    background-color: var(--accent-secondary);
+    border-radius: var(--border-radius-large);
+
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow);
+    transition: var(--transition-fast);
+
+    font-family: var(--header-font);
+    font-size: 15pt;
+    color: var(--text-light);
+}
+
+.projects-item:hover {
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow-hover);
+}
+
+#projects-main {
+    grid-area: mainitem;
+}
+
+#projects-mid {
+    grid-area: middleitem;
+}
+
+#projects-right {
+    grid-area: rightitem;
+}
+
+#proejcts-bottom {
+    grid-area: bottomitem;
+}
+
+#proejcts-button {
+    grid-area: buttonitem;
 }
