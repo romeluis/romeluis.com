@@ -16,7 +16,7 @@ body {
     display: grid;
     column-gap: var(--grid-spacing);
     row-gap: var(--grid-spacing);
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: 33% 33% 33%;
     grid-template-areas: 
     "main sideone"
@@ -47,7 +47,7 @@ body {
     grid-area: main;
     font-family: var(--title-font);
     padding: calc(var(--container-padding) - 7px) calc(var(--container-padding) + 10px);
-    font-size: 45pt;
+    font-size: var(--title-size);
 }
 
 #side-hero-one {
@@ -60,13 +60,13 @@ body {
 #side-hero-one p {
     position: relative;
     float: left;
-    width: clamp(40px, 40%, 80px);
 }
 
 #side-hero-one img {
     position: relative;
     float: right;
-    width: 60px;
+    width: clamp(50px, 30%, 65px);;
+    transform: translate(0px, 10px);
 }
 
 #side-hero-two {
@@ -109,21 +109,20 @@ body {
     font-family: var(--title-font);
     font-size: var(--header-size);
     color: var(--accent-secondary);
-
-    margin-bottom: 30px;
 }
 
 .projects-grid {
+    margin-top: 20px;
     height: 500px;
     /*Grid Properties*/
     display: grid;
     column-gap: var(--grid-spacing);
     row-gap: var(--grid-spacing);
-    grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 2fr 1fr 1fr;
     grid-template-rows: 80% 20%;
     grid-template-areas: 
-    "mainitem middleitem rightitem rightitem rightitem"
-    "mainitem bottomitem bottomitem bottomitem buttonitem";
+    "mainitem middleitem rightitem rightitem"
+    "mainitem bottomitem bottomitem buttitem";
     margin-bottom: 100px;
 }
 
@@ -133,7 +132,7 @@ body {
     background-color: var(--accent-secondary);
     border-radius: var(--border-radius-large);
 
-    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow);
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-secondary-shadow);
     transition: var(--transition-fast);
 
     font-family: var(--header-font);
@@ -142,7 +141,7 @@ body {
 }
 
 .projects-item:hover {
-    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow-hover);
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-secondary-shadow-hover);
 }
 
 #projects-main {
@@ -157,10 +156,11 @@ body {
     grid-area: rightitem;
 }
 
-#proejcts-bottom {
+#projects-bottom {
     grid-area: bottomitem;
 }
 
-#proejcts-button {
-    grid-area: buttonitem;
+#projects-button {
+    grid-area: buttitem;
+    border-radius: 60px;
 }
