@@ -20,10 +20,13 @@
     --page-width: 80%;
     --grid-spacing: 25px;
     --border-radius: 17px;
+    --border-radius-large: 30px;
     --border-radius-hover: 20px;
+    --border-radius-large-hover: 35px;
     --shadow-blur: 30px;
     --shadow-blur-hover: 30px;
     --page-navi-offset: 125px;
+    --container-padding: 20px;
 }
 
 /* Fonts */

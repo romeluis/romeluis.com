@@ -3,22 +3,96 @@ body {
 }
 
 .main-page {
-    width: var(--page-width);
+    width: max(900px, var(--page-width));
     display: block;
     margin: auto;
     margin-top: var(--page-navi-offset);
 }
 
 .hero {
-    display: flex;
-    gap: 15px;
     height: 500px;
+    /*Grid Properties*/
+    display: grid;
+    column-gap: var(--grid-spacing);
+    row-gap: var(--grid-spacing);
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-areas: 
+    "main sideone"
+    "main sidetwo"
+    "main sidethree";
 }
 
-.child {
+.hero-child {
     display: block;
-    width: 100px;
-    height: 100px;
-    background-color: var(--black);
-    border-radius: var(--border-radius);
+    padding: var(--container-padding);
+    background-color: var(--accent-primary);
+    border-radius: var(--border-radius-large);
+
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow);
+    transition: var(--transition-fast);
+
+    font-family: object_sans_bold;
+    font-size: 15pt;
+    color: var(--text-light);
+}
+
+.hero-child:hover {
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-primary-shadow-hover);
+}
+
+#main-hero {
+    grid-area: main;
+    font-family: wunderpunkt-bold;
+    padding: calc(var(--container-padding) - 7px) calc(var(--container-padding) + 10px);
+    font-size: 45pt;
+}
+
+#side-hero-one {
+    grid-area: sideone;
+
+    overflow: hidden;
+    display: relative;
+}
+
+#side-hero-one p {
+    position: relative;
+    float: left;
+    width: clamp(40px, 40%, 80px);
+}
+
+#side-hero-one img {
+    position: relative;
+    float: right;
+    width: 60px;
+}
+
+#side-hero-two {
+    grid-area: sidetwo;
+
+    overflow: hidden;
+    display: relative;
+
+    padding-right: 0px;
+}
+
+#side-hero-two p {
+    position: absolute;
+    width: 100%;
+}
+
+#side-hero-two img {
+    position: relative;
+    float:right;
+    width: clamp(190px, 120%, 250px);
+    transform: translate(15px, -10px);
+}
+
+#side-hero-three {
+    grid-area: sidethree;
+    background-color: transparent;
+    box-shadow: none;
+
+    display: block;
+    padding: 10px 0px 0px 0px;
 }

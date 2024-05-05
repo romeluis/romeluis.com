@@ -93,11 +93,8 @@ header {
         align-items: center;
     }
 
-    .navigation-logo {
+    .navigation-logo .navigation-link {
         margin-left: 0px;
-    }
-    
-    .navigation-link {
         margin-right: 0px;
     }
 
