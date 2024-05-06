@@ -16,7 +16,7 @@
     --title-size: 45pt;
 
     /*Timings*/
-    --transition-fast: 0.25s;
+    --transition-fast: 0.25s ease;
 
     /*UI Elements*/
     --page-width: 80%;
