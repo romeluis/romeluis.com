@@ -222,7 +222,7 @@
 .about h1 {
     font-family: var(--title-font);
     font-size: var(--header-size);
-    color: var(--text-dark);
+    color: var(--accent-tertiary);
 }
 
 .about-grid {
