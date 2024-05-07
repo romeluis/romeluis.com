@@ -12,7 +12,7 @@
 .section-title {
 	font-family: wunderpunkt-bold;
 	margin-bottom: 7px;
-	color: var(--text-dark);
+	color: var(--text-light);
 	font-size: var(--header-size);
 }
 
@@ -27,7 +27,7 @@ li {
 	list-style-type: none;
 	background: var(--list-arrow);
 	background-size: 20px;
-	background-position: 10px 0;
+	background-position: 10px 3px;
 }
 
 ul {
@@ -37,7 +37,7 @@ ul {
 }
 
 #contact-container a, #contact-container p {
-	color: var(--text-dark);
+	color: var(--text-light);
     text-decoration: underline;
 	font-family: object_sans_thin;
 	white-space: normal;
