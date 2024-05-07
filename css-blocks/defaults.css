@@ -13,7 +13,7 @@
     --nav-link-size: 16pt;
     --nav-link-size-hover: 20pt;
     --header-size: 40pt;
-    --title-size: 45pt;
+    --title-size: 50pt;
 
     /*Timings*/
     --transition-fast: 0.25s ease;
@@ -29,6 +29,9 @@
     --shadow-blur-hover: 30px;
     --page-navi-offset: 125px;
     --container-padding: 20px;
+
+    /*URLs*/
+    --list-arrow: url(../css-blocks/src/arrow-right.svg) no-repeat left center;
 }
 
 /* Fonts */
