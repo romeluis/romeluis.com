@@ -222,7 +222,7 @@
 .about h1 {
     font-family: var(--title-font);
     font-size: var(--header-size);
-    color: var(--accent-tertiary);
+    color: var(--text-dark);
 }
 
 .about-grid {
@@ -260,12 +260,44 @@
     box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-tertiary-shadow-hover);
 }
 
+.about-item h1 {
+    font-family: var(--header-font);
+    color: var(--text-dark);
+    font-size: calc(var(--logo-size));
+
+    display: block;
+    position: relative;
+}
+
+.about-item p {
+    font-family: var(--body-font);
+    font-size: calc(var(--nav-link-size) - 2pt);
+    color: var(--text-dark);
+
+    display: block;
+    position: relative;
+}
+
 #about-left-top {
     grid-area: lefttop;
 }
 
 #about-left-bottom {
     grid-area: leftbottom;
+    padding: 20px 0px 0px 0px !important; 
+}
+
+#about-left-bottom h1 {
+    margin-left: 30px;
+
+    font-size: calc(var(--header-size) - 5pt) !important;
+}
+
+#skills-animation {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
 }
 
 #about-right-left {
@@ -293,7 +325,7 @@
     display: block;
     position: relative;
 
-    margin-top: 17px;
+    margin-top: 19px;
     margin-left: 10px;
     font-family: var(--header-font);
     color: var(--text-dark);
