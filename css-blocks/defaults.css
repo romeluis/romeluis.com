@@ -34,6 +34,28 @@
     --list-arrow: url(../css-blocks/src/arrow-right.svg) no-repeat left center;
 }
 
+.div-link-maker {
+    position:absolute; 
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    z-index: 1;
+}
+
+.main-page {
+    width: clamp(900px, var(--page-width), 1080px);
+    display: block;
+    margin: auto;
+    margin-top: var(--page-navi-offset);
+    z-index: 1;
+}
+
+body {
+    background-color: var(--background-colour);
+}
+
 /* Fonts */
 @font-face {
 	font-family: monument_extended-regular;

@@ -1,15 +1,4 @@
-body {
-    background-color: var(--background-colour);
-}
-
-.main-page {
-    width: clamp(900px, var(--page-width), 1080px);
-    display: block;
-    margin: auto;
-    margin-top: var(--page-navi-offset);
-    z-index: 1;
-}
-
+/* --HERO-- */
 .hero {
     height: 500px;
     /*Grid Properties*/
@@ -108,7 +97,7 @@ body {
     height: 185px;
 }
 
-/*PROJECTS*/
+/* --PROJECTS-- */
 .projects {
     display: block;
     width: 100%;
@@ -223,3 +212,5 @@ body {
     margin-left: 7px;
     font-size: calc(var(--logo-size) + 4pt);
 }
+
+/* --ABOUT-- */
