@@ -214,3 +214,88 @@
 }
 
 /* --ABOUT-- */
+.about {
+    display: block;
+    width: 100%;
+}
+
+.about h1 {
+    font-family: var(--title-font);
+    font-size: var(--header-size);
+    color: var(--accent-tertiary);
+}
+
+.about-grid {
+    margin-top: 20px;
+    height: 500px;
+    /*Grid Properties*/
+    display: grid;
+    column-gap: var(--grid-spacing);
+    row-gap: var(--grid-spacing);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 55% 23% 22%;
+    grid-template-areas: 
+    "lefttop rightleft rightright"
+    "leftbottom rightleft rightright"
+    "leftbottom aboutbutton aboutbutton";
+    margin-bottom: 100px;
+}
+
+.about-item {
+    display: block;
+    overflow: hidden;
+    padding: var(--container-padding);
+    background-color: var(--accent-tertiary);
+    border-radius: var(--border-radius-large);
+
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-tertiary-shadow);
+    transition: var(--transition-fast);
+
+    font-family: var(--header-font);
+    font-size: 15pt;
+    color: var(--text-light);
+}
+
+.about-item:hover {
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-tertiary-shadow-hover);
+}
+
+#about-left-top {
+    grid-area: lefttop;
+}
+
+#about-left-bottom {
+    grid-area: leftbottom;
+}
+
+#about-right-left {
+    grid-area: rightleft;
+}
+
+#about-right-right {
+    grid-area: rightright;
+}
+
+#about-button {
+    grid-area: aboutbutton;
+
+    border-radius: 110px;
+}
+
+#about-button img {
+    margin-top: 12px;
+    margin-right: 3px;
+    float: right;
+    width: 60px;
+}
+
+#about-button h1 {
+    display: block;
+    position: relative;
+
+    margin-top: 17px;
+    margin-left: 10px;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+    font-size: calc(var(--logo-size) + 4pt);
+}

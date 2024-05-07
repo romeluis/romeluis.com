@@ -3,11 +3,6 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #9ed1e4;
-        stroke-width: 0px;
-      }
-
-      .cls-2 {
         fill: none;
         stroke: #2e2624;
         stroke-linecap: round;
@@ -16,9 +11,6 @@
       }
     </style>
   </defs>
-  <rect class="cls-1" x=".05" y=".45" width="105" height="81"/>
-  <g>
-    <polyline class="cls-2" points="61.23 73.39 93.86 40.76 94 40.63 61.37 8"/>
-    <line class="cls-2" x1="93.86" y1="40.77" x2="8" y2="40.77"/>
-  </g>
+  <polyline class="cls-1" points="61.23 73.39 93.86 40.76 94 40.63 61.37 8"/>
+  <line class="cls-1" x1="93.86" y1="40.77" x2="8" y2="40.77"/>
 </svg>

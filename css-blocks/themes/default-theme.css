@@ -15,10 +15,12 @@
     --accent-secondary-shadow: #9ED1E433;
     --accent-secondary-shadow-hover: #9ED1E499;
     --accent-secondary-compliment: #1B6CCC;
-    --accent-tertiary: #FFCEE5;
-    --accent-tertiary-compliment: #FE5999;
-    --accent-quaternary: #FFDF78;
-    --accent-quaternary-compliment: #FFC700;
+    --accent-tertiary: #FFC700;
+    --accent-tertiary-shadow: #FFDF7833;
+    --accent-tertiary-shadow-hover: #FFDF78;
+    --accent-tertiary-compliment: #FFDF78;
+    --accent-quaternary: #FFCEE5;
+    --accent-quaternary-compliment: #FE5999;
     /*Text Colours*/
     --text-light: #FFFAFA;
     --text-dark: #2E2624;
