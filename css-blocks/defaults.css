@@ -44,6 +44,11 @@ title{
     display: none;
 }
 
+#accel-snackbar {
+    display: none !important;
+    visibility: hidden !important; 
+}
+
 .div-link-maker {
     position:absolute; 
     width:100%;
