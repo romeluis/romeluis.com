@@ -40,6 +40,10 @@ a {
     cursor: pointer;
 }
 
+title{
+    display: none;
+}
+
 .div-link-maker {
     position:absolute; 
     width:100%;
