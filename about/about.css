@@ -1,0 +1,124 @@
+/*Name*/
+#name-container {
+	width: 100%;
+}
+
+#name-container p {
+	font-family: wunderpunkt-bold;
+	font-size: var(--title-size);
+	color: var(--accent-secondary);
+}
+
+/* Sidebar */
+#sidebar-container {
+	float: right;
+	width: 37%;
+	margin-left: calc(var(--grid-spacing) + 10px);
+}
+
+/* Skills */
+#skills-container {
+    margin-top: calc(var(--grid-spacing) + 15px);
+	padding: var(--container-padding);
+	border-radius: var(--border-radius-large);
+	box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-secondary-shadow-hover);
+	background-color: var(--white);
+	display: inline-block;
+	margin-bottom: var(--grid-spacing);
+}
+
+/* Awards */
+#awards-container {
+	padding: var(--container-padding);
+	border-radius: var(--border-radius-large);
+	box-shadow: 0px 0px var(--shadow-blur) 0px var(--accent-secondary-shadow-hover);
+	background-color: var(--white);
+	display: inline-block;
+	margin-bottom: var(--grid-spacing);
+}
+
+/* Education */
+#education-container {
+	width: 100%;
+}
+
+/* Experience */
+#experience-container {
+	width: 100%;
+}
+
+/* --Classes-- */
+.bolded-object {
+	font-family: var(--header-font);
+}
+
+.regular-object {
+	font-family: var(--body-font);
+	margin-top: 0px !important;
+}
+
+.section-title {
+	font-family: var(--title-font);
+	color: var(--accent-secondary);
+	font-size: calc(var(--logo-size) + 10pt);
+}
+
+.section-title2 {
+	font-family: var(--title-font);
+	color: var(--accent-secondary);
+	font-size: calc(var(--header-size) - 7pt);
+	margin-top: var(--grid-spacing);
+	display: inline-block;
+}
+
+.paragraph-indent1 {
+	margin-left: 20px !important;
+}
+
+#skills-container p {
+	font-family: var(--light-font);
+	font-size: calc(var(--nav-link-size) - 3pt);
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
+	color: var(--text-dark);
+}
+
+#resume li {
+	font-family: var(--light-font);
+	font-size: calc(var(--nav-link-size) - 2pt);
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
+	color: var(--text-dark);
+	padding: 0, 0, 15px, 15px !important;
+}
+
+#resume ul {
+	list-style-type: none;
+	background: url(../src/arrow-right.svg) no-repeat left center;
+	background-size: 20px;
+	background-position: 10px 0px;
+    padding-left: 40px;
+
+    display: block;
+    margin-bottom: 5px;
+}
+
+.entry-title {
+    font-size: calc(var(--logo-size) - 2pt);
+    margin-bottom: 2px;
+    display: block;
+}
+
+.entry-sub-title {
+    font-size: calc(var(--logo-size) - 3pt);
+    margin-bottom: 4px;
+    display: block;
+}
+
+#education-container ul {
+    background-position: 10px 4px;
+}

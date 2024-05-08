@@ -2,6 +2,7 @@
     all: unset;
 
     /*Fonts*/
+    --light-font: object_sans_thin;
     --body-font: object_sans_regular;
     --header-font: object_sans_bold;
     --super-header-font: object_sans_heavy;
