@@ -29,9 +29,14 @@
     --shadow-blur-hover: 30px;
     --page-navi-offset: 125px;
     --container-padding: 20px;
+    --section-bottom-space: 65px;
 
     /*URLs*/
     --list-arrow: url(../css-blocks/src/arrow-right.svg) no-repeat left center;
+}
+
+a {
+    cursor: pointer;
 }
 
 .div-link-maker {

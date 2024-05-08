@@ -1,8 +1,9 @@
 /* --HERO-- */
 .hero {
-    height: 500px;
     /*Grid Properties*/
     display: grid;
+    position: relative;
+    height: 500px;
     column-gap: var(--grid-spacing);
     row-gap: var(--grid-spacing);
     grid-template-columns: 3fr 1fr;
@@ -11,7 +12,7 @@
     "main sideone"
     "main sidetwo"
     "main sidethree";
-    margin-bottom: 100px;
+    margin-bottom: calc(var(--section-bottom-space)*2 - 40px);
 }
 
 .hero-child {
@@ -121,7 +122,7 @@
     grid-template-areas: 
     "mainitem middleitem rightitem rightitem"
     "mainitem bottomitem bottomitem bottomitem";
-    margin-bottom: 100px;
+    margin-bottom: var(--section-bottom-space);
 }
 
 .projects-item {
@@ -238,7 +239,7 @@
     "lefttop rightleft rightright"
     "leftbottom rightleft rightright"
     "leftbottom aboutbutton aboutbutton";
-    margin-bottom: 100px;
+    margin-bottom: calc(var(--section-bottom-space) * 2);
 }
 
 .about-item {
@@ -263,7 +264,7 @@
 .about-item h1 {
     font-family: var(--header-font);
     color: var(--text-dark);
-    font-size: calc(var(--logo-size));
+    font-size: calc(var(--header-size) - 5pt) !important;
 
     display: block;
     position: relative;
@@ -278,19 +279,36 @@
     position: relative;
 }
 
+.about-item li {
+    font-size: var(--nav-link-size);
+    font-family: var(--body-font);
+    color: var(--text-dark);
+    text-decoration: underline;
+
+    list-style-type: none;
+	background: url(src/arrow-right.svg) no-repeat left center;
+	background-size: 20px;
+	background-position: 10px 6px;
+    padding-left: 45px;
+}
+
 #about-left-top {
-    grid-area: lefttop;
+    grid-area: leftbottom;
+
+    padding: calc(var(--container-padding) + 10px);
+}
+
+#about-left-top h1 {
+    margin-bottom: 7px;
 }
 
 #about-left-bottom {
-    grid-area: leftbottom;
+    grid-area: lefttop;
     padding: 20px 0px 0px 0px !important; 
 }
 
 #about-left-bottom h1 {
     margin-left: 30px;
-
-    font-size: calc(var(--header-size) - 5pt) !important;
 }
 
 #skills-animation {
@@ -304,8 +322,28 @@
     grid-area: rightleft;
 }
 
+#about-right-left h1 {
+    font-size: calc(var(--logo-size) + 5pt) !important;
+}
+
+#about-right-left a {
+    cursor: text;
+    color: var(--text-dark);
+    font-family: var(--body-font);
+}
+
 #about-right-right {
     grid-area: rightright;
+}
+
+#about-right-right h1 {
+    font-size: calc(var(--logo-size) + 5pt) !important;
+}
+
+#about-right-right a {
+    cursor: text;
+    color: var(--text-dark);
+    font-family: var(--body-font);
 }
 
 #about-button {
@@ -329,5 +367,5 @@
     margin-left: 10px;
     font-family: var(--header-font);
     color: var(--text-dark);
-    font-size: calc(var(--logo-size) + 4pt);
+    font-size: calc(var(--logo-size) + 4pt) !important;
 }

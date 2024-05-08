@@ -16,7 +16,7 @@
 	font-size: var(--header-size);
 }
 
-li {
+#contact-container li {
 	font-size: var(--nav-link-size);
 	margin-bottom: 0px;
 	margin-left: 0px;
@@ -30,7 +30,7 @@ li {
 	background-position: 10px 3px;
 }
 
-ul {
+#contact-container ul {
 	margin-top: 0;
 	margin-bottom: 10px;
 	padding-left: 45px;
