@@ -6,78 +6,56 @@
 		<!-- HTML Site Stuff -->
 		<meta charset="UTF-8">
 		<title>LESA - romeluis</title>
-		<link id="about-favicon" rel="icon" type="image/x-icon" href="../../css-blocks/src/logo_green.ico">
-		<link id="css-selector" href="projects-stylesheet.css" rel="stylesheet" type="text/css">
-
-		<meta name="viewport" content="width=device-width">
+		<link id="index-favicon" rel="icon" type="image/x-icon" href="../../css-blocks/src/logo_green.ico">
+        <link id="theme-selector" href="../../css-blocks/themes/default-theme.css" rel="stylesheet">
+        <link id="defaults-selector" href="../../css-blocks/defaults.css" rel="stylesheet">
+        <link id="nav-selector" href="../../css-blocks/navigation-bar.css" rel="stylesheet">
+        <link id="nav-selector" href="../../css-blocks/footer.css" rel="stylesheet">
+        <link id="layout-selector" href="../../css-blocks/projects-template.css" rel="stylesheet">
 	</head>
     <body>
-		<div id="masterContainer">
-			<!-- Logo and navigation -->
-			<header>
-				<nav>
-					<div id="header-container">
-						<!-- Logo -->
-						<div id="home">
-						<a href="/">
-							<h1>romeluis</h1>
+		<!-- Logo and navigation -->
+		<header>
+			<nav>
+				<div class="navigation">
+					<!-- Logo -->
+					<div class="navigation-logo">
+						<a href="../../">
+							romeluis
 						</a>
-						</div>
-						<!-- Navigation -->
-						<div id="nav-projects">
-						<a href="/projects/">
-							<p>Projects</p>
-						</a>
-						</div>
-						<div id="about">
-						<a href="/about/">
-							<p>About &amp; Resume</p>
-						</a>
-						</div>
 					</div>
-				</nav>
-			</header>
-
-			<div id="main-page-container">
-				<div class="project-img"><img src="1.svg"></div>
-					<div class="project-img"><img src="2.svg"></div>
-					<div class="project-img"><img src="3.svg"></div>
-					<div class="project-img"><img src="4.svg"></div>
-			</div>
-            <!-- Footer -->
-			<footer>
-				<div id="footer-master-container">
-					<div id="footer-left-container">
-						<a href="/">
-							<p>Home</p>
-						</a>
-						<a href="/projects/">
-							<p>Projects</p>
-						</a>
-							<a href="/about/">
-								<p>About</p>
+					<!-- Links -->
+					<div class="navigation-link-container">
+						<div class="navigation-link">
+							<a href="../">
+								Projects
 							</a>
-					</div>
-					<div id="footer-right-container">
-						<h1>Made with love by Romel Luis Faife Cruz</h1>
-						<p id="footer-mobile-text">This site is not yet optimized for mobile screens.</p>
-						<p id="footer-font-credit-text">Fonts by Pangram Pangram Foundry &amp; Kontrapunkt.</p>
+						</div>
+						<div class="navigation-link">
+							<a href="../../about/">
+								About
+							</a>
+						</div>
 					</div>
 				</div>
-				<!-- Contact -->
+			</nav>
+		</header>
+
+			<div class="main-page">
+				<div class="project-img"><img src="1.svg"></div>
+				<div class="project-img"><img src="2.svg"></div>
+				<div class="project-img"><img src="3.svg"></div>
+				<div class="project-img"><img src="4.svg"></div>
+				<!-- Footer -->
 				<div id="contact-container">
-					<span class="section-title">Contact</span>
+					<heading class="footer-section-title">Contact</heading>
 					<ul>
-						<li>+1 (289) 696 6227</li>
-					</ul>
-					<ul>
-						<li><a href="mailto: contact@romeluis.com">contact@romeluis.com</a></li>
-					</ul>
-					<ul>
-						<li><a href="https://linkedin.com/in/romeluis">Linkedin</a></li>
+						<br><li><p>+1 (289) 696 6227<br></p></li>
+						<li><a href="mailto: contact@romeluis.com">contact@romeluis.com<br></a></li>
+						<li><a href="https://linkedin.com/in/romeluis" target="_blank">Linkedin<br></a></li>
 					</ul>
 				</div>
-			</footer>
+			</div>
         </div>
     </body>
 </html>

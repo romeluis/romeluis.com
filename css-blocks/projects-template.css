@@ -1,0 +1,18 @@
+img {
+    border-radius: var(--border-radius-large);
+    margin-bottom: calc(var(--section-bottom-space) - 40px);
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--black-shadow);
+
+    transition: var(--transition-fast);
+
+    width: 100%;
+}
+
+img:hover {
+    box-shadow: 0px 0px var(--shadow-blur) 0px var(--black-shadow-hover);
+}
+
+.project-img {
+    width: 100%;
+    display: block;
+}
