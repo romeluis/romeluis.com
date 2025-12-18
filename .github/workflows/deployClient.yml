@@ -1,0 +1,43 @@
+name: Publish Main Branch to Server
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Vite application
+      run: npm run build
+
+    - name: Deploy to Namecheap
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.SEMILLA_SERVER_URL }}
+        username: ${{ secrets.SEMILLA_FTP_USERNAME }}
+        password: ${{ secrets.SEMILLA_FTP_PASSWORD }}
+        protocol: ftps
+        port: 21
+        local-dir: dist/
+        server-dir: romeluis.com/
