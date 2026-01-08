@@ -1,6 +1,8 @@
 import './global.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/home';
+import Layout from './components/Layout';
+import AboutMe from './pages/AboutMe';
+import Projects from './pages/Projects';
 import TestPage from './pages/test';
 
 function App() {
@@ -8,11 +10,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {isDevelopment && <Route path="/test" element={<TestPage />} />}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<AboutMe />} />
+          <Route path="/projects" element={<Projects />} />
+          {isDevelopment && <Route path="/testing" element={<TestPage />} />}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

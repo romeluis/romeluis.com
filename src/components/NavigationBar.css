@@ -1,0 +1,87 @@
+/* ========================================
+   NavigationBar Component Styles
+   ======================================== */
+
+.navigation-bar {
+  position: fixed;
+  top: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.nav-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-ui-white);
+  border: var(--border-width) solid var(--color-ui-black);
+  border-radius: var(--border-radius-pill);
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+.nav-indicator {
+  position: absolute;
+  top: -1px;
+  height: calc(100% + 2px);
+  background: var(--color-ui-black);
+  border-radius: var(--border-radius-pill);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav-tab {
+  position: relative;
+  z-index: 2;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-ui-black);
+  text-decoration: none;
+  border-radius: var(--border-radius-pill);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-tab.active {
+  color: var(--color-ui-white);
+}
+
+.nav-tab:focus {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+}
+
+.nav-tab:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ========================================
+   Responsive Styles
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .nav-tab {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation-bar {
+    top: var(--spacing-md);
+  }
+
+  .nav-tab {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-tab {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
