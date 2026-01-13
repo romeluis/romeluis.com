@@ -1,6 +1,6 @@
 import '../global.css';
 
-function Home() {
+function Projects() {
   return (
     <div style={{
       display: 'flex',
@@ -11,10 +11,10 @@ function Home() {
       padding: 'var(--spacing-2xl)',
       textAlign: 'center'
     }}>
-      <h1>Site Under Construction</h1>
-      <p>We're working hard to bring you something amazing. Check back soon!</p>
+      <h1>Projects</h1>
+      <p>This is the Projects page. Content coming soon!</p>
     </div>
   );
 }
 
-export default Home;
+export default Projects;

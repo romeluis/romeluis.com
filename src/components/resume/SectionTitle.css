@@ -1,0 +1,16 @@
+.section-title {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-title h2 {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: var(--spacing-xs);
+}
+
+.section-divider {
+  width: 100%;
+  height: var(--border-width);
+  background-color: var(--color-ui-black);
+}

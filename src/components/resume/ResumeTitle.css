@@ -1,0 +1,23 @@
+.resume-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.resume-name {
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.resume-contact {
+  font-size: var(--font-size-body);
+  color: var(--color-ui-black);
+}
+
+.resume-contact a {
+  text-decoration: underline;
+}
+
+.resume-contact a:hover {
+  opacity: 0.7;
+}
