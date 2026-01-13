@@ -1,5 +1,5 @@
-import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
-import { useState, useEffect, cloneElement, ReactElement } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect, cloneElement, type ReactElement } from 'react';
 import NavigationBar from './NavigationBar';
 import './Layout.css';
 
@@ -32,7 +32,7 @@ function Layout({ children }: LayoutProps) {
         className={`page-wrapper ${transitionStage}`}
         onAnimationEnd={onAnimationEnd}
       >
-        {cloneElement(children, { key: displayLocation.pathname, location: displayLocation })}
+        {cloneElement(children, { key: displayLocation.pathname })}
       </main>
     </>
   );

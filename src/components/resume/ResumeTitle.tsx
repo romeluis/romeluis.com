@@ -33,7 +33,7 @@ function ResumeTitle({ basicInfo }: ResumeTitleProps) {
       url: basicInfo.website_url,
       text: 'Portfolio'
     }
-  ].filter(Boolean);
+  ].filter((item): item is { url: string; text: string } => Boolean(item));
 
   return (
     <div className="resume-title">
@@ -41,13 +41,9 @@ function ResumeTitle({ basicInfo }: ResumeTitleProps) {
       <div className="resume-contact">
         {links.map((link, index) => (
           <span key={index}>
-            {typeof link === 'string' ? (
-              link
-            ) : (
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.text}
-              </a>
-            )}
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.text}
+            </a>
             {index < links.length - 1 && ' | '}
           </span>
         ))}

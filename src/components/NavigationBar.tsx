@@ -94,7 +94,7 @@ function NavigationBar() {
         {visibleTabs.map(tab => (
           <Link
             key={tab.id}
-            ref={(el) => (tabRefs.current[tab.id] = el)}
+            ref={(el) => { tabRefs.current[tab.id] = el; }}
             to={tab.path}
             className={`nav-tab ${activeTab?.id === tab.id ? 'active' : ''}`}
             aria-current={activeTab?.id === tab.id ? 'page' : undefined}
