@@ -298,3 +298,27 @@ a:hover {
 .rounded-full {
   border-radius: var(--border-radius-pill);
 }
+
+/* ========================================
+   Shimmer Load Animation
+   ======================================== */
+
+.shimmer-load {
+  background: linear-gradient(
+    90deg,
+    var(--color-ui-light-1) 0%,
+    var(--color-ui-white) 50%,
+    var(--color-ui-light-1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
