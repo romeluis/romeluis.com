@@ -1,0 +1,10 @@
+.resume-config-panel {
+  padding: var(--spacing-lg);
+}
+
+.resume-config-panel h2 {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2xl);
+  color: var(--color-ui-black);
+}

@@ -1,0 +1,20 @@
+.bullet-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.bullet-form textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: var(--border-width) solid var(--color-ui-light-2);
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  resize: vertical;
+}
+
+.bullet-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-blue);
+}

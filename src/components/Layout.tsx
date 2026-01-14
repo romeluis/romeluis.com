@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import NavigationBar from './NavigationBar';
 import AboutMe from '../pages/AboutMe';
 import Projects from '../pages/Projects';
+import Configuration from '../pages/Configuration';
 import TestPage from '../pages/test';
 import './Layout.css';
 
@@ -29,7 +30,9 @@ function Layout() {
   // Check if current location is valid, if not redirect
   useEffect(() => {
     const validPaths = ['/', '/projects'];
-    if (isDevelopment) validPaths.push('/testing');
+    if (isDevelopment) {
+      validPaths.push('/testing', '/configuration');
+    }
 
     if (!validPaths.includes(location.pathname)) {
       navigate('/', { replace: true });
@@ -46,6 +49,7 @@ function Layout() {
         <Routes location={displayLocation}>
           <Route path="/" element={<AboutMe />} />
           <Route path="/projects" element={<Projects />} />
+          {isDevelopment && <Route path="/configuration" element={<Configuration />} />}
           {isDevelopment && <Route path="/testing" element={<TestPage />} />}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
