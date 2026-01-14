@@ -1,0 +1,90 @@
+.tech-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.add-tech-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.add-tech-form input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  border: var(--border-width) solid var(--color-ui-light-1);
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  transition: border-color 0.2s ease;
+}
+
+.add-tech-form input:focus {
+  outline: none;
+  border-color: var(--color-ui-black);
+}
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-ui-light-1);
+  border: var(--border-width) solid var(--color-ui-light-2);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-note);
+  transition: all 0.2s ease;
+}
+
+.tech-chip:hover {
+  border-color: var(--color-ui-black);
+}
+
+.tech-chip .drag-handle {
+  font-size: 12px;
+  color: var(--color-ui-light-2);
+  cursor: grab;
+  user-select: none;
+}
+
+.tech-chip .drag-handle:active {
+  cursor: grabbing;
+}
+
+.tech-chip .tech-name {
+  color: var(--color-ui-black);
+  font-weight: var(--font-weight-bold);
+}
+
+.tech-chip .delete-btn {
+  background: none;
+  border: none;
+  color: var(--color-ui-light-2);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.tech-chip .delete-btn:hover {
+  color: var(--color-accent-orange);
+}
+
+.empty-message {
+  color: var(--color-ui-light-2);
+  font-size: var(--font-size-note);
+  margin: 0;
+}

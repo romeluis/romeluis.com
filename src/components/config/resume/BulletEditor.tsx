@@ -19,7 +19,7 @@ const bulletSchema = z.object({
   content: z.string().min(1, 'Content is required'),
 });
 
-function BulletEditor({ entryId, bullet, isOpen, onClose, onSave }: BulletEditorProps) {
+function BulletEditor({ bullet, isOpen, onClose, onSave }: BulletEditorProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

@@ -25,7 +25,7 @@ const entrySchema = z.object({
   description: z.string(),
 });
 
-function EntryEditor({ sectionId, entry, isOpen, onClose, onSave }: EntryEditorProps) {
+function EntryEditor({ entry, isOpen, onClose, onSave }: EntryEditorProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

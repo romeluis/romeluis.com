@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './ConfigLayout.css';
 import ConfigNavigation from './ConfigNavigation';
 import ResumeConfigPanel from './resume/ResumeConfigPanel';
+import ProjectsConfigPanel from './projects/ProjectsConfigPanel';
 
 type ConfigSection = 'resume' | 'projects';
 
@@ -16,12 +17,7 @@ function ConfigLayout() {
       />
       <div className="config-content">
         {activeSection === 'resume' && <ResumeConfigPanel />}
-        {activeSection === 'projects' && (
-          <div className="config-placeholder">
-            <h2>Projects Configuration</h2>
-            <p>Coming soon...</p>
-          </div>
-        )}
+        {activeSection === 'projects' && <ProjectsConfigPanel />}
       </div>
     </div>
   );

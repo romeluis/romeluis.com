@@ -22,10 +22,8 @@ function ConfigNavigation({ activeSection, onSectionChange }: ConfigNavigationPr
           <button
             className={activeSection === 'projects' ? 'active' : ''}
             onClick={() => onSectionChange('projects')}
-            disabled
-            title="Coming soon"
           >
-            Projects (Coming Soon)
+            Projects
           </button>
         </li>
       </ul>

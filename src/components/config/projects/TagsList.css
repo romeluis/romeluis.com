@@ -1,0 +1,79 @@
+.tags-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.add-tag-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.add-tag-form input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  border: var(--border-width) solid var(--color-ui-light-1);
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  transition: border-color 0.2s ease;
+}
+
+.add-tag-form input:focus {
+  outline: none;
+  border-color: var(--color-ui-black);
+}
+
+.tag-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-ui-white);
+  border: var(--border-width) solid var(--color-ui-black);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-note);
+  transition: all 0.2s ease;
+}
+
+.tag-chip:hover {
+  background: var(--color-ui-light-1);
+}
+
+.tag-chip .tag-name {
+  color: var(--color-ui-black);
+  font-weight: var(--font-weight-regular);
+}
+
+.tag-chip .delete-btn {
+  background: none;
+  border: none;
+  color: var(--color-ui-light-2);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.tag-chip .delete-btn:hover {
+  color: var(--color-accent-orange);
+}
+
+.empty-message {
+  color: var(--color-ui-light-2);
+  font-size: var(--font-size-note);
+  margin: 0;
+}

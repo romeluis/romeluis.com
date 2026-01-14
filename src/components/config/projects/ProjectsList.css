@@ -1,0 +1,108 @@
+.projects-list {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.projects-header h3 {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-ui-black);
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.project-card {
+  border: var(--border-width) solid var(--color-ui-light-1);
+  border-radius: var(--border-radius-rounded);
+  padding: var(--spacing-lg);
+  transition: border-color 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--color-ui-black);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.project-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.drag-handle {
+  font-size: 20px;
+  color: var(--color-ui-light-2);
+  cursor: grab;
+  user-select: none;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.project-info h4 {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-ui-black);
+}
+
+.project-meta {
+  font-size: var(--font-size-note);
+  color: var(--color-ui-light-2);
+}
+
+.project-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.project-expanded {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: var(--border-width) solid var(--color-ui-light-1);
+}
+
+.project-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.project-detail-section h5 {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-ui-black);
+}
+
+.empty-state {
+  padding: var(--spacing-3xl);
+  text-align: center;
+  color: var(--color-ui-light-2);
+  border: var(--border-width) dashed var(--color-ui-light-1);
+  border-radius: var(--border-radius-rounded);
+}
+
+.empty-state p {
+  margin: 0;
+}

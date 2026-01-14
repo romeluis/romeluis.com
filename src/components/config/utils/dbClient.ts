@@ -169,7 +169,7 @@ class DatabaseClient {
   }
 
   async reorderItems(
-    type: 'sections' | 'entries' | 'bullets',
+    type: 'sections' | 'entries' | 'bullets' | 'projects' | 'tech_stack' | 'components',
     items: ReorderItem[]
   ): Promise<void> {
     const response = await fetch(`${ADMIN_API_BASE}/resume/reorder`, {
@@ -182,6 +182,188 @@ class DatabaseClient {
 
     if (!result.success) {
       throw new Error(result.error || 'Failed to reorder items');
+    }
+  }
+
+  // Project methods
+  async getProjectsData(): Promise<import('./types').ProjectsData> {
+    const response = await fetch(`${API_BASE}/projects`);
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Failed to fetch projects data');
+    }
+
+    return { projects: data.data.projects };
+  }
+
+  async uploadImage(imageData: string, filename: string): Promise<string> {
+    const response = await fetch(`${ADMIN_API_BASE}/upload-image`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: imageData, filename }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to upload image');
+    }
+
+    return result.url;
+  }
+
+  async createProject(data: import('./types').ProjectFormData): Promise<number> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to create project');
+    }
+
+    return result.id;
+  }
+
+  async updateProject(id: number, data: import('./types').ProjectFormData): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to update project');
+    }
+  }
+
+  async deleteProject(id: number): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to delete project');
+    }
+  }
+
+  async createTechStackItem(projectId: number, data: import('./types').TechStackFormData): Promise<number> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ project_id: projectId, ...data }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to create tech stack item');
+    }
+
+    return result.id;
+  }
+
+  async updateTechStackItem(id: number, data: import('./types').TechStackFormData): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to update tech stack item');
+    }
+  }
+
+  async deleteTechStackItem(id: number): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to delete tech stack item');
+    }
+  }
+
+  async createTag(projectId: number, data: import('./types').TagFormData): Promise<number> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tags`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ project_id: projectId, ...data }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to create tag');
+    }
+
+    return result.id;
+  }
+
+  async deleteTag(id: number): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tags/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to delete tag');
+    }
+  }
+
+  async createComponent(projectId: number, data: import('./types').ComponentFormData): Promise<number> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/components`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ project_id: projectId, ...data }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to create component');
+    }
+
+    return result.id;
+  }
+
+  async updateComponent(id: number, data: import('./types').ComponentFormData): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/components/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to update component');
+    }
+  }
+
+  async deleteComponent(id: number): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/components/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to delete component');
     }
   }
 }

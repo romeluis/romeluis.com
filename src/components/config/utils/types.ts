@@ -91,3 +91,80 @@ export interface ReorderItem {
   id: number;
   display_order: number;
 }
+
+// Project data types matching the database schema
+
+export type ComponentType =
+  | 'title'
+  | 'about'
+  | 'tech_stack'
+  | 'image_carousel'
+  | 'text'
+  | 'text_with_title'
+  | 'video'
+  | 'text_with_image'
+  | 'text_image_title'
+  | 'repository_links'
+  | 'related_projects';
+
+export interface ProjectComponent {
+  id: number;
+  project_id: number;
+  component_type: ComponentType;
+  component_data: Record<string, any>;
+  display_order: number;
+}
+
+export interface TechStackItem {
+  id: number;
+  project_id: number;
+  name: string;
+  display_order: number;
+}
+
+export interface ProjectTag {
+  id: number;
+  project_id: number;
+  tag: string;
+}
+
+export interface Project {
+  id: number;
+  name: string;
+  subheading: string | null;
+  date_started: string;
+  date_ended: string | null;
+  is_pinned: boolean;
+  display_order: number;
+  poster_image_url: string | null;
+  tech_stack: TechStackItem[];
+  tags: ProjectTag[];
+  components: ProjectComponent[];
+}
+
+export interface ProjectsData {
+  projects: Project[];
+}
+
+// Project form data types
+export interface ProjectFormData {
+  name: string;
+  subheading: string;
+  date_started: string;
+  date_ended: string;
+  is_pinned: boolean;
+  poster_image_url: string;
+}
+
+export interface TechStackFormData {
+  name: string;
+}
+
+export interface TagFormData {
+  tag: string;
+}
+
+export interface ComponentFormData {
+  component_type: ComponentType;
+  component_data: Record<string, any>;
+}
