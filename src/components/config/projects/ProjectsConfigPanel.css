@@ -4,6 +4,13 @@
   margin: 0 auto;
 }
 
+.projects-config-panel h2 {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2xl);
+  color: var(--color-ui-black);
+}
+
 .panel-header {
   margin-bottom: var(--spacing-2xl);
 }

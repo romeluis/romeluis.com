@@ -25,7 +25,7 @@
 .project-card {
   border: var(--border-width) solid var(--color-ui-light-1);
   border-radius: var(--border-radius-rounded);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   transition: border-color 0.2s ease;
 }
 

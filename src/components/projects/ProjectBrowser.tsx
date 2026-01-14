@@ -36,9 +36,7 @@ function ProjectBrowser() {
       <div className="projects-container">
         <div className="projects-content">
           <div className="projects-loading-skeleton">
-            <div className="shimmer-load">
-              <h1>Browse Projects</h1>
-            </div>
+            <div className="shimmer-load skeleton-title"></div>
             <div className="skeleton-grid">
               {Array.from({ length: 8 }).map((_, index) => (
                 <div key={index} className="shimmer-load skeleton-project-card"></div>
