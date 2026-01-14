@@ -11,16 +11,20 @@ function ProjectsConfigPanel() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadData = async () => {
+  const loadData = async (showSpinner = false) => {
     try {
-      setLoading(true);
+      if (showSpinner) {
+        setLoading(true);
+      }
       setError(null);
       const data = await dbClient.getProjectsData();
       setProjectsData(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load projects data');
     } finally {
-      setLoading(false);
+      if (showSpinner) {
+        setLoading(false);
+      }
     }
   };
 
@@ -29,7 +33,7 @@ function ProjectsConfigPanel() {
   };
 
   useEffect(() => {
-    loadData();
+    loadData(true);
   }, []);
 
   if (loading) {
@@ -43,7 +47,7 @@ function ProjectsConfigPanel() {
   if (error) {
     return (
       <div className="projects-config-panel">
-        <ErrorMessage message={error} onRetry={loadData} />
+        <ErrorMessage message={error} onRetry={() => loadData(true)} />
       </div>
     );
   }
@@ -51,7 +55,7 @@ function ProjectsConfigPanel() {
   if (!projectsData) {
     return (
       <div className="projects-config-panel">
-        <ErrorMessage message="No projects data found" onRetry={loadData} />
+        <ErrorMessage message="No projects data found" onRetry={() => loadData(true)} />
       </div>
     );
   }

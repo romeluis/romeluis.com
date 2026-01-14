@@ -13,21 +13,25 @@ function ResumeConfigPanel() {
   const [error, setError] = useState<string | null>(null);
 
   // Load resume data
-  const loadResumeData = async () => {
+  const loadResumeData = async (showSpinner = false) => {
     try {
-      setLoading(true);
+      if (showSpinner) {
+        setLoading(true);
+      }
       setError(null);
       const data = await dbClient.getResumeData();
       setResumeData(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load resume data');
     } finally {
-      setLoading(false);
+      if (showSpinner) {
+        setLoading(false);
+      }
     }
   };
 
   useEffect(() => {
-    loadResumeData();
+    loadResumeData(true);
   }, []);
 
   if (loading) {
@@ -41,7 +45,7 @@ function ResumeConfigPanel() {
   if (error) {
     return (
       <div className="resume-config-panel">
-        <ErrorMessage message={error} onRetry={loadResumeData} />
+        <ErrorMessage message={error} onRetry={() => loadResumeData(true)} />
       </div>
     );
   }
@@ -49,7 +53,7 @@ function ResumeConfigPanel() {
   if (!resumeData) {
     return (
       <div className="resume-config-panel">
-        <ErrorMessage message="No resume data found" onRetry={loadResumeData} />
+        <ErrorMessage message="No resume data found" onRetry={() => loadResumeData(true)} />
       </div>
     );
   }
