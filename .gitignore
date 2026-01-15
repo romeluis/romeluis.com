@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 docs/API Architecture.md
+docs/Database Architecture.md
 .gitignore
 .env
