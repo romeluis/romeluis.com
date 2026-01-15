@@ -5,11 +5,15 @@ import { dbClient } from '../utils/dbClient';
 import Spinner from '../shared/Spinner';
 import ErrorMessage from '../shared/ErrorMessage';
 import ProjectsList from './ProjectsList';
+import TechStackManager from '../TechStackManager';
+
+type TabId = 'projects' | 'tech-library';
 
 function ProjectsConfigPanel() {
   const [projectsData, setProjectsData] = useState<ProjectsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<TabId>('projects');
 
   const loadData = async (showSpinner = false) => {
     try {
@@ -62,12 +66,32 @@ function ProjectsConfigPanel() {
 
   return (
     <div className="projects-config-panel">
-      <h2>Projects Configuration</h2>
+      <div className="panel-header">
+        <h2>Projects Configuration</h2>
+        <div className="tab-navigation">
+          <button
+            className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
+            onClick={() => setActiveTab('projects')}
+          >
+            Projects
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'tech-library' ? 'active' : ''}`}
+            onClick={() => setActiveTab('tech-library')}
+          >
+            Tech Stack Library
+          </button>
+        </div>
+      </div>
 
-      <ProjectsList
-        projects={projectsData.projects}
-        onRefresh={handleRefresh}
-      />
+      {activeTab === 'projects' && (
+        <ProjectsList
+          projects={projectsData.projects}
+          onRefresh={handleRefresh}
+        />
+      )}
+
+      {activeTab === 'tech-library' && <TechStackManager />}
     </div>
   );
 }

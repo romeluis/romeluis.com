@@ -272,8 +272,8 @@ class DatabaseClient {
     return result.id;
   }
 
-  async updateTechStackItem(id: number, color: string | null, imageUrl: string | null): Promise<void> {
-    const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack/${id}`, {
+  async updateTechStackItem(techId: number, color: string | null, imageUrl: string | null): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack/${techId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ color, image_url: imageUrl }),
@@ -295,6 +295,55 @@ class DatabaseClient {
 
     if (!result.success) {
       throw new Error(result.error || 'Failed to delete tech stack item');
+    }
+  }
+
+  async getAllTechStack(): Promise<Array<{id: number; name: string; color: string | null; image_url: string | null}>> {
+    const response = await fetch(`${ADMIN_API_BASE}/tech-stack`);
+    const data = await response.json();
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Failed to fetch tech stack');
+    }
+    return data.data;
+  }
+
+  async getTechUsageCount(techId: number): Promise<number> {
+    const response = await fetch(`${ADMIN_API_BASE}/tech-stack/${techId}/usage`);
+    const data = await response.json();
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Failed to fetch usage count');
+    }
+    return data.count;
+  }
+
+  async getTechProjects(techId: number): Promise<Array<{id: number; name: string}>> {
+    const response = await fetch(`${ADMIN_API_BASE}/tech-stack/${techId}/projects`);
+    const data = await response.json();
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Failed to fetch projects');
+    }
+    return data.data;
+  }
+
+  async updateMasterTech(techId: number, data: { name: string; color: string | null; image_url: string | null }): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/tech-stack/${techId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to update tech');
+    }
+  }
+
+  async deleteMasterTech(techId: number): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/tech-stack/${techId}`, {
+      method: 'DELETE',
+    });
+    const result = await response.json();
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to delete tech');
     }
   }
 

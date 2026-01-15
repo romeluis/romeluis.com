@@ -94,6 +94,9 @@ function SortableChip({ item, onDelete, onUpdate }: SortableChipProps) {
       </div>
       {isExpanded && (
         <div className="tech-chip-details">
+          <div className="warning-banner">
+            ⚠️ Editing color/image affects ALL projects using this tech
+          </div>
           <div className="tech-field">
             <label>Color:</label>
             <select
@@ -127,6 +130,9 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
   const [newTechName, setNewTechName] = useState('');
   const [adding, setAdding] = useState(false);
   const [deletingItem, setDeletingItem] = useState<TechStackItem | null>(null);
+  const [allTechStack, setAllTechStack] = useState<Array<{id: number; name: string; color: string | null; image_url: string | null}>>([]);
+  const [selectedTechId, setSelectedTechId] = useState<number | null>(null);
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -138,6 +144,19 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
   useEffect(() => {
     setItems(techStack);
   }, [techStack]);
+
+  useEffect(() => {
+    loadAllTechStack();
+  }, []);
+
+  const loadAllTechStack = async () => {
+    try {
+      const techs = await dbClient.getAllTechStack();
+      setAllTechStack(techs);
+    } catch (error) {
+      console.error('Failed to load tech stack:', error);
+    }
+  };
 
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
@@ -164,13 +183,27 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
   };
 
   const handleAdd = async () => {
-    if (!newTechName.trim()) return;
-
     try {
       setAdding(true);
-      await dbClient.createTechStackItem(projectId, { name: newTechName.trim() });
-      setNewTechName('');
+      if (selectedTechId && !showCreateForm) {
+        // Link existing tech
+        const selectedTech = allTechStack.find(t => t.id === selectedTechId);
+        if (selectedTech) {
+          await dbClient.createTechStackItem(projectId, { name: selectedTech.name });
+        }
+      } else if (newTechName.trim() && showCreateForm) {
+        // Create new tech
+        await dbClient.createTechStackItem(projectId, {
+          name: newTechName.trim(),
+          color: null,
+          image_url: null
+        });
+        setNewTechName('');
+        setShowCreateForm(false);
+      }
+      setSelectedTechId(null);
       await onRefresh();
+      await loadAllTechStack();
     } catch (error) {
       console.error('Failed to add tech stack item:', error);
     } finally {
@@ -195,28 +228,66 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
     }
   };
 
-  const handleUpdate = async (itemId: number, color: string | null, imageUrl: string | null) => {
+  const handleUpdate = async (techId: number, color: string | null, imageUrl: string | null) => {
     try {
-      await dbClient.updateTechStackItem(itemId, color, imageUrl);
+      await dbClient.updateTechStackItem(techId, color, imageUrl);
       await onRefresh();
+      await loadAllTechStack();
     } catch (error) {
       console.error('Failed to update tech stack item:', error);
     }
   };
 
+  const availableTech = allTechStack.filter(
+    tech => !techStack.some(t => t.tech_id === tech.id)
+  );
+
   return (
     <div className="tech-stack-list">
       <div className="add-tech-form">
-        <input
-          type="text"
-          value={newTechName}
-          onChange={(e) => setNewTechName(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
-          placeholder="Add technology..."
+        <select
+          value={showCreateForm ? 'new' : (selectedTechId || '')}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === 'new') {
+              setSelectedTechId(null);
+              setShowCreateForm(true);
+            } else if (value === '') {
+              setSelectedTechId(null);
+              setShowCreateForm(false);
+            } else {
+              setSelectedTechId(Number(value));
+              setShowCreateForm(false);
+            }
+          }}
           disabled={adding}
-        />
-        <Button variant="primary" onClick={handleAdd} disabled={adding || !newTechName.trim()}>
-          Add
+        >
+          <option value="">Select existing tech...</option>
+          {availableTech.map(tech => (
+            <option key={tech.id} value={tech.id}>
+              {tech.name}
+            </option>
+          ))}
+          <option value="new">+ Create New Technology</option>
+        </select>
+
+        {showCreateForm && (
+          <input
+            type="text"
+            value={newTechName}
+            onChange={(e) => setNewTechName(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
+            placeholder="Technology name..."
+            disabled={adding}
+          />
+        )}
+
+        <Button
+          variant="primary"
+          onClick={handleAdd}
+          disabled={adding || (!selectedTechId && !newTechName.trim())}
+        >
+          Add to Project
         </Button>
       </div>
 
@@ -229,7 +300,7 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
                   key={item.id}
                   item={item}
                   onDelete={() => handleDelete(item)}
-                  onUpdate={(color, imageUrl) => handleUpdate(item.id, color, imageUrl)}
+                  onUpdate={(color, imageUrl) => handleUpdate(item.tech_id, color, imageUrl)}
                 />
               ))}
             </div>
@@ -243,9 +314,9 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
         isOpen={!!deletingItem}
         onClose={() => setDeletingItem(null)}
         onConfirm={confirmDelete}
-        title="Delete Tech Stack Item"
-        message={`Are you sure you want to delete "${deletingItem?.name}"?`}
-        confirmText="Delete"
+        title="Remove Tech from Project"
+        message={`Remove "${deletingItem?.name}" from this project? The tech will remain available for other projects.`}
+        confirmText="Remove"
       />
     </div>
   );

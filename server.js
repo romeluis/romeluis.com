@@ -507,7 +507,11 @@ app.get('/api/admin/projects', async (req, res) => {
 
       // Get tech stack
       const [techStack] = await dbConnection.execute(
-        'SELECT id, name, display_order, color, image_url FROM project_tech_stack WHERE project_id = ? ORDER BY display_order',
+        `SELECT pts.id, ts.id as tech_id, ts.name, ts.color, ts.image_url, pts.display_order
+         FROM project_tech_stack pts
+         JOIN tech_stack ts ON pts.tech_id = ts.id
+         WHERE pts.project_id = ?
+         ORDER BY pts.display_order`,
         [project.id]
       );
       project.tech_stack = techStack;
@@ -530,20 +534,39 @@ app.get('/api/admin/projects', async (req, res) => {
 // Tech stack endpoints
 app.post('/api/admin/projects/tech-stack', async (req, res) => {
   try {
-    const { project_id, name } = req.body;
+    const { project_id, name, color, image_url } = req.body;
 
+    // Get or create tech in tech_stack table
+    let [existingTech] = await dbConnection.execute(
+      'SELECT id FROM tech_stack WHERE name = ?',
+      [name]
+    );
+
+    let techId;
+    if (existingTech.length > 0) {
+      techId = existingTech[0].id;
+    } else {
+      const [techResult] = await dbConnection.execute(
+        'INSERT INTO tech_stack (name, color, image_url) VALUES (?, ?, ?)',
+        [name, color || null, image_url || null]
+      );
+      techId = techResult.insertId;
+    }
+
+    // Calculate next display order
     const [rows] = await dbConnection.execute(
       'SELECT COALESCE(MAX(display_order), -1) + 1 AS next_order FROM project_tech_stack WHERE project_id = ?',
       [project_id]
     );
     const nextOrder = rows[0].next_order;
 
+    // Link tech to project
     const [result] = await dbConnection.execute(
-      'INSERT INTO project_tech_stack (project_id, name, display_order) VALUES (?, ?, ?)',
-      [project_id, name, nextOrder]
+      'INSERT INTO project_tech_stack (project_id, tech_id, display_order) VALUES (?, ?, ?)',
+      [project_id, techId, nextOrder]
     );
 
-    res.json({ success: true, id: result.insertId });
+    res.json({ success: true, id: result.insertId, tech_id: techId });
   } catch (error) {
     console.error('Error creating tech stack item:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -555,8 +578,9 @@ app.put('/api/admin/projects/tech-stack/:id', async (req, res) => {
     const { id } = req.params;
     const { color, image_url } = req.body;
 
+    // Update the tech in the tech_stack table (affects all projects)
     await dbConnection.execute(
-      'UPDATE project_tech_stack SET color = ?, image_url = ? WHERE id = ?',
+      'UPDATE tech_stack SET color = ?, image_url = ? WHERE id = ?',
       [color, image_url, id]
     );
 
@@ -574,6 +598,93 @@ app.delete('/api/admin/projects/tech-stack/:id', async (req, res) => {
     res.json({ success: true });
   } catch (error) {
     console.error('Error deleting tech stack item:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Tech Stack Library management endpoints
+app.get('/api/admin/tech-stack', async (req, res) => {
+  try {
+    const [rows] = await dbConnection.execute(
+      'SELECT id, name, color, image_url FROM tech_stack ORDER BY name'
+    );
+    res.json({ success: true, data: rows });
+  } catch (error) {
+    console.error('Error fetching tech stack:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/admin/tech-stack/:id/usage', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await dbConnection.execute(
+      'SELECT COUNT(*) as count FROM project_tech_stack WHERE tech_id = ?',
+      [id]
+    );
+    res.json({ success: true, count: rows[0].count });
+  } catch (error) {
+    console.error('Error fetching tech usage:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/admin/tech-stack/:id/projects', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await dbConnection.execute(
+      `SELECT p.id, p.name
+       FROM projects p
+       JOIN project_tech_stack pts ON p.id = pts.project_id
+       WHERE pts.tech_id = ?
+       ORDER BY p.name`,
+      [id]
+    );
+    res.json({ success: true, data: rows });
+  } catch (error) {
+    console.error('Error fetching tech projects:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.put('/api/admin/tech-stack/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, color, image_url } = req.body;
+
+    await dbConnection.execute(
+      'UPDATE tech_stack SET name = ?, color = ?, image_url = ? WHERE id = ?',
+      [name, color, image_url, id]
+    );
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating tech:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.delete('/api/admin/tech-stack/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if tech is in use
+    const [usage] = await dbConnection.execute(
+      'SELECT COUNT(*) as count FROM project_tech_stack WHERE tech_id = ?',
+      [id]
+    );
+
+    if (usage[0].count > 0) {
+      return res.status(400).json({
+        success: false,
+        error: `Cannot delete. This tech is used in ${usage[0].count} project(s).`
+      });
+    }
+
+    await dbConnection.execute('DELETE FROM tech_stack WHERE id = ?', [id]);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting tech:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });

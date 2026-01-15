@@ -27,14 +27,19 @@ function getSeededRandom(seed: number, min: number, max: number): number {
 
 function TechStackBadge({ techName, techColor, projectId, isParentHovered }: TechStackBadgeProps) {
   // Use tech stack color if available, otherwise fall back to random color
+  // Use tech name + projectId as seed to ensure unique rotations for each badge
   const { color, baseRotation, hoverRotation } = useMemo(() => {
-    const color = techColor || FALLBACK_COLORS[Math.floor(getSeededRandom(projectId, 0, FALLBACK_COLORS.length))];
-    const baseRotation = getSeededRandom(projectId + 1, -12, 12);
+    // Create a unique seed from tech name and project ID
+    const techSeed = techName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const uniqueSeed = projectId * 1000 + techSeed;
+
+    const color = techColor || FALLBACK_COLORS[Math.floor(getSeededRandom(uniqueSeed, 0, FALLBACK_COLORS.length))];
+    const baseRotation = getSeededRandom(uniqueSeed + 1, -12, 12);
     // Rotate in opposite direction on hover (if CW, go CCW and vice versa)
-    const rotationDelta = getSeededRandom(projectId + 2, 8, 15);
+    const rotationDelta = getSeededRandom(uniqueSeed + 2, 8, 15);
     const hoverRotation = baseRotation - (Math.sign(baseRotation) || 1) * rotationDelta;
     return { color, baseRotation, hoverRotation };
-  }, [techColor, projectId]);
+  }, [techName, techColor, projectId]);
 
   const rotation = isParentHovered ? hoverRotation : baseRotation;
 

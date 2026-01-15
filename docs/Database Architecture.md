@@ -80,26 +80,44 @@ Stores project metadata and basic information.
 
 ---
 
-#### 2. `project_tech_stack`
-Tech stack items for each project (languages, frameworks, tools).
+#### 2. `tech_stack`
+Master table of all available technologies with colors and icons.
 
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
-| `id` | INT | PRIMARY KEY, AUTO_INCREMENT | Unique tech stack item identifier |
-| `project_id` | INT | NOT NULL, FOREIGN KEY → projects(id) ON DELETE CASCADE | Associated project |
-| `name` | VARCHAR(100) | NOT NULL | Technology name (e.g., "React", "Node.js") |
-| `display_order` | INT | NOT NULL | Order in the tech stack list |
+| `id` | INT | PRIMARY KEY, AUTO_INCREMENT | Unique technology identifier |
+| `name` | VARCHAR(100) | NOT NULL, UNIQUE | Technology name (e.g., "React", "Node.js") |
 | `color` | VARCHAR(7) | NULL | Hex color code (e.g., #61DAFB) |
 | `image_url` | VARCHAR(500) | NULL | URL to technology icon/logo |
+| `created_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Record creation time |
+| `updated_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last update time |
 
 **Indexes:**
 - Primary: `id`
-- Index: `project_id`
-- Unique: `project_id, display_order`
+- Index: `name` (for lookups and uniqueness)
 
 ---
 
-#### 3. `tags`
+#### 3. `project_tech_stack`
+Junction table linking projects to tech stack items (many-to-many relationship).
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | INT | PRIMARY KEY, AUTO_INCREMENT | Unique junction record identifier |
+| `project_id` | INT | NOT NULL, FOREIGN KEY → projects(id) ON DELETE CASCADE | Associated project |
+| `tech_id` | INT | NOT NULL, FOREIGN KEY → tech_stack(id) ON DELETE CASCADE | Associated technology |
+| `display_order` | INT | NOT NULL | Order in the tech stack list for this project |
+
+**Indexes:**
+- Primary: `id`
+- Unique: `project_id, tech_id` (prevents duplicate tech assignments)
+- Unique: `project_id, display_order` (ensures unique ordering per project)
+- Index: `project_id` (for querying tech by project)
+- Index: `tech_id` (for querying projects by tech)
+
+---
+
+#### 4. `tags`
 Master table of all available tags with color assignments.
 
 | Column | Type | Constraints | Description |
@@ -116,7 +134,7 @@ Master table of all available tags with color assignments.
 
 ---
 
-#### 4. `project_metadata_tags`
+#### 5. `project_metadata_tags`
 Junction table linking projects to tags (many-to-many relationship).
 
 | Column | Type | Constraints | Description |
@@ -133,7 +151,7 @@ Junction table linking projects to tags (many-to-many relationship).
 
 ---
 
-#### 5. `project_components`
+#### 6. `project_components`
 Ordered components that make up a project page. Each component stores its data as JSON.
 
 | Column | Type | Constraints | Description |
@@ -259,7 +277,7 @@ Ordered components that make up a project page. Each component stores its data a
 
 ### Core Tables
 
-#### 6. `resume_basic_info`
+#### 7. `resume_basic_info`
 Single-row table storing personal information.
 
 | Column | Type | Constraints | Description |
@@ -279,7 +297,7 @@ Single-row table storing personal information.
 
 ---
 
-#### 7. `resume_sections`
+#### 8. `resume_sections`
 Dynamic sections in the resume (e.g., Experience, Education, Projects).
 
 | Column | Type | Constraints | Description |
@@ -298,7 +316,7 @@ Dynamic sections in the resume (e.g., Experience, Education, Projects).
 
 ---
 
-#### 8. `resume_entries`
+#### 9. `resume_entries`
 Individual entries within resume sections.
 
 | Column | Type | Constraints | Description |
@@ -323,7 +341,7 @@ Individual entries within resume sections.
 
 ---
 
-#### 9. `resume_entry_bullets`
+#### 10. `resume_entry_bullets`
 Bullet points for resume entries.
 
 | Column | Type | Constraints | Description |
@@ -425,20 +443,32 @@ CREATE TABLE projects (
   INDEX idx_pinned_order (is_pinned, display_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 2. Project tech stack
+-- 2. Tech stack master table
+CREATE TABLE tech_stack (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  color VARCHAR(7) NULL COMMENT 'Hex color code (e.g., #61DAFB)',
+  image_url VARCHAR(500) NULL COMMENT 'URL to technology icon/logo',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_name (name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 3. Project tech stack (junction table)
 CREATE TABLE project_tech_stack (
   id INT PRIMARY KEY AUTO_INCREMENT,
   project_id INT NOT NULL,
-  name VARCHAR(100) NOT NULL,
+  tech_id INT NOT NULL,
   display_order INT NOT NULL,
-  color VARCHAR(7) NULL COMMENT 'Hex color code (e.g., #61DAFB)',
-  image_url VARCHAR(500) NULL COMMENT 'URL to technology icon/logo',
   FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
+  FOREIGN KEY (tech_id) REFERENCES tech_stack(id) ON DELETE CASCADE,
+  UNIQUE KEY unique_project_tech (project_id, tech_id),
+  UNIQUE KEY unique_project_order (project_id, display_order),
   INDEX idx_project_id (project_id),
-  UNIQUE KEY unique_project_order (project_id, display_order)
+  INDEX idx_tech_id (tech_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 3. Tags master table
+-- 4. Tags master table
 CREATE TABLE tags (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL UNIQUE,
@@ -448,7 +478,7 @@ CREATE TABLE tags (
   INDEX idx_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 4. Project metadata tags (junction table)
+-- 5. Project metadata tags (junction table)
 CREATE TABLE project_metadata_tags (
   id INT PRIMARY KEY AUTO_INCREMENT,
   project_id INT NOT NULL,
@@ -460,7 +490,7 @@ CREATE TABLE project_metadata_tags (
   INDEX idx_tag_id (tag_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 5. Project components (JSON-based)
+-- 6. Project components (JSON-based)
 CREATE TABLE project_components (
   id INT PRIMARY KEY AUTO_INCREMENT,
   project_id INT NOT NULL,
@@ -490,7 +520,7 @@ CREATE TABLE project_components (
 -- RESUME SECTION
 -- ============================================
 
--- 6. Resume basic info (single row)
+-- 7. Resume basic info (single row)
 CREATE TABLE resume_basic_info (
   id INT PRIMARY KEY DEFAULT 1,
   full_name VARCHAR(255) NOT NULL,
@@ -505,7 +535,7 @@ CREATE TABLE resume_basic_info (
   CHECK (id = 1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 7. Resume sections
+-- 8. Resume sections
 CREATE TABLE resume_sections (
   id INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
@@ -516,7 +546,7 @@ CREATE TABLE resume_sections (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 8. Resume entries
+-- 9. Resume entries
 CREATE TABLE resume_entries (
   id INT PRIMARY KEY AUTO_INCREMENT,
   section_id INT NOT NULL,
@@ -535,7 +565,7 @@ CREATE TABLE resume_entries (
   INDEX idx_section_id (section_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 9. Resume entry bullet points
+-- 10. Resume entry bullet points
 CREATE TABLE resume_entry_bullets (
   id INT PRIMARY KEY AUTO_INCREMENT,
   entry_id INT NOT NULL,

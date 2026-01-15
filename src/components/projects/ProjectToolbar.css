@@ -13,7 +13,7 @@
 
 .project-toolbar-buttons {
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   align-items: center;
 }
 
@@ -24,20 +24,21 @@
 .project-toolbar-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: var(--border-width) solid transparent;
-  border-radius: var(--border-radius-pill);
-  background: var(--color-ui-white);
+  padding: var(--spacing-sm);
+  border: none;
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  background: transparent;
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   color: var(--color-ui-black);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .project-toolbar-button:hover {
-  border-color: var(--color-ui-black);
+  background-color: var(--color-ui-light-1);
 }
 
 .project-toolbar-button:focus {
@@ -45,12 +46,12 @@
 }
 
 .project-toolbar-button-active {
-  border-color: var(--color-ui-black);
+  background-color: var(--color-ui-light-1);
 }
 
 .project-toolbar-icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   filter: invert(1);
 }
@@ -74,6 +75,8 @@
   .project-toolbar {
     top: 60px;
     padding: var(--spacing-md) 0;
+    margin-top: calc(-1 * var(--spacing-md));
+    padding-top: calc(var(--spacing-md) * 2);
   }
 
   .project-toolbar-buttons {

@@ -18,8 +18,38 @@
 .panel-header h2 {
   font-size: var(--font-size-title);
   font-weight: var(--font-weight-bold);
-  margin: 0 0 var(--spacing-sm) 0;
+  margin: 0 0 var(--spacing-md) 0;
   color: var(--color-ui-black);
+}
+
+.tab-navigation {
+  display: flex;
+  gap: var(--spacing-sm);
+  border-bottom: var(--border-width) solid var(--color-ui-light-2);
+}
+
+.tab-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-ui-light-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  bottom: -1px;
+}
+
+.tab-btn:hover {
+  color: var(--color-ui-black);
+}
+
+.tab-btn.active {
+  color: var(--color-ui-black);
+  border-bottom-color: var(--color-ui-black);
 }
 
 .panel-description {

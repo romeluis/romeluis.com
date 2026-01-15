@@ -1,6 +1,6 @@
 import './TagPills.css';
 import type { Tag } from '../../structures/ProjectInformation';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface TagPillsProps {
   tags: Tag[];
@@ -10,6 +10,35 @@ interface TagPillsProps {
 
 function TagPills({ tags, activeTag, onTagSelect }: TagPillsProps) {
   const [hoveredTag, setHoveredTag] = useState<number | null>(null);
+  const [showLeftFade, setShowLeftFade] = useState(false);
+  const [showRightFade, setShowRightFade] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const updateFadeVisibility = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    setShowLeftFade(scrollLeft > 0);
+    setShowRightFade(scrollLeft + clientWidth < scrollWidth - 1);
+  };
+
+  useEffect(() => {
+    updateFadeVisibility();
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => updateFadeVisibility();
+    const handleResize = () => updateFadeVisibility();
+
+    container.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [tags]);
 
   if (tags.length === 0) return null;
 
@@ -63,27 +92,31 @@ function TagPills({ tags, activeTag, onTagSelect }: TagPillsProps) {
   };
 
   return (
-    <div className="tag-pills-container">
-      <div className="tag-pills">
-        {tags.map((tag) => {
-          const isActive = activeTag === tag.name;
-          const isHovered = hoveredTag === tag.id;
+    <div className="tag-pills-wrapper">
+      <div className={`tag-pills-fade tag-pills-fade-left ${showLeftFade ? 'visible' : ''}`} />
+      <div className="tag-pills-container" ref={containerRef}>
+        <div className="tag-pills">
+          {tags.map((tag) => {
+            const isActive = activeTag === tag.name;
+            const isHovered = hoveredTag === tag.id;
 
-          return (
-            <button
-              key={tag.id}
-              className="tag-pill"
-              onClick={() => handleTagClick(tag.name)}
-              onMouseEnter={() => setHoveredTag(tag.id)}
-              onMouseLeave={() => setHoveredTag(null)}
-              aria-pressed={isActive}
-              style={getTagStyle(tag, isActive, isHovered)}
-            >
-              {tag.name}
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={tag.id}
+                className="tag-pill"
+                onClick={() => handleTagClick(tag.name)}
+                onMouseEnter={() => setHoveredTag(tag.id)}
+                onMouseLeave={() => setHoveredTag(null)}
+                aria-pressed={isActive}
+                style={getTagStyle(tag, isActive, isHovered)}
+              >
+                {tag.name}
+              </button>
+            );
+          })}
+        </div>
       </div>
+      <div className={`tag-pills-fade tag-pills-fade-right ${showRightFade ? 'visible' : ''}`} />
     </div>
   );
 }

@@ -50,15 +50,15 @@
   }
 }
 
-/* Mobile: 1 column */
+/* Mobile: 2 columns */
 @media (max-width: 768px) {
   .projects-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
   }
 
   .projects-container {
-    padding: 0 var(--spacing-lg) var(--spacing-md);
+    padding: 0 var(--spacing-md) var(--spacing-md);
   }
 }
 
@@ -204,7 +204,7 @@
 
 @media (max-width: 768px) {
   .skeleton-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

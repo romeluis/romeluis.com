@@ -57,25 +57,16 @@
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .sort-dropdown {
-    position: fixed;
-    top: 0;
-    left: 0;
+    min-width: 200px;
     right: 0;
-    bottom: 0;
-    min-width: 100%;
-    border-radius: 0;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    left: auto;
   }
 
   .sort-dropdown-options {
-    flex: 1;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-sm);
   }
 
   .sort-dropdown-option {
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-size: var(--font-size-title);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 }

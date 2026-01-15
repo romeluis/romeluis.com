@@ -116,8 +116,8 @@ export interface ProjectComponent {
 }
 
 export interface TechStackItem {
-  id: number;
-  project_id: number;
+  id: number;              // Junction table id (for delete/reorder)
+  tech_id: number;         // Master table id (for property updates)
   name: string;
   display_order: number;
   color: string | null;
