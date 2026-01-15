@@ -1,3 +1,9 @@
+export interface Tag {
+  id: number;
+  name: string;
+  color: string | null;
+}
+
 export interface Project {
   id: number;
   name: string;
@@ -6,13 +12,15 @@ export interface Project {
   date_ended: string | null;
   is_pinned: boolean;
   poster_image_url: string | null;
-  tags: string[];
+  tags: Tag[];
   tech_stack: TechStackItem[];
 }
 
 export interface TechStackItem {
   name: string;
   display_order: number;
+  color?: string | null;
+  image_url?: string | null;
 }
 
 export interface ProjectsAPIResponse {
@@ -21,4 +29,16 @@ export interface ProjectsAPIResponse {
     projects: Project[];
     count: number;
   };
+}
+
+export type SortOption =
+  | 'date-newest'
+  | 'date-oldest'
+  | 'name-asc'
+  | 'name-desc';
+
+export interface FilterState {
+  isPinned: 'all' | 'pinned' | 'unpinned';
+  startDateFrom?: string;
+  startDateTo?: string;
 }

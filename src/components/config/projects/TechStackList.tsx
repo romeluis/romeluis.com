@@ -20,7 +20,18 @@ import './TechStackList.css';
 import type { TechStackItem } from '../utils/types';
 import Button from '../shared/Button';
 import ConfirmDialog from '../shared/ConfirmDialog';
+import ImageUpload from '../shared/ImageUpload';
 import { dbClient } from '../utils/dbClient';
+
+const TECH_COLORS = [
+  { name: 'Green', value: '#91bf4b' },
+  { name: 'Yellow', value: '#ffd05d' },
+  { name: 'Orange', value: '#f26a2d' },
+  { name: 'Pink', value: '#f96ba4' },
+  { name: 'Blue', value: '#02a6ff' },
+  { name: 'Black', value: '#120e14' },
+  { name: 'Gray', value: '#afafaf' },
+];
 
 interface TechStackListProps {
   projectId: number;
@@ -31,9 +42,11 @@ interface TechStackListProps {
 interface SortableChipProps {
   item: TechStackItem;
   onDelete: () => void;
+  onUpdate: (color: string | null, imageUrl: string | null) => void;
 }
 
-function SortableChip({ item, onDelete }: SortableChipProps) {
+function SortableChip({ item, onDelete, onUpdate }: SortableChipProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: item.id,
   });
@@ -44,15 +57,67 @@ function SortableChip({ item, onDelete }: SortableChipProps) {
     opacity: isDragging ? 0.5 : 1,
   };
 
+  const handleColorChange = async (newColor: string) => {
+    const color = newColor === '' ? null : newColor;
+    await onUpdate(color, item.image_url);
+  };
+
+  const handleImageUpload = async (newUrl: string) => {
+    const url = newUrl.trim() === '' ? null : newUrl.trim();
+    await onUpdate(item.color, url);
+  };
+
   return (
     <div ref={setNodeRef} style={style} className="tech-chip">
-      <span className="drag-handle" {...attributes} {...listeners}>
-        ☰
-      </span>
-      <span className="tech-name">{item.name}</span>
-      <button type="button" onClick={onDelete} className="delete-btn">
-        ×
-      </button>
+      <div className="tech-chip-header">
+        <span className="drag-handle" {...attributes} {...listeners}>
+          ☰
+        </span>
+        <span className="tech-name">{item.name}</span>
+        {item.color && (
+          <div
+            className="color-preview"
+            style={{ backgroundColor: item.color }}
+          />
+        )}
+        <button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="expand-btn"
+          aria-label="Edit tech stack item"
+        >
+          {isExpanded ? '▼' : '▶'}
+        </button>
+        <button type="button" onClick={onDelete} className="delete-btn">
+          ×
+        </button>
+      </div>
+      {isExpanded && (
+        <div className="tech-chip-details">
+          <div className="tech-field">
+            <label>Color:</label>
+            <select
+              value={item.color || ''}
+              onChange={(e) => handleColorChange(e.target.value)}
+              className="color-select"
+            >
+              <option value="">No color</option>
+              {TECH_COLORS.map((color) => (
+                <option key={color.value} value={color.value}>
+                  {color.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="tech-field">
+            <ImageUpload
+              currentUrl={item.image_url || undefined}
+              onUpload={handleImageUpload}
+              label="Tech Icon"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -130,6 +195,15 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
     }
   };
 
+  const handleUpdate = async (itemId: number, color: string | null, imageUrl: string | null) => {
+    try {
+      await dbClient.updateTechStackItem(itemId, color, imageUrl);
+      await onRefresh();
+    } catch (error) {
+      console.error('Failed to update tech stack item:', error);
+    }
+  };
+
   return (
     <div className="tech-stack-list">
       <div className="add-tech-form">
@@ -151,7 +225,12 @@ function TechStackList({ projectId, techStack, onRefresh }: TechStackListProps) 
           <SortableContext items={items.map((t) => t.id)} strategy={horizontalListSortingStrategy}>
             <div className="tech-chips">
               {items.map((item) => (
-                <SortableChip key={item.id} item={item} onDelete={() => handleDelete(item)} />
+                <SortableChip
+                  key={item.id}
+                  item={item}
+                  onDelete={() => handleDelete(item)}
+                  onUpdate={(color, imageUrl) => handleUpdate(item.id, color, imageUrl)}
+                />
               ))}
             </div>
           </SortableContext>

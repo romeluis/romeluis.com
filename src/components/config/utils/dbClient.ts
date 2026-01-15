@@ -187,7 +187,8 @@ class DatabaseClient {
 
   // Project methods
   async getProjectsData(): Promise<import('./types').ProjectsData> {
-    const response = await fetch(`${API_BASE}/projects`);
+    // Use admin endpoint to get full tag/tech details
+    const response = await fetch(`${ADMIN_API_BASE}/projects`);
     const data = await response.json();
 
     if (!data.success) {
@@ -271,11 +272,11 @@ class DatabaseClient {
     return result.id;
   }
 
-  async updateTechStackItem(id: number, data: import('./types').TechStackFormData): Promise<void> {
+  async updateTechStackItem(id: number, color: string | null, imageUrl: string | null): Promise<void> {
     const response = await fetch(`${ADMIN_API_BASE}/projects/tech-stack/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ color, image_url: imageUrl }),
     });
 
     const result = await response.json();
@@ -311,6 +312,20 @@ class DatabaseClient {
     }
 
     return result.id;
+  }
+
+  async updateTag(id: number, color: string | null): Promise<void> {
+    const response = await fetch(`${ADMIN_API_BASE}/projects/tags/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ color }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to update tag');
+    }
   }
 
   async deleteTag(id: number): Promise<void> {

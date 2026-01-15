@@ -120,12 +120,14 @@ export interface TechStackItem {
   project_id: number;
   name: string;
   display_order: number;
+  color: string | null;
+  image_url: string | null;
 }
 
 export interface ProjectTag {
   id: number;
-  project_id: number;
-  tag: string;
+  name: string;
+  color: string | null;
 }
 
 export interface Project {
@@ -158,10 +160,12 @@ export interface ProjectFormData {
 
 export interface TechStackFormData {
   name: string;
+  color?: string | null;
+  image_url?: string | null;
 }
 
 export interface TagFormData {
-  tag: string;
+  tag_name: string;
 }
 
 export interface ComponentFormData {

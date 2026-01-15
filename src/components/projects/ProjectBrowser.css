@@ -14,7 +14,7 @@
 }
 
 .projects-content h1 {
-  font-size: var(--font-size-title);
+  font-size: 32pt;
   text-align: left;
   margin-bottom: var(--spacing-2xl);
 }
@@ -69,14 +69,19 @@
 .project-card {
   position: relative;
   border-radius: var(--border-radius-rounded);
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
-  border: var(--border-width) solid var(--color-ui-black);
   background-color: var(--color-ui-white);
   text-decoration: none;
   color: inherit;
   display: block;
   aspect-ratio: 3 / 4;
+  border: none !important;
+}
+
+.project-card:hover {
+  border: none !important;
+  opacity: 1 !important;
 }
 
 .project-card-image {
@@ -88,6 +93,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  border-radius: var(--border-radius-rounded);
 }
 
 /* ========================================
@@ -119,6 +125,13 @@
 
   /* Smooth fade-in transition */
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Ensure overlay doesn't affect elements outside it */
+  pointer-events: none;
+}
+
+.project-card-overlay * {
+  pointer-events: auto;
 }
 
 .project-card:hover .project-card-overlay,
@@ -143,8 +156,7 @@
 
 /* Focus state for accessibility */
 .project-card:focus {
-  outline: 2px solid var(--color-accent-blue);
-  outline-offset: 2px;
+  outline: none;
 }
 
 .project-card:focus:not(:focus-visible) {
@@ -212,4 +224,38 @@
   font-size: var(--font-size-title);
   padding: var(--spacing-3xl);
   color: var(--color-ui-light-2);
+}
+
+.projects-empty-filtered {
+  text-align: center;
+  padding: var(--spacing-3xl);
+}
+
+.projects-empty-filtered p {
+  font-size: var(--font-size-title);
+  color: var(--color-ui-light-2);
+  margin-bottom: var(--spacing-lg);
+}
+
+.clear-filters-button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: var(--border-width) solid var(--color-ui-black);
+  border-radius: var(--border-radius-pill);
+  background-color: var(--color-ui-black);
+  color: var(--color-ui-white);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.clear-filters-button:hover {
+  opacity: 0.8;
+}
+
+.clear-filters-button:focus {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
 }

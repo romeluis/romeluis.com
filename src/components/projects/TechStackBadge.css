@@ -1,0 +1,33 @@
+.tech-stack-badge {
+  position: absolute;
+  bottom: calc(var(--spacing-md) * -0.5);
+  right: calc(var(--spacing-md) * -0.5);
+  z-index: 150;
+
+  /* Filled pill styling */
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: var(--border-width) solid;
+  border-radius: var(--border-radius-pill);
+
+  /* White text on filled background */
+  color: var(--color-ui-white);
+  font-family: var(--font-family);
+  font-size: 12pt;
+  font-weight: var(--font-weight-bold);
+
+  white-space: nowrap;
+  pointer-events: none;
+
+  /* Smooth rotation transition */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .tech-stack-badge {
+    bottom: calc(var(--spacing-sm) * -0.3);
+    right: calc(var(--spacing-sm) * -0.3);
+    padding: calc(var(--spacing-sm) * 0.75) var(--spacing-md);
+    font-size: calc(var(--font-size-note) * 0.9);
+  }
+}

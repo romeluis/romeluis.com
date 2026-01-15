@@ -484,6 +484,49 @@ app.delete('/api/admin/projects/:id', async (req, res) => {
   }
 });
 
+// GET all projects for admin (with full tag/tech details)
+app.get('/api/admin/projects', async (req, res) => {
+  try {
+    // Get all projects
+    const [projects] = await dbConnection.execute(
+      'SELECT * FROM projects ORDER BY display_order'
+    );
+
+    // Get all related data for each project
+    for (const project of projects) {
+      // Get tags with full details (id, name, color) by joining with tags table
+      const [tags] = await dbConnection.execute(`
+        SELECT t.id, t.name, t.color
+        FROM project_metadata_tags pmt
+        JOIN tags t ON pmt.tag_id = t.id
+        WHERE pmt.project_id = ?
+        ORDER BY t.name`,
+        [project.id]
+      );
+      project.tags = tags;
+
+      // Get tech stack
+      const [techStack] = await dbConnection.execute(
+        'SELECT id, name, display_order, color, image_url FROM project_tech_stack WHERE project_id = ? ORDER BY display_order',
+        [project.id]
+      );
+      project.tech_stack = techStack;
+
+      // Get components
+      const [components] = await dbConnection.execute(
+        'SELECT id, component_type, component_data, display_order FROM project_components WHERE project_id = ? ORDER BY display_order',
+        [project.id]
+      );
+      project.components = components;
+    }
+
+    res.json({ success: true, data: { projects } });
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // Tech stack endpoints
 app.post('/api/admin/projects/tech-stack', async (req, res) => {
   try {
@@ -510,11 +553,11 @@ app.post('/api/admin/projects/tech-stack', async (req, res) => {
 app.put('/api/admin/projects/tech-stack/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { name } = req.body;
+    const { color, image_url } = req.body;
 
     await dbConnection.execute(
-      'UPDATE project_tech_stack SET name = ? WHERE id = ?',
-      [name, id]
+      'UPDATE project_tech_stack SET color = ?, image_url = ? WHERE id = ?',
+      [color, image_url, id]
     );
 
     res.json({ success: true });
@@ -538,16 +581,52 @@ app.delete('/api/admin/projects/tech-stack/:id', async (req, res) => {
 // Tags endpoints
 app.post('/api/admin/projects/tags', async (req, res) => {
   try {
-    const { project_id, tag } = req.body;
+    const { project_id, tag_name } = req.body;
 
-    const [result] = await dbConnection.execute(
-      'INSERT INTO project_metadata_tags (project_id, tag) VALUES (?, ?)',
-      [project_id, tag]
+    // Get or create tag in tags table
+    let [existingTags] = await dbConnection.execute(
+      'SELECT id FROM tags WHERE name = ?',
+      [tag_name]
     );
 
-    res.json({ success: true, id: result.insertId });
+    let tagId;
+    if (existingTags.length > 0) {
+      tagId = existingTags[0].id;
+    } else {
+      const [tagResult] = await dbConnection.execute(
+        'INSERT INTO tags (name, color) VALUES (?, ?)',
+        [tag_name, null]
+      );
+      tagId = tagResult.insertId;
+    }
+
+    // Link tag to project
+    const [result] = await dbConnection.execute(
+      'INSERT INTO project_metadata_tags (project_id, tag_id) VALUES (?, ?)',
+      [project_id, tagId]
+    );
+
+    res.json({ success: true, id: result.insertId, tag_id: tagId });
   } catch (error) {
     console.error('Error creating tag:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.put('/api/admin/projects/tags/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { color } = req.body;
+
+    // Update the tag color in the tags table
+    await dbConnection.execute(
+      'UPDATE tags SET color = ? WHERE id = ?',
+      [color, id]
+    );
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating tag:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
