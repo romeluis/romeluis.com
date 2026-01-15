@@ -1,0 +1,99 @@
+.basic-info-editor {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.basic-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.basic-info-header h3 {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-ui-black);
+}
+
+.basic-info-display {
+  border: var(--border-width) solid var(--color-ui-light-1);
+  border-radius: var(--border-radius-rounded);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.info-row {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.info-label {
+  font-weight: var(--font-weight-bold);
+  min-width: 100px;
+  color: var(--color-ui-light-2);
+}
+
+.basic-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.form-group label {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body);
+  color: var(--color-ui-black);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  border: var(--border-width) solid var(--color-ui-light-1);
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-ui-black);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.field-error {
+  color: var(--color-accent-orange);
+  font-size: var(--font-size-note);
+}
+
+.form-error {
+  padding: var(--spacing-md);
+  background-color: #ffe5e5;
+  border: var(--border-width) solid var(--color-accent-orange);
+  border-radius: calc(var(--border-radius-rounded) / 2);
+  color: var(--color-accent-orange);
+  font-size: var(--font-size-body);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: var(--border-width) solid var(--color-ui-light-1);
+}

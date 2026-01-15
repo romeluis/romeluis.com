@@ -1,0 +1,46 @@
+.config-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  border: var(--border-width) solid var(--color-ui-black);
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+}
+
+.config-button-primary {
+  background-color: var(--color-ui-black);
+  color: var(--color-ui-white);
+}
+
+.config-button-primary:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.config-button-secondary {
+  background-color: var(--color-ui-white);
+  color: var(--color-ui-black);
+  border-color: var(--color-ui-light-1);
+}
+
+.config-button-secondary:hover:not(:disabled) {
+  border-color: var(--color-ui-black);
+  background-color: var(--color-ui-light-1);
+}
+
+.config-button-danger {
+  background-color: var(--color-accent-orange);
+  color: var(--color-ui-white);
+  border-color: var(--color-accent-orange);
+}
+
+.config-button-danger:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.config-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
