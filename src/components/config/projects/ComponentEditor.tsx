@@ -5,18 +5,26 @@ import Modal from '../shared/Modal';
 import Button from '../shared/Button';
 import ImageUpload from '../shared/ImageUpload';
 
+interface AvailableProject {
+  id: number;
+  name: string;
+}
+
 interface ComponentEditorProps {
   component: ProjectComponent | null;
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: ComponentFormData) => Promise<void>;
+  availableProjects?: AvailableProject[];
 }
 
-function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditorProps) {
+function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects = [] }: ComponentEditorProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [componentType, setComponentType] = useState<ComponentType>('text');
   const [componentData, setComponentData] = useState<Record<string, any>>({});
+  const [projectSearchTerm, setProjectSearchTerm] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -129,29 +137,73 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
         );
 
       case 'image_carousel':
-        const images = Array.isArray(componentData.images) 
-          ? componentData.images 
-          : [];
-        const imageText = images.map((img: any) => {
-          if (typeof img === 'string') return img;
-          if (img.image_url) return img.image_url;
-          return '';
-        }).filter((url: string) => url).join('\n');
-        
+        const carouselImages: Array<{ image_url: string; caption: string }> =
+          Array.isArray(componentData.images) ? componentData.images : [];
+
+        const handleAddImage = () => {
+          updateData('images', [...carouselImages, { image_url: '', caption: '' }]);
+        };
+
+        const handleRemoveImage = (index: number) => {
+          const updated = carouselImages.filter((_, i) => i !== index);
+          updateData('images', updated);
+        };
+
+        const handleImageUpload = (index: number, url: string) => {
+          const updated = [...carouselImages];
+          updated[index] = { ...updated[index], image_url: url };
+          updateData('images', updated);
+        };
+
+        const handleImageCaption = (index: number, caption: string) => {
+          const updated = [...carouselImages];
+          updated[index] = { ...updated[index], caption };
+          updateData('images', updated);
+        };
+
         return (
           <div className="form-group">
-            <label>Image URLs (one per line) *</label>
-            <textarea
-              rows={6}
-              value={imageText}
-              onChange={(e) => {
-                const urls = e.target.value.split('\n').filter((url) => url.trim());
-                updateData('images', urls.map(url => ({ image_url: url, caption: '' })));
-              }}
-              placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
-              required
-            />
-            <span className="field-hint">Enter one image URL per line</span>
+            <label>Carousel Images *</label>
+            <div className="carousel-images-list">
+              {carouselImages.map((img, index) => (
+                <div key={index} className="carousel-image-item">
+                  <div className="carousel-image-fields">
+                    <ImageUpload
+                      currentUrl={img.image_url || ''}
+                      onUpload={(url) => handleImageUpload(index, url)}
+                      label={`Image ${index + 1}`}
+                    />
+                    <div className="form-group carousel-caption-field">
+                      <label htmlFor={`caption-${index}`}>Caption</label>
+                      <input
+                        id={`caption-${index}`}
+                        type="text"
+                        value={img.caption || ''}
+                        onChange={(e) => handleImageCaption(index, e.target.value)}
+                        placeholder="Optional caption"
+                      />
+                    </div>
+                  </div>
+                  <Button
+                    type="button"
+                    variant="danger"
+                    onClick={() => handleRemoveImage(index)}
+                  >
+                    Remove
+                  </Button>
+                </div>
+              ))}
+            </div>
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={handleAddImage}
+            >
+              Add Image
+            </Button>
+            {carouselImages.length === 0 && (
+              <span className="field-hint">Add at least one image to the carousel</span>
+            )}
           </div>
         );
 
@@ -249,6 +301,16 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
               label="Image"
             />
             <div className="form-group">
+              <label htmlFor="caption">Image Caption</label>
+              <input
+                id="caption"
+                type="text"
+                value={componentData.caption || ''}
+                onChange={(e) => updateData('caption', e.target.value)}
+                placeholder="Optional caption for the image"
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="image_position">Image Position</label>
               <select
                 id="image_position"
@@ -290,6 +352,16 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
               onUpload={(url) => updateData('image_url', url)}
               label="Image"
             />
+            <div className="form-group">
+              <label htmlFor="caption">Image Caption</label>
+              <input
+                id="caption"
+                type="text"
+                value={componentData.caption || ''}
+                onChange={(e) => updateData('caption', e.target.value)}
+                placeholder="Optional caption for the image"
+              />
+            </div>
           </>
         );
 
@@ -320,24 +392,74 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
         );
 
       case 'related_projects':
+        const selectedIds: number[] = componentData.project_ids || [];
+
+        const filteredProjects = availableProjects
+          .filter(p => p.name.toLowerCase().includes(projectSearchTerm.toLowerCase()))
+          .filter(p => !selectedIds.includes(p.id));
+
+        const handleSelectProject = (projectId: number) => {
+          updateData('project_ids', [...selectedIds, projectId]);
+          setProjectSearchTerm('');
+          setIsDropdownOpen(false);
+        };
+
+        const handleRemoveProject = (projectId: number) => {
+          updateData('project_ids', selectedIds.filter(id => id !== projectId));
+        };
+
+        const selectedProjects = availableProjects.filter(p => selectedIds.includes(p.id));
+
         return (
           <div className="form-group">
-            <label>Related Project IDs (comma-separated)</label>
-            <input
-              type="text"
-              value={(componentData.project_ids || []).join(', ')}
-              onChange={(e) =>
-                updateData(
-                  'project_ids',
-                  e.target.value
-                    .split(',')
-                    .map((id) => parseInt(id.trim()))
-                    .filter((id) => !isNaN(id))
-                )
-              }
-              placeholder="1, 2, 3"
-            />
-            <span className="field-hint">Enter project IDs separated by commas</span>
+            <label>Related Projects</label>
+
+            {selectedProjects.length > 0 && (
+              <div className="related-projects-selected">
+                {selectedProjects.map(project => (
+                  <div key={project.id} className="related-project-pill">
+                    <span>{project.name}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveProject(project.id)}
+                      className="related-project-remove"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="related-projects-search">
+              <input
+                type="text"
+                value={projectSearchTerm}
+                onChange={(e) => {
+                  setProjectSearchTerm(e.target.value);
+                  setIsDropdownOpen(true);
+                }}
+                onFocus={() => setIsDropdownOpen(true)}
+                placeholder="Search projects..."
+              />
+
+              {isDropdownOpen && filteredProjects.length > 0 && (
+                <div className="related-projects-dropdown">
+                  {filteredProjects.map(project => (
+                    <button
+                      key={project.id}
+                      type="button"
+                      className="related-project-option"
+                      onClick={() => handleSelectProject(project.id)}
+                    >
+                      {project.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <span className="field-hint">Search and select related projects</span>
           </div>
         );
 

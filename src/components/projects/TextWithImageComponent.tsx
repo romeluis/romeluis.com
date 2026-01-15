@@ -5,12 +5,14 @@ interface TextWithImageComponentProps {
   title?: string;
   text: string;
   imageUrl: string;
+  caption?: string;
 }
 
-const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({ 
-  title, 
-  text, 
-  imageUrl 
+const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
+  title,
+  text,
+  imageUrl,
+  caption
 }) => {
   return (
     <div className="text-with-image-component">
@@ -20,6 +22,9 @@ const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
           alt={title || 'Project image'}
           className="text-with-image-component__image"
         />
+        {caption && (
+          <p className="text-with-image-component__caption">{caption}</p>
+        )}
       </div>
       <div className="text-with-image-component__content">
         {title && (

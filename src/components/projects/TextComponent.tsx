@@ -3,12 +3,12 @@ import './TextComponent.css';
 
 interface TextComponentProps {
   text: string;
-  color: string;
+  color?: string;
 }
 
-const TextComponent: React.FC<TextComponentProps> = ({ text, color }) => {
+const TextComponent: React.FC<TextComponentProps> = ({ text }) => {
   return (
-    <div className="text-component" style={{ backgroundColor: color }}>
+    <div className="text-component">
       <p className="text-component__text">{text}</p>
     </div>
   );

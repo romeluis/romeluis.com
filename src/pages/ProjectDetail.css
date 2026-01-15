@@ -76,16 +76,107 @@
   gap: var(--spacing-2xl);
 }
 
-.project-detail__loading,
+/* ========================================
+   Loading Skeleton
+   ======================================== */
+
+.project-detail__skeleton {
+  width: 100%;
+}
+
+.skeleton-back-button {
+  width: 80px;
+  height: 24px;
+  border-radius: var(--border-radius-rounded);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.skeleton-header {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.skeleton-header .skeleton-title {
+  height: 48px;
+  width: 60%;
+  max-width: 500px;
+  border-radius: var(--border-radius-rounded);
+  margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-header .skeleton-subtitle {
+  height: 28px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: var(--border-radius-rounded);
+  margin-bottom: var(--spacing-md);
+}
+
+.skeleton-header .skeleton-dates {
+  height: 20px;
+  width: 150px;
+  border-radius: var(--border-radius-rounded);
+}
+
+.skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.skeleton-about {
+  height: 120px;
+  width: 100%;
+  border-radius: var(--border-radius-rounded);
+}
+
+.skeleton-image {
+  height: 400px;
+  width: 100%;
+  border-radius: var(--border-radius-rounded);
+}
+
+.skeleton-text-block {
+  height: 200px;
+  width: 100%;
+  border-radius: var(--border-radius-rounded);
+}
+
+.skeleton-tech-stack {
+  height: 80px;
+  width: 100%;
+  border-radius: var(--border-radius-rounded);
+}
+
+@media (max-width: 768px) {
+  .skeleton-back-button {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .skeleton-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .skeleton-header .skeleton-title {
+    height: 36px;
+    width: 80%;
+  }
+
+  .skeleton-header .skeleton-subtitle {
+    height: 24px;
+  }
+
+  .skeleton-image {
+    height: 250px;
+  }
+
+  .skeleton-content {
+    gap: var(--spacing-xl);
+  }
+}
+
 .project-detail__error {
   text-align: center;
   padding: var(--spacing-3xl) 0;
-}
-
-.project-detail__loading {
-  font-family: 'Neue Montreal', sans-serif;
-  font-size: var(--font-size-title);
-  color: var(--color-ui-light-2);
 }
 
 .project-detail__error-title {

@@ -49,7 +49,25 @@ const ProjectDetail: React.FC = () => {
     return (
       <div className="project-detail">
         <div className="project-detail__container">
-          <div className="project-detail__loading">Loading project...</div>
+          <div className="project-detail__skeleton">
+            {/* Back button skeleton */}
+            <div className="skeleton-back-button shimmer-load" />
+
+            {/* Header skeleton */}
+            <div className="skeleton-header">
+              <div className="skeleton-title shimmer-load" />
+              <div className="skeleton-subtitle shimmer-load" />
+              <div className="skeleton-dates shimmer-load" />
+            </div>
+
+            {/* Content skeleton - mimics typical project layout */}
+            <div className="skeleton-content">
+              <div className="skeleton-about shimmer-load" />
+              <div className="skeleton-image shimmer-load" />
+              <div className="skeleton-text-block shimmer-load" />
+              <div className="skeleton-tech-stack shimmer-load" />
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -31,6 +31,11 @@ interface ProjectsListProps {
   onRefresh: () => Promise<void>;
 }
 
+interface AvailableProject {
+  id: number;
+  name: string;
+}
+
 interface SortableItemProps {
   project: Project;
   onEdit: () => void;
@@ -38,9 +43,10 @@ interface SortableItemProps {
   onToggleExpand: () => void;
   isExpanded: boolean;
   onRefresh: () => Promise<void>;
+  availableProjects: AvailableProject[];
 }
 
-function SortableItem({ project, onEdit, onDelete, onToggleExpand, isExpanded, onRefresh }: SortableItemProps) {
+function SortableItem({ project, onEdit, onDelete, onToggleExpand, isExpanded, onRefresh, availableProjects }: SortableItemProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: project.id,
   });
@@ -101,7 +107,12 @@ function SortableItem({ project, onEdit, onDelete, onToggleExpand, isExpanded, o
           </div>
           <div className="project-detail-section">
             <h5>Components</h5>
-            <ComponentsList projectId={project.id} components={project.components || []} onRefresh={onRefresh} />
+            <ComponentsList
+              projectId={project.id}
+              components={project.components || []}
+              onRefresh={onRefresh}
+              availableProjects={availableProjects.filter(p => p.id !== project.id)}
+            />
           </div>
         </div>
       )}
@@ -223,6 +234,7 @@ function ProjectsList({ projects, onRefresh }: ProjectsListProps) {
                 onToggleExpand={() => toggleExpand(project.id)}
                 isExpanded={expandedProjects.has(project.id)}
                 onRefresh={onRefresh}
+                availableProjects={items.map(p => ({ id: p.id, name: p.name }))}
               />
             ))}
 

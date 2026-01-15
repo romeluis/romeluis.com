@@ -5,12 +5,21 @@ import ProjectCard from './ProjectCard';
 import ProjectToolbar from './ProjectToolbar';
 import './ProjectBrowser.css';
 
+const getSkeletonCount = (): number => {
+  if (typeof window === 'undefined') return 8;
+  const width = window.innerWidth;
+  if (width > 1366) return 8;  // 4 columns x 2 rows
+  if (width > 1024) return 6;  // 3 columns x 2 rows
+  return 4;                     // 2 columns x 2 rows
+};
+
 function ProjectBrowser() {
   // API data state
   const [projects, setProjects] = useState<Project[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [skeletonCount, setSkeletonCount] = useState(getSkeletonCount);
 
   // User controls state
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -22,6 +31,13 @@ function ProjectBrowser() {
 
   // Debounce search term for API calls
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
+
+  // Update skeleton count on window resize
+  useEffect(() => {
+    const handleResize = () => setSkeletonCount(getSkeletonCount());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Build API URL based on filters and search
   const buildApiUrl = (
@@ -167,7 +183,7 @@ function ProjectBrowser() {
           <div className="projects-loading-skeleton">
             <div className="shimmer-load skeleton-title"></div>
             <div className="skeleton-grid">
-              {Array.from({ length: 8 }).map((_, index) => (
+              {Array.from({ length: skeletonCount }).map((_, index) => (
                 <div key={index} className="shimmer-load skeleton-project-card"></div>
               ))}
             </div>

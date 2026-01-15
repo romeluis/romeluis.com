@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ProjectComponent, ProjectDetail } from '../../structures/ProjectInformation';
-import TitleComponent from './TitleComponent';
 import AboutComponent from './AboutComponent';
 import TextComponent from './TextComponent';
 import TextWithTitleComponent from './TextWithTitleComponent';
@@ -9,6 +8,7 @@ import ImageCarouselComponent from './ImageCarouselComponent';
 import TextWithImageComponent from './TextWithImageComponent';
 import TechStackDisplayComponent from './TechStackDisplayComponent';
 import RepositoryLinksComponent from './RepositoryLinksComponent';
+import VideoComponent from './VideoComponent';
 
 interface ComponentRendererProps {
   component: ProjectComponent;
@@ -57,15 +57,17 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           title={component_data.title}
           text={component_data.text}
           imageUrl={component_data.image_url}
+          caption={component_data.caption}
         />
       );
-    
+
     case 'text_image_title':
       return (
         <TextWithImageComponent
           title={component_data.title}
           text={component_data.text}
           imageUrl={component_data.image_url}
+          caption={component_data.caption}
         />
       );
     
@@ -86,8 +88,12 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
       return null;
     
     case 'video':
-      // TODO: Implement video component
-      return null;
+      return (
+        <VideoComponent
+          videoUrl={component_data.video_url}
+          caption={component_data.caption}
+        />
+      );
     
     case 'related_projects':
       // TODO: Implement related projects component

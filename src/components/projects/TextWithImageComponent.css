@@ -2,10 +2,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-xl);
-  align-items: center;
+  align-items: start;
 }
 
 .text-with-image-component__image-wrapper {
+  position: relative;
   border-radius: var(--border-radius-rounded);
   overflow: hidden;
   background-color: var(--color-ui-light-1);
@@ -42,6 +43,20 @@
   line-height: 1.6;
   margin: 0;
   white-space: pre-wrap;
+}
+
+.text-with-image-component__caption {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-ui-black);
+  background-color: var(--color-ui-white);
+  border-radius: var(--border-radius-pill);
+  margin: 0;
 }
 
 @media (max-width: 768px) {

@@ -23,10 +23,16 @@ import ComponentEditor from './ComponentEditor';
 import ConfirmDialog from '../shared/ConfirmDialog';
 import { dbClient } from '../utils/dbClient';
 
+interface AvailableProject {
+  id: number;
+  name: string;
+}
+
 interface ComponentsListProps {
   projectId: number;
   components: ProjectComponent[];
   onRefresh: () => Promise<void>;
+  availableProjects?: AvailableProject[];
 }
 
 interface SortableItemProps {
@@ -98,7 +104,7 @@ function SortableItem({ component, onEdit, onDelete }: SortableItemProps) {
   );
 }
 
-function ComponentsList({ projectId, components, onRefresh }: ComponentsListProps) {
+function ComponentsList({ projectId, components, onRefresh, availableProjects = [] }: ComponentsListProps) {
   const [items, setItems] = useState(components);
   const [editingComponent, setEditingComponent] = useState<ProjectComponent | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
@@ -210,6 +216,7 @@ function ComponentsList({ projectId, components, onRefresh }: ComponentsListProp
         isOpen={isEditorOpen}
         onClose={() => setIsEditorOpen(false)}
         onSave={handleSaveComponent}
+        availableProjects={availableProjects}
       />
 
       <ConfirmDialog

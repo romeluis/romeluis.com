@@ -1,5 +1,6 @@
 .search-bar {
   display: inline-flex;
+  --search-bar-expanded-width: 400px;
 }
 
 .search-bar-button {
@@ -41,7 +42,8 @@
   border: none;
   border-radius: calc(var(--border-radius-rounded) / 2);
   background: var(--color-ui-light-1);
-  min-width: 400px;
+  min-width: var(--search-bar-expanded-width);
+  max-width: 100%;
   animation: searchInputExpand 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
@@ -53,7 +55,7 @@
     padding-right: 0;
   }
   100% {
-    width: 400px;
+    width: var(--search-bar-expanded-width);
     opacity: 1;
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
@@ -66,7 +68,7 @@
 
 @keyframes searchInputCollapse {
   0% {
-    width: 400px;
+    width: var(--search-bar-expanded-width);
     opacity: 1;
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
@@ -119,17 +121,21 @@
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .search-bar-input-container {
-    min-width: 250px;
+  .search-bar {
+    --search-bar-expanded-width: 250px;
   }
 }
 
 @media (max-width: 480px) {
+  .search-bar {
+    --search-bar-expanded-width: calc(100vw - var(--spacing-xl) - 100px);
+  }
+
   .search-bar-expanded {
     width: 100%;
   }
 
   .search-bar-input-container {
-    min-width: 100%;
+    max-width: calc(100vw - var(--spacing-xl) - 100px);
   }
 }

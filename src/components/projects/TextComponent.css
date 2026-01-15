@@ -1,7 +1,5 @@
 .text-component {
-  border-radius: var(--border-radius-rounded);
-  padding: var(--spacing-2xl);
-  color: var(--color-ui-white);
+  width: 100%;
 }
 
 .text-component__text {
@@ -11,10 +9,6 @@
   line-height: 1.6;
   margin: 0;
   white-space: pre-wrap;
-}
-
-@media (max-width: 768px) {
-  .text-component {
-    padding: var(--spacing-xl);
-  }
+  color: var(--color-ui-black);
+  text-align: center;
 }
