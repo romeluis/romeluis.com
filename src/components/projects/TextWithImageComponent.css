@@ -1,0 +1,52 @@
+.text-with-image-component {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.text-with-image-component__image-wrapper {
+  border-radius: var(--border-radius-rounded);
+  overflow: hidden;
+  background-color: var(--color-ui-light-1);
+}
+
+.text-with-image-component__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.text-with-image-component__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.text-with-image-component__title {
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  color: var(--color-ui-black);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.text-with-image-component__text {
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-ui-black);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .text-with-image-component {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}

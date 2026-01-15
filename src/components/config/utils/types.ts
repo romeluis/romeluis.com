@@ -134,6 +134,7 @@ export interface Project {
   id: number;
   name: string;
   subheading: string | null;
+  color: string | null;
   date_started: string;
   date_ended: string | null;
   is_pinned: boolean;
@@ -152,6 +153,7 @@ export interface ProjectsData {
 export interface ProjectFormData {
   name: string;
   subheading: string;
+  color: string;
   date_started: string;
   date_ended: string;
   is_pinned: boolean;

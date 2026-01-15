@@ -21,12 +21,33 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
   useEffect(() => {
     if (isOpen) {
       if (component) {
+        console.log('ComponentEditor - Loading component:', component);
+        console.log('ComponentEditor - component_data:', component.component_data);
         setComponentType(component.component_type);
-        setComponentData(component.component_data);
+        // Parse component_data if it's a string, otherwise use as-is
+        let parsedData = component.component_data;
+        if (typeof parsedData === 'string') {
+          try {
+            parsedData = JSON.parse(parsedData);
+          } catch (e) {
+            console.error('Failed to parse component_data:', e);
+            parsedData = {};
+          }
+        }
+        // Deep clone to avoid reference issues
+        const clonedData = JSON.parse(JSON.stringify(parsedData));
+        console.log('ComponentEditor - Setting cloned data:', clonedData);
+        setComponentData(clonedData);
       } else {
+        console.log('ComponentEditor - Creating new component');
         setComponentType('text');
         setComponentData({});
       }
+    } else {
+      // Reset state when modal closes
+      setComponentType('text');
+      setComponentData({});
+      setError(null);
     }
   }, [component, isOpen]);
 
@@ -108,18 +129,25 @@ function ComponentEditor({ component, isOpen, onClose, onSave }: ComponentEditor
         );
 
       case 'image_carousel':
+        const images = Array.isArray(componentData.images) 
+          ? componentData.images 
+          : [];
+        const imageText = images.map((img: any) => {
+          if (typeof img === 'string') return img;
+          if (img.image_url) return img.image_url;
+          return '';
+        }).filter((url: string) => url).join('\n');
+        
         return (
           <div className="form-group">
             <label>Image URLs (one per line) *</label>
             <textarea
               rows={6}
-              value={(componentData.images || []).join('\n')}
-              onChange={(e) =>
-                updateData(
-                  'images',
-                  e.target.value.split('\n').filter((url) => url.trim())
-                )
-              }
+              value={imageText}
+              onChange={(e) => {
+                const urls = e.target.value.split('\n').filter((url) => url.trim());
+                updateData('images', urls.map(url => ({ image_url: url, caption: '' })));
+              }}
               placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
               required
             />

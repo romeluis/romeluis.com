@@ -205,6 +205,7 @@ function ComponentsList({ projectId, components, onRefresh }: ComponentsListProp
       )}
 
       <ComponentEditor
+        key={editingComponent?.id || 'new'}
         component={editingComponent}
         isOpen={isEditorOpen}
         onClose={() => setIsEditorOpen(false)}

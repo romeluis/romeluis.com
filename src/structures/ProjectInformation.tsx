@@ -42,3 +42,35 @@ export interface FilterState {
   startDateFrom?: string;
   startDateTo?: string;
 }
+
+// Component types for project detail pages
+export type ComponentType =
+  | 'title'
+  | 'about'
+  | 'tech_stack'
+  | 'image_carousel'
+  | 'text'
+  | 'text_with_title'
+  | 'video'
+  | 'text_with_image'
+  | 'text_image_title'
+  | 'single_image'
+  | 'repository_links'
+  | 'related_projects';
+
+export interface ProjectComponent {
+  id: number;
+  component_type: ComponentType;
+  component_data: Record<string, any>;
+  display_order: number;
+}
+
+export interface ProjectDetail extends Project {
+  color: string | null;
+  components: ProjectComponent[];
+}
+
+export interface ProjectDetailAPIResponse {
+  success: boolean;
+  data: ProjectDetail; // API returns project directly under 'data'
+}
