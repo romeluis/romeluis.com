@@ -21,7 +21,6 @@ function TechStackManager() {
   const [techItems, setTechItems] = useState<MasterTechItem[]>([]);
   const [usageInfo, setUsageInfo] = useState<Map<number, TechUsageInfo>>(new Map());
   const [loading, setLoading] = useState(true);
-  const [editingTech, setEditingTech] = useState<MasterTechItem | null>(null);
   const [deletingTech, setDeletingTech] = useState<MasterTechItem | null>(null);
   const [expandedTechId, setExpandedTechId] = useState<number | null>(null);
 
@@ -116,7 +115,7 @@ function TechStackManager() {
 
                   {usage && usage.count === 0 && (
                     <Button
-                      variant="outline"
+                      variant="danger"
                       onClick={() => setDeletingTech(tech)}
                       size="sm"
                     >

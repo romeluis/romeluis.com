@@ -137,11 +137,6 @@ function ProjectBrowser() {
   // Check if there are active filters
   const hasActiveFilters = filters.isPinned !== 'all';
 
-  // Handle filter changes
-  const handleFilterChange = (newFilters: FilterState) => {
-    setFilters(newFilters);
-  };
-
   // Handle search changes
   const handleSearchChange = (newSearchTerm: string) => {
     setSearchTerm(newSearchTerm);
