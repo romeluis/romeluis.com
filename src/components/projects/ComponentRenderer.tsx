@@ -9,6 +9,7 @@ import TextWithImageComponent from './TextWithImageComponent';
 import TechStackDisplayComponent from './TechStackDisplayComponent';
 import RepositoryLinksComponent from './RepositoryLinksComponent';
 import VideoComponent from './VideoComponent';
+import MermaidComponent from './MermaidComponent';
 
 interface ComponentRendererProps {
   component: ProjectComponent;
@@ -58,6 +59,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           text={component_data.text}
           imageUrl={component_data.image_url}
           caption={component_data.caption}
+          color={projectColor}
         />
       );
 
@@ -68,6 +70,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           text={component_data.text}
           imageUrl={component_data.image_url}
           caption={component_data.caption}
+          color={projectColor}
         />
       );
     
@@ -94,11 +97,20 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           caption={component_data.caption}
         />
       );
-    
+
+    case 'mermaid':
+      return (
+        <MermaidComponent
+          diagramCode={component_data.diagram_code}
+          title={component_data.title}
+          caption={component_data.caption}
+        />
+      );
+
     case 'related_projects':
       // TODO: Implement related projects component
       return null;
-    
+
     default:
       console.warn(`Unknown component type: ${component_type}`);
       return null;

@@ -1,0 +1,70 @@
+.mermaid-component {
+  width: 100%;
+  margin: var(--spacing-lg) 0;
+}
+
+.mermaid-component__title {
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  color: var(--color-ui-black);
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.mermaid-component__diagram {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: var(--border-radius-rounded);
+  background-color: var(--color-ui-white);
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mermaid-component__diagram svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.mermaid-component__caption {
+  margin-top: var(--spacing-md);
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-ui-light-2);
+  text-align: center;
+}
+
+.mermaid-component--error {
+  padding: var(--spacing-2xl);
+  background-color: var(--color-ui-light-1);
+  border-radius: var(--border-radius-rounded);
+  text-align: center;
+}
+
+.mermaid-component--error p {
+  margin: 0;
+  color: var(--color-accent-orange);
+  font-size: var(--font-size-body);
+}
+
+@media (max-width: 768px) {
+  .mermaid-component__title {
+    font-size: var(--font-size-title);
+  }
+
+  .mermaid-component__caption {
+    font-size: var(--font-size-note);
+    margin-top: var(--spacing-sm);
+  }
+
+  .mermaid-component__diagram {
+    padding: var(--spacing-md);
+  }
+}

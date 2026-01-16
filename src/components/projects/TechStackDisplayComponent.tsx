@@ -147,7 +147,6 @@ const TechStackDisplayComponent: React.FC<TechStackDisplayComponentProps> = ({ t
 
   return (
     <div className="tech-stack-display">
-      <h3 className="tech-stack-display__title">Tech Stack</h3>
       <div className="tech-stack-display__wrapper">
         <div className={`tech-stack-display__fade tech-stack-display__fade--left ${showLeftFade ? 'visible' : ''}`} />
         <div

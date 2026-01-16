@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownText from '../shared/MarkdownText';
 import './TextComponent.css';
 
 interface TextComponentProps {
@@ -9,7 +10,7 @@ interface TextComponentProps {
 const TextComponent: React.FC<TextComponentProps> = ({ text }) => {
   return (
     <div className="text-component">
-      <p className="text-component__text">{text}</p>
+      <MarkdownText className="text-component__text">{text}</MarkdownText>
     </div>
   );
 };

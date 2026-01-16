@@ -1,0 +1,63 @@
+.markdown-text {
+  /* Inherit font properties from parent */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+.markdown-text p {
+  margin: 0;
+  /* Remove default paragraph margins to preserve existing layout */
+}
+
+.markdown-text strong {
+  font-weight: 700;
+}
+
+.markdown-text em {
+  font-style: italic;
+}
+
+.markdown-text u {
+  text-decoration: underline;
+}
+
+.markdown-text a {
+  text-decoration: underline;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.markdown-text a:hover {
+  opacity: 0.7;
+}
+
+.markdown-text ul,
+.markdown-text ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.markdown-text li {
+  margin: 0.25em 0;
+}
+
+.markdown-text ul {
+  list-style-type: disc;
+}
+
+.markdown-text ol {
+  list-style-type: decimal;
+}
+
+/* Nested lists */
+.markdown-text ul ul {
+  list-style-type: circle;
+}
+
+.markdown-text ul ul ul {
+  list-style-type: square;
+}

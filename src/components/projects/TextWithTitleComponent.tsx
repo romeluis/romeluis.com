@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownText from '../shared/MarkdownText';
 import './TextWithTitleComponent.css';
 
 interface TextWithTitleComponentProps {
@@ -11,7 +12,7 @@ const TextWithTitleComponent: React.FC<TextWithTitleComponentProps> = ({ title, 
   return (
     <div className="text-with-title-component" style={{ backgroundColor: color }}>
       <h3 className="text-with-title-component__title">{title}</h3>
-      <p className="text-with-title-component__text">{text}</p>
+      <MarkdownText className="text-with-title-component__text">{text}</MarkdownText>
     </div>
   );
 };

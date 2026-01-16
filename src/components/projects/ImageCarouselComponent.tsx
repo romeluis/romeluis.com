@@ -13,12 +13,9 @@ interface ImageCarouselComponentProps {
 
 const ImageCarouselComponent: React.FC<ImageCarouselComponentProps> = ({ images, color }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayIndex, setDisplayIndex] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isTransitioning) return;
       if (e.key === 'ArrowLeft') {
         goToPrevious();
       } else if (e.key === 'ArrowRight') {
@@ -28,55 +25,39 @@ const ImageCarouselComponent: React.FC<ImageCarouselComponentProps> = ({ images,
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, images.length, isTransitioning]);
-
-  const transitionTo = (newIndex: number) => {
-    if (isTransitioning || newIndex === currentIndex) return;
-
-    setIsTransitioning(true);
-
-    // After fade out, change the image
-    setTimeout(() => {
-      setDisplayIndex(newIndex);
-      setCurrentIndex(newIndex);
-      // Allow fade in to complete before enabling transitions again
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 300);
-    }, 300);
-  };
+  }, [currentIndex, images.length]);
 
   const goToNext = () => {
-    transitionTo((currentIndex + 1) % images.length);
+    setCurrentIndex((currentIndex + 1) % images.length);
   };
 
   const goToPrevious = () => {
-    transitionTo((currentIndex - 1 + images.length) % images.length);
+    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
   };
 
   const goToSlide = (index: number) => {
-    transitionTo(index);
+    setCurrentIndex(index);
   };
 
   if (!images || images.length === 0) {
     return null;
   }
 
-  const displayImage = images[displayIndex];
+  const currentImage = images[currentIndex];
 
   return (
     <div className="image-carousel">
       <div className="image-carousel__container" style={{ backgroundColor: color }}>
         <div className="image-carousel__image-wrapper">
           <img
-            src={displayImage.image_url}
-            alt={displayImage.caption || `Slide ${displayIndex + 1}`}
-            className={`image-carousel__image ${isTransitioning ? 'image-carousel__image--fade-out' : ''}`}
+            src={currentImage.image_url}
+            alt={currentImage.caption || `Slide ${currentIndex + 1}`}
+            className="image-carousel__image"
           />
 
-          {displayImage.caption && (
-            <p className={`image-carousel__caption ${isTransitioning ? 'image-carousel__image--fade-out' : ''}`}>
-              {displayImage.caption}
+          {currentImage.caption && (
+            <p className="image-carousel__caption">
+              {currentImage.caption}
             </p>
           )}
 

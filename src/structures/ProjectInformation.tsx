@@ -56,7 +56,8 @@ export type ComponentType =
   | 'text_image_title'
   | 'single_image'
   | 'repository_links'
-  | 'related_projects';
+  | 'related_projects'
+  | 'mermaid';
 
 export interface ProjectComponent {
   id: number;

@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownText from '../shared/MarkdownText';
 import './AboutComponent.css';
 
 interface AboutComponentProps {
@@ -10,7 +11,7 @@ const AboutComponent: React.FC<AboutComponentProps> = ({ text, color }) => {
   return (
     <div className="about-component" style={{ backgroundColor: color }}>
       <h2 className="about-component__title">About</h2>
-      <p className="about-component__text">{text}</p>
+      <MarkdownText className="about-component__text">{text}</MarkdownText>
     </div>
   );
 };

@@ -72,6 +72,8 @@ function SortableItem({ component, onEdit, onDelete }: SortableItemProps) {
         return component.component_data.title || 'Text with image';
       case 'text_image_title':
         return component.component_data.title || 'Text, image, and title';
+      case 'mermaid':
+        return component.component_data.title || 'Mermaid diagram';
       case 'repository_links':
         return 'Repository links';
       case 'related_projects':

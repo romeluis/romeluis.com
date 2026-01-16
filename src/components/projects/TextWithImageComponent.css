@@ -9,15 +9,13 @@
   position: relative;
   border-radius: var(--border-radius-rounded);
   overflow: hidden;
-  background-color: var(--color-ui-light-1);
 }
 
 .text-with-image-component__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
-  aspect-ratio: 4 / 3;
 }
 
 .text-with-image-component__content {
@@ -42,7 +40,6 @@
   color: var(--color-ui-black);
   line-height: 1.6;
   margin: 0;
-  white-space: pre-wrap;
 }
 
 .text-with-image-component__caption {

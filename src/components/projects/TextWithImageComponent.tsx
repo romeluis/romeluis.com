@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownText from '../shared/MarkdownText';
 import './TextWithImageComponent.css';
 
 interface TextWithImageComponentProps {
@@ -6,17 +7,19 @@ interface TextWithImageComponentProps {
   text: string;
   imageUrl: string;
   caption?: string;
+  color?: string;
 }
 
 const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
   title,
   text,
   imageUrl,
-  caption
+  caption,
+  color
 }) => {
   return (
     <div className="text-with-image-component">
-      <div className="text-with-image-component__image-wrapper">
+      <div className="text-with-image-component__image-wrapper" style={{ backgroundColor: color }}>
         <img
           src={imageUrl}
           alt={title || 'Project image'}
@@ -30,7 +33,7 @@ const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
         {title && (
           <h3 className="text-with-image-component__title">{title}</h3>
         )}
-        <p className="text-with-image-component__text">{text}</p>
+        <MarkdownText className="text-with-image-component__text">{text}</MarkdownText>
       </div>
     </div>
   );

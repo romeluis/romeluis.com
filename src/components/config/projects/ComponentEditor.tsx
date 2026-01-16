@@ -4,6 +4,9 @@ import type { ProjectComponent, ComponentType, ComponentFormData } from '../util
 import Modal from '../shared/Modal';
 import Button from '../shared/Button';
 import ImageUpload from '../shared/ImageUpload';
+import CodeMirror from '@uiw/react-codemirror';
+
+const MARKDOWN_HELPER_TEXT = "Supports **bold**, *italic*, ~~strikethrough~~, bullets (- item), and [links](url)";
 
 interface AvailableProject {
   id: number;
@@ -126,6 +129,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
               onChange={(e) => updateData('text', e.target.value)}
               required
             />
+            <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
           </div>
         );
 
@@ -218,6 +222,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
               onChange={(e) => updateData('text', e.target.value)}
               required
             />
+            <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
           </div>
         );
 
@@ -243,6 +248,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
                 onChange={(e) => updateData('text', e.target.value)}
                 required
               />
+              <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
             </div>
           </>
         );
@@ -294,6 +300,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
                 onChange={(e) => updateData('text', e.target.value)}
                 required
               />
+              <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
             </div>
             <ImageUpload
               currentUrl={componentData.image_url || ''}
@@ -346,6 +353,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
                 onChange={(e) => updateData('text', e.target.value)}
                 required
               />
+              <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
             </div>
             <ImageUpload
               currentUrl={componentData.image_url || ''}
@@ -386,6 +394,79 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
                 value={componentData.live_url || ''}
                 onChange={(e) => updateData('live_url', e.target.value)}
                 placeholder="https://example.com"
+              />
+            </div>
+          </>
+        );
+
+      case 'mermaid':
+        return (
+          <>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                value={componentData.title || ''}
+                onChange={(e) => updateData('title', e.target.value)}
+                placeholder="Optional diagram title"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="diagram_code">Diagram Code *</label>
+              <div style={{ marginBottom: 'var(--spacing-sm)' }}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={() => {
+                    const code = componentData.diagram_code || 'graph TD\n    A[Start] --> B[Process]\n    B --> C[End]';
+                    const encoded = btoa(JSON.stringify({ code, mermaid: { theme: 'default' } }));
+                    window.open(`https://mermaid.live/edit#pako:${encoded}`, '_blank');
+                  }}
+                >
+                  Open Visual Editor
+                </Button>
+              </div>
+              <CodeMirror
+                value={componentData.diagram_code || ''}
+                height="400px"
+                onChange={(value) => updateData('diagram_code', value)}
+                placeholder="graph TD&#10;    A[Start] --> B[Process]&#10;    B --> C[End]"
+                basicSetup={{
+                  lineNumbers: true,
+                  highlightActiveLineGutter: true,
+                  highlightActiveLine: true,
+                  foldGutter: true,
+                  bracketMatching: true,
+                }}
+                style={{
+                  border: '1px solid var(--color-ui-light-1)',
+                  borderRadius: 'var(--border-radius-sm)',
+                  fontSize: '14px',
+                }}
+              />
+              <span className="field-hint">
+                Mermaid diagram syntax. See{' '}
+                <a
+                  href="https://mermaid.js.org/intro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  documentation
+                </a>{' '}
+                for examples. Use "Open Visual Editor" to edit visually, then copy the code back.
+              </span>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="caption">Caption</label>
+              <input
+                type="text"
+                id="caption"
+                value={componentData.caption || ''}
+                onChange={(e) => updateData('caption', e.target.value)}
+                placeholder="Optional diagram caption"
               />
             </div>
           </>
@@ -497,6 +578,7 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
             <option value="video">Video</option>
             <option value="text_with_image">Text with Image</option>
             <option value="text_image_title">Text, Image, and Title</option>
+            <option value="mermaid">Mermaid Diagram</option>
             <option value="repository_links">Repository Links</option>
             <option value="related_projects">Related Projects</option>
           </select>
