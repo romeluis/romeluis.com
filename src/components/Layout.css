@@ -3,7 +3,7 @@
    ======================================== */
 
 .page-wrapper {
-  padding-top: calc(var(--spacing-2xl) + 60px);
+  padding-top: calc(var(--spacing-md) + 60px);
   min-height: 100vh;
 }
 

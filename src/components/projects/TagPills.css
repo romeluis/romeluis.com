@@ -72,6 +72,11 @@
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+  .tag-pills-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
   .tag-pill {
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-body);
