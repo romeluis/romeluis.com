@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '10mb' })); // Increase limit for image uploads
+app.use(express.json({ limit: '50mb' })); // Increase limit for image/video uploads
 
 // Cloudflare R2 Client
 const r2Client = new S3Client({
@@ -368,6 +368,56 @@ app.post('/api/admin/upload-image', async (req, res) => {
     res.json({ success: true, url: publicUrl });
   } catch (error) {
     console.error('Error uploading image:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Media upload endpoint (images and videos)
+app.post('/api/admin/upload-media', async (req, res) => {
+  try {
+    const { media, filename } = req.body;
+
+    if (!media) {
+      return res.status(400).json({ success: false, error: 'No media provided' });
+    }
+
+    // Detect media type from data URL
+    const mimeMatch = media.match(/^data:(\w+\/[\w+-]+);base64,/);
+    if (!mimeMatch) {
+      return res.status(400).json({ success: false, error: 'Invalid media format' });
+    }
+
+    const mimeType = mimeMatch[1];
+    const isVideo = mimeType.startsWith('video/');
+    const isImage = mimeType.startsWith('image/');
+
+    if (!isVideo && !isImage) {
+      return res.status(400).json({ success: false, error: 'Unsupported media type' });
+    }
+
+    // Generate unique filename
+    const ext = filename ? filename.split('.').pop() : (isVideo ? 'mp4' : 'jpg');
+    const uniqueFilename = `${crypto.randomUUID()}.${ext}`;
+
+    // Convert base64 to buffer
+    const base64Data = media.replace(/^data:\w+\/[\w+-]+;base64,/, '');
+    const buffer = Buffer.from(base64Data, 'base64');
+
+    // Upload to R2
+    const command = new PutObjectCommand({
+      Bucket: process.env.R2_BUCKET_NAME,
+      Key: uniqueFilename,
+      Body: buffer,
+      ContentType: mimeType,
+    });
+
+    await r2Client.send(command);
+
+    // Return public URL and media type
+    const publicUrl = `${process.env.R2_PUBLIC_URL}/${uniqueFilename}`;
+    res.json({ success: true, url: publicUrl, mediaType: isVideo ? 'video' : 'image' });
+  } catch (error) {
+    console.error('Error uploading media:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });

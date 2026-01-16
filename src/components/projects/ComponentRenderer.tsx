@@ -61,6 +61,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           caption={component_data.caption}
           color={projectColor}
           imagePosition={component_data.image_position}
+          mediaType={component_data.media_type}
         />
       );
 
@@ -73,6 +74,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           caption={component_data.caption}
           color={projectColor}
           imagePosition={component_data.image_position}
+          mediaType={component_data.media_type}
         />
       );
     

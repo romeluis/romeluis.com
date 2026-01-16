@@ -4,6 +4,7 @@ import type { ProjectComponent, ComponentType, ComponentFormData } from '../util
 import Modal from '../shared/Modal';
 import Button from '../shared/Button';
 import ImageUpload from '../shared/ImageUpload';
+import MediaUpload from '../shared/MediaUpload';
 import CodeMirror from '@uiw/react-codemirror';
 
 const MARKDOWN_HELPER_TEXT = "Supports **bold**, *italic*, ~~strikethrough~~, bullets (- item), and [links](url)";
@@ -302,23 +303,27 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
               />
               <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
             </div>
-            <ImageUpload
+            <MediaUpload
               currentUrl={componentData.image_url || ''}
-              onUpload={(url) => updateData('image_url', url)}
-              label="Image"
+              currentMediaType={componentData.media_type || 'image'}
+              onUpload={(url, mediaType) => {
+                updateData('image_url', url);
+                updateData('media_type', mediaType);
+              }}
+              label="Image or Video"
             />
             <div className="form-group">
-              <label htmlFor="caption">Image Caption</label>
+              <label htmlFor="caption">Caption</label>
               <input
                 id="caption"
                 type="text"
                 value={componentData.caption || ''}
                 onChange={(e) => updateData('caption', e.target.value)}
-                placeholder="Optional caption for the image"
+                placeholder="Optional caption"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="image_position">Image Position</label>
+              <label htmlFor="image_position">Media Position</label>
               <select
                 id="image_position"
                 value={componentData.image_position || 'right'}
@@ -355,23 +360,27 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
               />
               <span className="field-hint">{MARKDOWN_HELPER_TEXT}</span>
             </div>
-            <ImageUpload
+            <MediaUpload
               currentUrl={componentData.image_url || ''}
-              onUpload={(url) => updateData('image_url', url)}
-              label="Image"
+              currentMediaType={componentData.media_type || 'image'}
+              onUpload={(url, mediaType) => {
+                updateData('image_url', url);
+                updateData('media_type', mediaType);
+              }}
+              label="Image or Video"
             />
             <div className="form-group">
-              <label htmlFor="caption">Image Caption</label>
+              <label htmlFor="caption">Caption</label>
               <input
                 id="caption"
                 type="text"
                 value={componentData.caption || ''}
                 onChange={(e) => updateData('caption', e.target.value)}
-                placeholder="Optional caption for the image"
+                placeholder="Optional caption"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="image_position">Image Position</label>
+              <label htmlFor="image_position">Media Position</label>
               <select
                 id="image_position"
                 value={componentData.image_position || 'right'}

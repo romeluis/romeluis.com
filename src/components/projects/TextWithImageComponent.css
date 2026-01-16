@@ -39,6 +39,19 @@
   display: block;
 }
 
+.text-with-image-component__image-wrapper--video {
+  background-color: transparent !important;
+}
+
+.text-with-image-component__video {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--border-radius-rounded);
+}
+
 .text-with-image-component__content {
   display: flex;
   flex-direction: column;

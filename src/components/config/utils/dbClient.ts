@@ -214,6 +214,22 @@ class DatabaseClient {
     return result.url;
   }
 
+  async uploadMedia(mediaData: string, filename: string): Promise<{ url: string; mediaType: 'image' | 'video' }> {
+    const response = await fetch(`${ADMIN_API_BASE}/upload-media`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ media: mediaData, filename }),
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Failed to upload media');
+    }
+
+    return { url: result.url, mediaType: result.mediaType };
+  }
+
   async createProject(data: import('./types').ProjectFormData): Promise<number> {
     const response = await fetch(`${ADMIN_API_BASE}/projects`, {
       method: 'POST',
