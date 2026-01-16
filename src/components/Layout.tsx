@@ -1,8 +1,9 @@
-import { useLocation, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLocation, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import NavigationBar from './NavigationBar';
 import AboutMe from '../pages/AboutMe';
 import Projects from '../pages/Projects';
+import ProjectDetail from '../pages/ProjectDetail';
 import Configuration from '../pages/Configuration';
 import TestPage from '../pages/test';
 import './Layout.css';
@@ -30,11 +31,15 @@ function Layout() {
   // Check if current location is valid, if not redirect
   useEffect(() => {
     const validPaths = ['/', '/projects'];
+    const validPathPatterns = [/^\/projects\/\d+$/]; // Matches /projects/:id
     if (isDevelopment) {
       validPaths.push('/testing', '/configuration');
     }
 
-    if (!validPaths.includes(location.pathname)) {
+    const isValidPath = validPaths.includes(location.pathname) || 
+                        validPathPatterns.some(pattern => pattern.test(location.pathname));
+
+    if (!isValidPath) {
       navigate('/', { replace: true });
     }
   }, [location.pathname, navigate, isDevelopment]);
@@ -49,6 +54,7 @@ function Layout() {
         <Routes location={displayLocation}>
           <Route path="/" element={<AboutMe />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
           {isDevelopment && <Route path="/configuration" element={<Configuration />} />}
           {isDevelopment && <Route path="/testing" element={<TestPage />} />}
           <Route path="*" element={<Navigate to="/" replace />} />

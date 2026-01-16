@@ -23,10 +23,16 @@ import ComponentEditor from './ComponentEditor';
 import ConfirmDialog from '../shared/ConfirmDialog';
 import { dbClient } from '../utils/dbClient';
 
+interface AvailableProject {
+  id: number;
+  name: string;
+}
+
 interface ComponentsListProps {
   projectId: number;
   components: ProjectComponent[];
   onRefresh: () => Promise<void>;
+  availableProjects?: AvailableProject[];
 }
 
 interface SortableItemProps {
@@ -66,6 +72,8 @@ function SortableItem({ component, onEdit, onDelete }: SortableItemProps) {
         return component.component_data.title || 'Text with image';
       case 'text_image_title':
         return component.component_data.title || 'Text, image, and title';
+      case 'mermaid':
+        return component.component_data.title || 'Mermaid diagram';
       case 'repository_links':
         return 'Repository links';
       case 'related_projects':
@@ -98,7 +106,7 @@ function SortableItem({ component, onEdit, onDelete }: SortableItemProps) {
   );
 }
 
-function ComponentsList({ projectId, components, onRefresh }: ComponentsListProps) {
+function ComponentsList({ projectId, components, onRefresh, availableProjects = [] }: ComponentsListProps) {
   const [items, setItems] = useState(components);
   const [editingComponent, setEditingComponent] = useState<ProjectComponent | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
@@ -205,10 +213,12 @@ function ComponentsList({ projectId, components, onRefresh }: ComponentsListProp
       )}
 
       <ComponentEditor
+        key={editingComponent?.id || 'new'}
         component={editingComponent}
         isOpen={isEditorOpen}
         onClose={() => setIsEditorOpen(false)}
         onSave={handleSaveComponent}
+        availableProjects={availableProjects}
       />
 
       <ConfirmDialog

@@ -375,7 +375,7 @@ app.post('/api/admin/upload-image', async (req, res) => {
 // Project endpoints
 app.post('/api/admin/projects', async (req, res) => {
   try {
-    const { name, subheading, date_started, date_ended, is_pinned, poster_image_url } = req.body;
+    const { name, subheading, color, date_started, date_ended, is_pinned, poster_image_url } = req.body;
 
     const [rows] = await dbConnection.execute(
       'SELECT COALESCE(MAX(display_order), -1) + 1 AS next_order FROM projects'
@@ -383,9 +383,9 @@ app.post('/api/admin/projects', async (req, res) => {
     const nextOrder = rows[0].next_order;
 
     const [result] = await dbConnection.execute(
-      `INSERT INTO projects (name, subheading, date_started, date_ended, is_pinned, poster_image_url, display_order)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [name, subheading, date_started, date_ended, is_pinned ? 1 : 0, poster_image_url, nextOrder]
+      `INSERT INTO projects (name, subheading, color, date_started, date_ended, is_pinned, poster_image_url, display_order)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [name, subheading, color, date_started, date_ended, is_pinned ? 1 : 0, poster_image_url, nextOrder]
     );
 
     res.json({ success: true, id: result.insertId });
@@ -398,13 +398,13 @@ app.post('/api/admin/projects', async (req, res) => {
 app.put('/api/admin/projects/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, subheading, date_started, date_ended, is_pinned, poster_image_url } = req.body;
+    const { name, subheading, color, date_started, date_ended, is_pinned, poster_image_url } = req.body;
 
     await dbConnection.execute(
       `UPDATE projects
-       SET name = ?, subheading = ?, date_started = ?, date_ended = ?, is_pinned = ?, poster_image_url = ?
+       SET name = ?, subheading = ?, color = ?, date_started = ?, date_ended = ?, is_pinned = ?, poster_image_url = ?
        WHERE id = ?`,
-      [name, subheading, date_started, date_ended, is_pinned ? 1 : 0, poster_image_url, id]
+      [name, subheading, color, date_started, date_ended, is_pinned ? 1 : 0, poster_image_url, id]
     );
 
     res.json({ success: true });

@@ -1,0 +1,56 @@
+.repository-links {
+  width: 100%;
+}
+
+.repository-links__title {
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  color: var(--color-ui-black);
+  margin: 0 0 var(--spacing-lg) 0;
+  line-height: 1.3;
+}
+
+.repository-links__buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.repository-links__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-ui-black);
+  color: var(--color-ui-white);
+  border-radius: var(--border-radius-pill);
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  border: none;
+}
+
+.repository-links__button:hover {
+  transform: scale(1.05);
+}
+
+.repository-links__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .repository-links__button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-note);
+  }
+
+  .repository-links__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

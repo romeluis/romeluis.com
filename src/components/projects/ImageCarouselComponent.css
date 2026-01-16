@@ -1,0 +1,86 @@
+.image-carousel {
+  width: 100%;
+}
+
+.image-carousel__container {
+  border-radius: var(--border-radius-rounded);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-carousel__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-carousel__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.image-carousel__image--fade-out {
+  opacity: 0;
+}
+
+.image-carousel__caption {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-ui-black);
+  background-color: var(--color-ui-white);
+  border-radius: var(--border-radius-pill);
+  margin: 0;
+  z-index: 2;
+}
+
+.image-carousel__dots {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  z-index: 2;
+}
+
+.image-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.image-carousel__dot:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.image-carousel__dot--active {
+  background-color: var(--color-ui-white);
+}
+
+@media (max-width: 768px) {
+  .image-carousel__caption {
+    font-size: var(--font-size-note);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .image-carousel__dot {
+    width: 8px;
+    height: 8px;
+  }
+}

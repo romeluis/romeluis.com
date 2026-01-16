@@ -18,6 +18,7 @@ interface ProjectEditorProps {
 const projectSchema = z.object({
   name: z.string().min(1, 'Project name is required'),
   subheading: z.string(),
+  color: z.string(),
   date_started: z.string().min(1, 'Start date is required'),
   date_ended: z.string(),
   is_pinned: z.boolean(),
@@ -40,6 +41,7 @@ function ProjectEditor({ project, isOpen, onClose, onSave }: ProjectEditorProps)
     defaultValues: {
       name: '',
       subheading: '',
+      color: '',
       date_started: '',
       date_ended: '',
       is_pinned: false,
@@ -61,6 +63,7 @@ function ProjectEditor({ project, isOpen, onClose, onSave }: ProjectEditorProps)
           ? {
               name: project.name,
               subheading: project.subheading || '',
+              color: project.color || '',
               date_started: formatDateForInput(project.date_started),
               date_ended: formatDateForInput(project.date_ended),
               is_pinned: project.is_pinned,
@@ -69,6 +72,7 @@ function ProjectEditor({ project, isOpen, onClose, onSave }: ProjectEditorProps)
           : {
               name: '',
               subheading: '',
+              color: '',
               date_started: '',
               date_ended: '',
               is_pinned: false,
@@ -129,6 +133,21 @@ function ProjectEditor({ project, isOpen, onClose, onSave }: ProjectEditorProps)
           />
           {errors.subheading && (
             <span className="field-error">{errors.subheading.message}</span>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="color">Project Color</label>
+          <select id="color" {...register('color')}>
+            <option value="">None</option>
+            <option value="#91bf4b">Green</option>
+            <option value="#ffd05d">Yellow</option>
+            <option value="#f26a2d">Orange</option>
+            <option value="#f96ba4">Pink</option>
+            <option value="#02a6ff">Blue</option>
+          </select>
+          {errors.color && (
+            <span className="field-error">{errors.color.message}</span>
           )}
         </div>
 

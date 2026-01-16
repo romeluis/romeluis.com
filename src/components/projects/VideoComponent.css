@@ -1,0 +1,50 @@
+.video-component {
+  width: 100%;
+}
+
+.video-component__wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius-rounded);
+  background-color: var(--color-ui-black);
+}
+
+.video-component__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-component__caption {
+  margin-top: var(--spacing-md);
+  font-family: 'Neue Montreal', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-ui-light-2);
+  text-align: center;
+}
+
+.video-component--error {
+  padding: var(--spacing-2xl);
+  background-color: var(--color-ui-light-1);
+  border-radius: var(--border-radius-rounded);
+  text-align: center;
+}
+
+.video-component--error p {
+  margin: 0;
+  color: var(--color-accent-orange);
+}
+
+@media (max-width: 768px) {
+  .video-component__caption {
+    font-size: var(--font-size-note);
+    margin-top: var(--spacing-sm);
+  }
+}
