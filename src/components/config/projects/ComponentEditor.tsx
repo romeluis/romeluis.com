@@ -370,6 +370,17 @@ function ComponentEditor({ component, isOpen, onClose, onSave, availableProjects
                 placeholder="Optional caption for the image"
               />
             </div>
+            <div className="form-group">
+              <label htmlFor="image_position">Image Position</label>
+              <select
+                id="image_position"
+                value={componentData.image_position || 'right'}
+                onChange={(e) => updateData('image_position', e.target.value)}
+              >
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+              </select>
+            </div>
           </>
         );
 

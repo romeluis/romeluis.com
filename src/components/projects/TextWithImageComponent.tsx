@@ -8,6 +8,7 @@ interface TextWithImageComponentProps {
   imageUrl: string;
   caption?: string;
   color?: string;
+  imagePosition?: 'left' | 'right';
 }
 
 const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
@@ -15,10 +16,11 @@ const TextWithImageComponent: React.FC<TextWithImageComponentProps> = ({
   text,
   imageUrl,
   caption,
-  color
+  color,
+  imagePosition = 'right'
 }) => {
   return (
-    <div className="text-with-image-component">
+    <div className={`text-with-image-component text-with-image-component--${imagePosition}`}>
       <div className="text-with-image-component__image-wrapper" style={{ backgroundColor: color }}>
         <img
           src={imageUrl}

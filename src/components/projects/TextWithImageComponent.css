@@ -5,6 +5,22 @@
   align-items: start;
 }
 
+.text-with-image-component--left .text-with-image-component__image-wrapper {
+  order: 1;
+}
+
+.text-with-image-component--left .text-with-image-component__content {
+  order: 2;
+}
+
+.text-with-image-component--right .text-with-image-component__image-wrapper {
+  order: 2;
+}
+
+.text-with-image-component--right .text-with-image-component__content {
+  order: 1;
+}
+
 .text-with-image-component__image-wrapper {
   position: relative;
   border-radius: var(--border-radius-rounded);

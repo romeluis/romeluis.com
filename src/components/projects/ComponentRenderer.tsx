@@ -60,6 +60,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           imageUrl={component_data.image_url}
           caption={component_data.caption}
           color={projectColor}
+          imagePosition={component_data.image_position}
         />
       );
 
@@ -71,6 +72,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component, projec
           imageUrl={component_data.image_url}
           caption={component_data.caption}
           color={projectColor}
+          imagePosition={component_data.image_position}
         />
       );
     
